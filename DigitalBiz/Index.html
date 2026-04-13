@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - DigitalBiz Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar__inner">
+            <a href="LandingPage.html" class="navbar__back" title="Kembali ke Beranda">←</a>
+            <a href="LandingPage.html" class="navbar__brand">DigitalBiz<span>.</span></a>
+        </div>
+        <div class="navbar__links">
+            <a href="LandingPage.html">Beranda</a>
+            <a href="About.html">About</a>
+        </div>
+    </nav>
+
+    <!-- LAYOUT -->
+    <main class="layout">
+
+        <section class="layout__illustration">
+            <img src="images/illustration-login.png" alt="Ilustrasi Login" class="layout__img" onerror="this.style.display='none'">
+            <div class="layout__badge">🔐 Akses Aman</div>
+            <h2 class="layout__title">Selamat Datang Kembali</h2>
+            <p class="layout__subtitle">Masuk ke akun Anda untuk melanjutkan perjalanan belajar digital bisnis.</p>
+            <div class="layout__features">
+                <div class="layout__feature">✓ 10.000+ kursus tersedia</div>
+                <div class="layout__feature">✓ Sertifikat terverifikasi</div>
+                <div class="layout__feature">✓ Komunitas aktif</div>
+            </div>
+        </section>
+
+        <section class="layout__form login-bg">
+            <div class="card">
+                <div class="card__header">
+                    <h3 class="card__title">Masuk ke Akun</h3>
+                    <p class="card__sub">Belum punya akun? <a href="register.html">Daftar gratis</a></p>
+                </div>
+                <div class="tab-group">
+                    <button class="tab tab--active" onclick="location.href='index.html'">Login</button>
+                    <button class="tab" onclick="location.href='register.html'">Register</button>
+                </div>
+                <form class="form" id="loginForm">
+                    <div class="form__field">
+                        <label class="form__label" for="email">Email</label>
+                        <input class="form__input" id="email" type="email" placeholder="contoh@email.com" required>
+                    </div>
+                    <div class="form__field">
+                        <label class="form__label" for="password">Password</label>
+                        <div class="form__pw-wrap">
+                            <input class="form__input" id="password" type="password" placeholder="Kata sandi Anda" required>
+                            <span class="form__eye" data-target="password">👁️</span>
+                        </div>
+                    </div>
+                    <a href="#" class="form__forgot" id="btnOpenModal">Lupa Kata Sandi?</a>
+                    <button type="submit" class="btn-primary">
+                        <span class="btn-text">Masuk Sekarang</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                    <div class="form__divider"><span>atau</span></div>
+                    <p class="form__footer">Belum punya akun? <a href="register.html">Daftar Sekarang →</a></p>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL LUPA KATA SANDI -->
+    <div class="modal" id="modalForgot">
+        <div class="modal__box">
+            <button class="modal__close" id="btnCloseModal">&times;</button>
+            <div class="modal__icon">🔑</div>
+            <h3 class="modal__title">Lupa Kata Sandi?</h3>
+            <p class="modal__desc">Masukkan email Anda untuk menerima kode OTP pemulihan kata sandi.</p>
+            <form class="form" id="otpForm">
+                <div class="form__field">
+                    <label class="form__label" for="emailOtp">Alamat Email</label>
+                    <input class="form__input" id="emailOtp" type="email" placeholder="Masukkan Email Anda" required>
+                </div>
+                <button type="submit" class="btn-primary">Kirim Kode OTP</button>
+                <p style="text-align:center;margin-top:16px;font-size:13px;color:#64748b">
+                    Ingat password? <a href="index.html" style="color:#286fec;font-weight:700">Kembali Login</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

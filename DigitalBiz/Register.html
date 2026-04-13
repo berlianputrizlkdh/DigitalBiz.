@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - DigitalBiz Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar__inner">
+            <a href="LandingPage.html" class="navbar__back" title="Kembali ke Beranda">←</a>
+            <a href="LandingPage.html" class="navbar__brand">DigitalBiz<span>.</span></a>
+        </div>
+        <div class="navbar__links">
+            <a href="LandingPage.html">Beranda</a>
+            <a href="About.html">About</a>
+        </div>
+    </nav>
+
+    <!-- LAYOUT: Form Register (kiri) | Ilustrasi (kanan) — dibalik dengan --reverse -->
+    <main class="layout layout--reverse">
+
+        <section class="layout__illustration">
+            <img src="images/illustration-register.png" alt="Ilustrasi Register" class="layout__img" onerror="this.style.display='none'">
+            <div class="layout__badge">🎓 Gratis Bergabung</div>
+            <h2 class="layout__title">Selamat Datang</h2>
+            <p class="layout__subtitle">Daftar sekarang untuk mulai belajar di DigitalBiz Academy.</p>
+            <div class="layout__features">
+                <div class="layout__feature">✓ Akses 50+ modul pembelajaran</div>
+                <div class="layout__feature">✓ Mentor berpengalaman</div>
+                <div class="layout__feature">✓ Sertifikat digital resmi</div>
+            </div>
+        </section>
+
+        <section class="layout__form register-bg">
+            <div class="card">
+                <div class="card__header">
+                    <h3 class="card__title">Buat Akun Baru</h3>
+                    <p class="card__sub">Sudah punya akun? <a href="index.html">Masuk di sini</a></p>
+                </div>
+                <div class="tab-group">
+                    <button class="tab" onclick="location.href='index.html'">Login</button>
+                    <button class="tab tab--active" onclick="location.href='register.html'">Register</button>
+                </div>
+                <form class="form" id="registerForm">
+                    <div class="form__field">
+                        <label class="form__label" for="nama">Nama Lengkap</label>
+                        <input class="form__input" id="nama" type="text" placeholder="Nama Lengkap Anda" required>
+                    </div>
+                    <div class="form__field">
+                        <label class="form__label" for="email">Email</label>
+                        <input class="form__input" id="email" type="email" placeholder="contoh@email.com" required>
+                    </div>
+                    <div class="form__field">
+                        <label class="form__label" for="password">Password</label>
+                        <div class="form__pw-wrap">
+                            <input class="form__input" id="password" type="password" placeholder="Minimal 8 karakter" minlength="8" required>
+                            <span class="form__eye" data-target="password">👁️</span>
+                        </div>
+                        <div class="form__pw-strength" id="pwStrength"></div>
+                    </div>
+                    <div class="form__checkbox">
+                        <input type="checkbox" id="agree" required>
+                        <label for="agree">Saya menyetujui <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan Privasi</a></label>
+                    </div>
+                    <button type="submit" class="btn-primary">
+                        <span class="btn-text">Daftar Sekarang</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                    <div class="form__divider"><span>atau</span></div>
+                    <p class="form__footer">Sudah punya akun? <a href="index.html">Masuk Di Sini →</a></p>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
