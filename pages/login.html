@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - DigitalBiz Academy</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="navbar__inner">
-            <a href="LandingPage.html" class="navbar__back" title="Kembali ke Beranda">←</a>
-            <a href="LandingPage.html" class="navbar__brand">DigitalBiz<span>.</span></a>
+            <a href="../index.html" class="navbar__back" title="Kembali ke Beranda">←</a>
+            <a href="../index.html" class="navbar__brand">DigitalBiz<span>.</span></a>
         </div>
         <div class="navbar__links">
-            <a href="LandingPage.html">Beranda</a>
-            <a href="About.html">About</a>
+            <a href="../index.html">Beranda</a>
+            <a href="about.html">About</a>
         </div>
     </nav>
 
@@ -25,7 +25,7 @@
     <main class="layout">
 
         <section class="layout__illustration">
-            <img src="images/illustration-login.png" alt="Ilustrasi Login" class="layout__img" onerror="this.style.display='none'">
+            <img src="../assets/images/illustration-login.png" alt="Ilustrasi Login" class="layout__img" onerror="this.style.display='none'">
             <div class="layout__badge">🔐 Akses Aman</div>
             <h2 class="layout__title">Selamat Datang Kembali</h2>
             <p class="layout__subtitle">Masuk ke akun Anda untuk melanjutkan perjalanan belajar digital bisnis.</p>
@@ -43,7 +43,7 @@
                     <p class="card__sub">Belum punya akun? <a href="register.html">Daftar gratis</a></p>
                 </div>
                 <div class="tab-group">
-                    <button class="tab tab--active" onclick="location.href='index.html'">Login</button>
+                    <button class="tab tab--active" onclick="location.href='login.html'">Login</button>
                     <button class="tab" onclick="location.href='register.html'">Register</button>
                 </div>
                 <form class="form" id="loginForm">
@@ -85,12 +85,12 @@
                 </div>
                 <button type="submit" class="btn-primary">Kirim Kode OTP</button>
                 <p style="text-align:center;margin-top:16px;font-size:13px;color:#64748b">
-                    Ingat password? <a href="index.html" style="color:#286fec;font-weight:700">Kembali Login</a>
+                    Ingat password? <a href="login.html" style="color:#286fec;font-weight:700">Kembali Login</a>
                 </p>
             </form>
         </div>
     </div>
 
-    <script src="app.js"></script>
+    <script src="../assets/js/app.js"></script>
 </body>
 </html>
