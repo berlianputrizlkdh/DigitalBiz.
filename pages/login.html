@@ -97,7 +97,10 @@
                     <label class="form__label" for="emailOtp">Alamat Email</label>
                     <input class="form__input" id="emailOtp" type="email" placeholder="Masukkan Email Anda" required>
                 </div>
-                <button type="submit" class="btn-primary">Kirim Kode OTP</button>
+                <button type="submit" class="btn-primary">
+                    <span class="btn-text">Kirim Kode OTP</span>
+                    <span class="btn-arrow">→</span>
+                </button>
                 <p style="text-align:center;margin-top:16px;font-size:13px;color:#64748b">
                     Ingat password? <a href="login.html" style="color:#286fec;font-weight:700">Kembali Login</a>
                 </p>
@@ -105,6 +108,70 @@
         </div>
     </div>
 
-    <script src="../assets/js/app.js"></script>
+    <!-- JS LANGSUNG DI SINI — tidak perlu file eksternal -->
+    <script>
+        /* 1. TOGGLE PASSWORD */
+        document.querySelectorAll('.form__eye').forEach(function(eye) {
+            eye.addEventListener('click', function() {
+                var targetId = this.getAttribute('data-target');
+                var input = document.getElementById(targetId);
+                if (!input) return;
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    this.textContent = '🙈';
+                } else {
+                    input.type = 'password';
+                    this.textContent = '👁️';
+                }
+            });
+        });
+
+        /* 2. MODAL LUPA KATA SANDI */
+        var modal        = document.getElementById('modalForgot');
+        var btnOpen      = document.getElementById('btnOpenModal');
+        var btnClose     = document.getElementById('btnCloseModal');
+
+        btnOpen.addEventListener('click', function(e) {
+            e.preventDefault();
+            modal.style.display = 'flex';
+        });
+
+        btnClose.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        /* 3. OTP FORM */
+        document.getElementById('otpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var btn = this.querySelector('.btn-primary');
+            var btnText = btn.querySelector('.btn-text');
+            btnText.textContent = 'Terkirim! ✓';
+            btn.style.background = '#22c55e';
+            setTimeout(function() {
+                modal.style.display = 'none';
+                btnText.textContent = 'Kirim Kode OTP';
+                btn.style.background = '';
+            }, 2000);
+        });
+
+        /* 4. LOGIN FORM */
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var btn = this.querySelector('.btn-primary');
+            var btnText = btn.querySelector('.btn-text');
+            btnText.textContent = 'Masuk...';
+            btn.disabled = true;
+            setTimeout(function() {
+                btnText.textContent = 'Berhasil! ✓';
+                btn.style.background = '#22c55e';
+            }, 1200);
+        });
+    </script>
 </body>
 </html>

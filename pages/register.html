@@ -21,7 +21,7 @@
         </div>
     </nav>
 
-    <!-- LAYOUT: Form Register (kiri) | Ilustrasi (kanan) — dibalik dengan --reverse -->
+    <!-- LAYOUT -->
     <main class="layout layout--reverse">
 
         <section class="layout__illustration">
@@ -93,6 +93,58 @@
 
     </main>
 
-    <script src="../assets/js/app.js"></script>
+    <!-- JS LANGSUNG DI SINI — tidak perlu file eksternal -->
+    <script>
+        /* 1. TOGGLE PASSWORD */
+        document.querySelectorAll('.form__eye').forEach(function(eye) {
+            eye.addEventListener('click', function() {
+                var targetId = this.getAttribute('data-target');
+                var input = document.getElementById(targetId);
+                if (!input) return;
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    this.textContent = '🙈';
+                } else {
+                    input.type = 'password';
+                    this.textContent = '👁️';
+                }
+            });
+        });
+
+        /* 2. PASSWORD STRENGTH */
+        var pwInput    = document.getElementById('password');
+        var pwStrength = document.getElementById('pwStrength');
+        pwInput.addEventListener('input', function() {
+            var v = this.value;
+            var score = 0;
+            if (v.length >= 8)           score++;
+            if (/[A-Z]/.test(v))         score++;
+            if (/[0-9]/.test(v))         score++;
+            if (/[^A-Za-z0-9]/.test(v))  score++;
+            var map = [
+                { w: '0%',   c: '#e2e8f0' },
+                { w: '25%',  c: '#ef4444' },
+                { w: '55%',  c: '#f59e0b' },
+                { w: '80%',  c: '#3b82f6' },
+                { w: '100%', c: '#22c55e' },
+            ];
+            var s = map[score] || map[0];
+            pwStrength.style.setProperty('--w', s.w);
+            pwStrength.style.setProperty('--c', s.c);
+        });
+
+        /* 3. REGISTER FORM */
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var btn = this.querySelector('.btn-primary');
+            var btnText = btn.querySelector('.btn-text');
+            btnText.textContent = 'Mendaftar...';
+            btn.disabled = true;
+            setTimeout(function() {
+                btnText.textContent = 'Berhasil! ✓';
+                btn.style.background = '#22c55e';
+            }, 1200);
+        });
+    </script>
 </body>
 </html>
