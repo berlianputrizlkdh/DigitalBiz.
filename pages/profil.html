@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Saya - DigitalBiz Academy</title>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Load CSS Utama -->
+    <link rel="stylesheet" href="lp.css">
+    <style>
+        :root {
+            --profile-sidebar-w: 280px;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: var(--text-main);
+        }
+
+        /* Hero Profile Section */
+        .profile-hero {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            padding: 40px 0;
+            margin-bottom: 30px;
+        }
+
+        .profile-layout {
+            display: grid;
+            grid-template-columns: var(--profile-sidebar-w) 1fr;
+            gap: 32px;
+            padding-bottom: 80px;
+        }
+
+        /* SIDEBAR STYLES */
+        .sidebar-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 24px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .nav-item {
+            margin-bottom: 8px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: var(--r);
+            color: var(--text-muted);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .nav-link.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* CONTENT STYLES */
+        .card-box {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 32px;
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 24px;
+        }
+
+        .profile-header-inner {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .avatar-wrapper {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            font-weight: 800;
+            color: white;
+            border: 4px solid var(--primary-light);
+        }
+
+        .badge-pro {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: var(--secondary);
+            color: white;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 2px solid white;
+        }
+
+        /* FORM STYLES */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .form-group input {
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            font-family: inherit;
+            font-size: 14px;
+            transition: var(--transition);
+            background: #fdfdfd;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 4px var(--primary-light);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .btn-save {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: var(--r);
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-save:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Stats Tags */
+        .stat-tag {
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        @media (max-width: 992px) {
+            .profile-layout { grid-template-columns: 1fr; gap: 24px; }
+            .sidebar-card { position: static; }
+            .form-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR (Sama dengan index.html) -->
+    <nav class="navbar">
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo">DigitalBiz<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="program.html">Program</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div style="display: flex; align-items: center; gap: 12px; padding: 6px 12px; background: var(--bg-light); border-radius: 50px; border: 1px solid var(--border);">
+                    <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 11px;">B</div>
+                    <span style="font-size: 13px; font-weight: 700;">Budi Santoso</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PROFIL HERO -->
+    <section class="profile-hero">
+        <div class="container">
+            <div class="profile-header-inner">
+                <div class="avatar-wrapper">
+                    <div class="avatar-img">B</div>
+                    <div class="badge-pro">PRO</div>
+                </div>
+                <div>
+                    <h1 style="font-size: 28px; font-weight: 800; margin-bottom: 6px;">Profil Saya</h1>
+                    <p style="color: var(--text-muted);">Kelola informasi akun dan pengaturan keamanan Anda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="profile-layout">
+            
+            <!-- SIDEBAR -->
+            <aside class="sidebar-card">
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">
+                            <span>👤</span> Profil Saya
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span>📚</span> Kursus Saya
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span>🏆</span> Sertifikat
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <span>💳</span> Riwayat Transaksi
+                        </a>
+                    </li>
+                    <li class="nav-item" style="margin-top: 24px; border-top: 1px solid var(--border); padding-top: 20px;">
+                        <a href="login.html" class="nav-link" style="color: #ef4444;">
+                            <span>🚪</span> Keluar
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <main class="profile-content">
+                
+                <!-- PERSONAL INFO -->
+                <div class="card-box">
+                    <h3 class="section-title">Informasi Pribadi</h3>
+                    <div style="display: flex; gap: 12px; margin-bottom: 30px;">
+                        <div class="stat-tag">📖 4 Kursus Diikuti</div>
+                        <div class="stat-tag" style="background: #fff7ed; color: #c2410c;">🎓 2 Sertifikat</div>
+                    </div>
+
+                    <form action="#">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="fullname">Nama Lengkap</label>
+                                <input type="text" id="fullname" value="Budi Santoso">
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" value="budisantoso_biz" readonly style="background: var(--bg-light); color: var(--text-muted); cursor: not-allowed;">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Alamat Email</label>
+                                <input type="email" id="email" value="budi.santoso@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Nomor WhatsApp</label>
+                                <input type="tel" id="phone" value="081234567890">
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--border);">
+                            <h3 class="section-title">Keamanan Akun</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="old-pass">Kata Sandi Lama</label>
+                                    <input type="password" id="old-pass" placeholder="••••••••">
+                                </div>
+                                <div class="form-group">
+                                    <label for="new-pass">Kata Sandi Baru</label>
+                                    <input type="password" id="new-pass" placeholder="Minimal 8 karakter">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; justify-content: flex-end; margin-top: 40px;">
+                            <button type="submit" class="btn-save">Simpan Perubahan</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- SUBSCRIPTION INFO (Extra) -->
+                <div class="card-box" style="border-left: 4px solid var(--secondary);">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h4 style="font-weight: 800; margin-bottom: 4px;">Status Berlangganan</h4>
+                            <p style="font-size: 14px; color: var(--text-muted);">Paket Pro Tahunan — Aktif hingga 20 Jan 2027</p>
+                        </div>
+                        <a href="#" style="color: var(--primary); font-weight: 700; font-size: 14px;">Kelola Langganan →</a>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- FOOTER (Sama dengan index.html) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="color: #fff;">DigitalBiz<span>.</span></a>
+                    <p style="margin-top: 20px; color: #9ca3af;">Platform edukasi bisnis digital terlengkap untuk membangun karir dan masa depan Anda di industri modern.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Eksplorasi</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="program.html" style="color: #9ca3af; text-decoration: none; font-size: 14px; line-height: 2.5;">Semua Program</a></li>
+                        <li><a href="about.html" style="color: #9ca3af; text-decoration: none; font-size: 14px; line-height: 2.5;">Tentang Kami</a></li>
+                        <li><a href="#" style="color: #9ca3af; text-decoration: none; font-size: 14px; line-height: 2.5;">Pusat Bantuan</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontak</h4>
+                    <p style="color: #9ca3af; font-size: 14px; margin-bottom: 10px;">📧 support@digitalbiz.id</p>
+                    <p style="color: #9ca3af; font-size: 14px;">📍 Jakarta, Indonesia</p>
+                </div>
+            </div>
+            <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                <p style="color: #6b7280; font-size: 13px;">&copy; 2026 DigitalBiz Academy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
