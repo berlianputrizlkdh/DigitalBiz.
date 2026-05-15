@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Starup Business Plan — DigitalBiz Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/kelas/kelasbp.css"> 
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="topnav" id="topnav">
+  <button class="topnav__back-btn" onclick="window.history.back()" title="Kembali ke Dashboard">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 12L6 8l4-4"/>
+    </svg>
+    Dashboard
+  </button>
+  <a href="dashboard.html" class="topnav__logo">DigitalBiz<span>.</span></a>
+  <div class="topnav__breadcrumb">
+    <strong id="breadcrumb-course">Startup Business Plan</strong>
+    <span class="sep">›</span>
+    <span id="breadcrumb-module" style="color:#6b7280;">Pengenalan</span>
+  </div>
+  <div class="topnav__progress-wrap">
+    <div class="topnav__progress-bar">
+      <div class="topnav__progress-fill" id="nav-progress-fill" style="width:14%"></div>
+    </div>
+    <div class="topnav__progress-text" id="nav-progress-text">1/7 video</div>
+  </div>
+  <div style="flex:1;"></div>
+  <div class="topnav__actions">
+    <div class="topnav__avatar" id="userAvatar">U</div>
+    <button class="topnav__logout-btn" onclick="doLogout()">Keluar</button>
+  </div>
+</nav>
+
+<!-- COURSE BODY -->
+<div class="course-body">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="courseSidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-course-tag">Bisnis</div>
+      <div class="sidebar-course-title">Startup Business Plan</div>
+      <div class="sidebar-progress">
+        <div class="sidebar-progress-bar">
+          <div class="sidebar-progress-fill" style="width:14%"></div>
+        </div>
+        <div class="sidebar-progress-text">1 dari 7 video selesai</div>
+      </div>
+    </div>
+
+    <div class="sidebar-label">Modul Business Plan</div>
+
+    <!-- MODULE 1: Fondasi -->
+    <div class="sidebar-module open" id="mod-bp1">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-bp1')">
+        BAB 1 · FONDASI STARTUP
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson done" onclick="selectLesson(this,'Pengenalan Business Plan','1.1','Fondasi','desc_bp_intro')">
+          <div class="lesson-icon">✓</div>
+          <div class="lesson-name">Pengenalan Business Plan</div>
+          <div class="lesson-duration">14:20</div>
+        </div>
+        <div class="sidebar-lesson active" onclick="selectLesson(this,'Visi, Misi & Value Proposition','1.2','Fondasi','desc_bp_visi')">
+          <div class="lesson-icon">▶</div>
+          <div class="lesson-name">Visi, Misi & Value Proposition</div>
+          <div class="lesson-duration">18:35</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 2: Pasar -->
+    <div class="sidebar-module open" id="mod-bp2">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-bp2')">
+        BAB 2 · ANALISIS PASAR
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson" onclick="selectLesson(this,'Analisis Pasar & Segmentasi','2.1','Pasar','desc_bp_pasar')">
+          <div class="lesson-icon">2</div>
+          <div class="lesson-name">Analisis Pasar & Segmentasi</div>
+          <div class="lesson-duration">22:10</div>
+        </div>
+        <div class="sidebar-quiz" onclick="openQuiz('bp-pasar')">
+          <div class="quiz-icon">📝</div>
+          <div class="quiz-name">Quiz Bab 1 & 2</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 3: Model Bisnis -->
+    <div class="sidebar-module" id="mod-bp3">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-bp3')">
+        BAB 3 · MODEL BISNIS
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson" onclick="selectLesson(this,'Business Model Canvas','3.1','Model Bisnis','desc_bp_bmc')">
+          <div class="lesson-icon">3</div>
+          <div class="lesson-name">Business Model Canvas</div>
+          <div class="lesson-duration">26:45</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 4: Keuangan -->
+    <div class="sidebar-module" id="mod-bp4">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-bp4')">
+        BAB 4 · PROYEKSI KEUANGAN
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson" onclick="selectLesson(this,'Proyeksi Keuangan & Break Even','4.1','Keuangan','desc_bp_keuangan')">
+          <div class="lesson-icon">4</div>
+          <div class="lesson-name">Proyeksi Keuangan & BEP</div>
+          <div class="lesson-duration">30:00</div>
+        </div>
+        <div class="sidebar-quiz" onclick="openQuiz('bp-keuangan')">
+          <div class="quiz-icon">📝</div>
+          <div class="quiz-name">Quiz Bab 3 & 4</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 5: Go-to-Market -->
+    <div class="sidebar-module" id="mod-bp5">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-bp5')">
+        BAB 5 · GO-TO-MARKET
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson" onclick="selectLesson(this,'Strategi Go-to-Market','5.1','Go-to-Market','desc_bp_gtm')">
+          <div class="lesson-icon">5</div>
+          <div class="lesson-name">Strategi Go-to-Market</div>
+          <div class="lesson-duration">24:15</div>
+        </div>
+        <div class="sidebar-quiz" onclick="openQuiz('bp-final')">
+          <div class="quiz-icon">📝</div>
+          <div class="quiz-name">Quiz Final</div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="course-content">
+
+    <!-- Business Plan Phase Bar -->
+    <div class="bp-phase-bar" id="phaseBar">
+      <div class="bp-phase-item done" id="phase-fondasi">
+        <div class="bp-phase-circle">🏗️</div>
+        <div class="bp-phase-name">Fondasi</div>
+      </div>
+      <div class="bp-phase-connector done"></div>
+      <div class="bp-phase-item active" id="phase-pasar">
+        <div class="bp-phase-circle">📊</div>
+        <div class="bp-phase-name">Pasar</div>
+      </div>
+      <div class="bp-phase-connector"></div>
+      <div class="bp-phase-item" id="phase-model">
+        <div class="bp-phase-circle">🧩</div>
+        <div class="bp-phase-name">Model Bisnis</div>
+      </div>
+      <div class="bp-phase-connector"></div>
+      <div class="bp-phase-item" id="phase-keuangan">
+        <div class="bp-phase-circle">💰</div>
+        <div class="bp-phase-name">Keuangan</div>
+      </div>
+      <div class="bp-phase-connector"></div>
+      <div class="bp-phase-item" id="phase-gtm">
+        <div class="bp-phase-circle">🚀</div>
+        <div class="bp-phase-name">Go-to-Market</div>
+      </div>
+    </div>
+
+    <!-- Course Top Info -->
+    <div class="course-top">
+      <div class="course-content-title" id="lesson-title">Visi, Misi & Value Proposition</div>
+      <div class="course-content-meta">
+        <span class="lesson-badge" id="lesson-badge">Bab 1.2</span>
+        <span class="meta-dot"></span>
+        <span id="lesson-module">Fondasi</span>
+      </div>
+    </div>
+
+    <!-- Video Player -->
+    <div class="video-player" id="videoPlayer" onclick="togglePlay()">
+      <div class="video-bg" id="video-bg"
+        style="background:linear-gradient(135deg,#0c1a2e,#0a3a5c);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+        <div style="text-align:center;color:#fff;padding:0 40px;z-index:1;position:relative;">
+          <div style="font-size:13px;font-weight:700;letter-spacing:3px;color:#38bdf8;text-transform:uppercase;margin-bottom:12px;">Startup Business Plan · Bab 1</div>
+          <div style="font-size:34px;font-weight:800;letter-spacing:-1px;line-height:1.2;color:#e0f2fe;" id="video-title-label">VISI & MISI<br><span style="color:#f59e0b;">Value Proposition</span></div>
+        </div>
+        <div style="position:absolute;right:40px;bottom:0;font-size:100px;opacity:0.08;">🎯</div>
+        <div style="position:absolute;top:-40px;left:-40px;width:200px;height:200px;border-radius:50%;background:rgba(14,165,233,0.15);"></div>
+        <div style="position:absolute;bottom:-60px;right:100px;width:160px;height:160px;border-radius:50%;background:rgba(245,158,11,0.08);"></div>
+      </div>
+      <div class="video-overlay">
+        <button class="video-play-btn" id="playBtn">▶</button>
+      </div>
+      <div class="video-bottom">
+        <div class="video-title-overlay" id="video-title-overlay">Visi, Misi & Value Proposition</div>
+        <div class="video-controls">
+          <div class="video-progress" onclick="event.stopPropagation()">
+            <div class="video-progress-fill" id="video-prog-fill" style="width:0%"></div>
+          </div>
+          <div class="video-time" id="video-time">00:00 / 18:35</div>
+          <button class="video-vol" onclick="event.stopPropagation()">🔊</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="content-tabs">
+      <div class="content-tab active" onclick="switchTab('desc',this)">Deskripsi</div>
+      <div class="content-tab" onclick="switchTab('quiz',this)">Quiz</div>
+    </div>
+
+    <!-- DESCRIPTION PANEL -->
+    <div class="desc-panel" id="tab-desc">
+      <div class="desc-title" id="desc-title">Visi, Misi & Value Proposition: Fondasi Identitas Startup</div>
+      <div class="desc-body" id="desc-body">
+
+        <div class="phase-steps">
+          <div class="phase-step done">
+            <div class="phase-step-icon" style="background:#f0fdf4;">🏗️</div>
+            <div class="phase-step-label">Fondasi</div>
+          </div>
+          <div class="phase-step current">
+            <div class="phase-step-icon" style="background:var(--accent-bp-lt);">📊</div>
+            <div class="phase-step-label">Pasar</div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-step-icon" style="background:#f8fafc;">🧩</div>
+            <div class="phase-step-label">Model Bisnis</div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-step-icon" style="background:#f8fafc;">💰</div>
+            <div class="phase-step-label">Keuangan</div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-step-icon" style="background:#f8fafc;">🚀</div>
+            <div class="phase-step-label">Go-to-Market</div>
+          </div>
+        </div>
+
+        <p>Sebelum menulis satu halaman pun dari business plan, setiap founder harus mampu menjawab tiga pertanyaan mendasar: <strong>Mengapa startup ini ada? Ke mana arahnya? Dan apa yang membuat solusinya unik bagi pelanggan?</strong> Di sinilah Visi, Misi, dan Value Proposition berperan.</p>
+
+        <p>Visi adalah gambaran besar tentang dunia yang ingin Anda ciptakan. Misi adalah bagaimana Anda akan mewujudkan visi tersebut. Sedangkan <strong>Value Proposition</strong> adalah janji konkret kepada pelanggan — manfaat spesifik yang mereka dapatkan dan yang tidak bisa mereka temukan di tempat lain.</p>
+
+        <div class="key-concepts">
+          <div class="concept-card">
+            <h4>🔭 Visi (Vision Statement)</h4>
+            <p>Pernyataan aspiratif jangka panjang tentang dampak bisnis Anda di dunia. Bersifat inspiratif, ambisius, dan tidak terikat waktu pendek.</p>
+          </div>
+          <div class="concept-card">
+            <h4>🎯 Misi (Mission Statement)</h4>
+            <p>Penjelasan konkret tentang apa yang dilakukan bisnis Anda, untuk siapa, dan bagaimana caranya. Lebih operasional dan spesifik dari visi.</p>
+          </div>
+          <div class="concept-card">
+            <h4>💎 Value Proposition Canvas</h4>
+            <p>Framework dari Strategyzer untuk memetakan kecocokan antara profil pelanggan (jobs, pains, gains) dan peta nilai produk Anda.</p>
+          </div>
+          <div class="concept-card">
+            <h4>✍️ Unique Selling Point (USP)</h4>
+            <p>Satu kalimat yang membedakan produk Anda dari kompetitor — alasan utama mengapa pelanggan memilih Anda, bukan yang lain.</p>
+          </div>
+        </div>
+
+        <p>Dalam business plan yang kuat, visi dan misi bukan sekadar formalitas. Investor membaca keduanya untuk memahami ambisi dan arah founder. Value Proposition yang tajam juga menjadi fondasi seluruh strategi pemasaran dan produk ke depannya.</p>
+
+        <ul class="resource-list">
+          <li><span class="resource-icon">📄</span> Template Value Proposition Canvas — Strategyzer.com</li>
+          <li><span class="resource-icon">📖</span> Panduan Menulis Visi & Misi Startup — DigitalBiz Library</li>
+          <li><span class="resource-icon">🎥</span> Studi Kasus: Visi & Misi Gojek, Tokopedia, Traveloka</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- QUIZ PANEL -->
+    <div class="quiz-panel" id="tab-quiz">
+      <div class="quiz-header">
+        <h3>Quiz — Startup Business Plan: Visi & Value Proposition</h3>
+        <p>Uji pemahaman Anda tentang fondasi identitas startup.</p>
+      </div>
+      <div class="quiz-question" id="quiz-question">
+        ❓ Apa perbedaan utama antara Visi dan Value Proposition dalam sebuah business plan startup?
+      </div>
+      <div class="quiz-options" id="quizOptions">
+        <div class="quiz-option" onclick="selectOption(this,'a')">
+          <div class="quiz-letter">A</div>
+          Visi adalah target pendapatan jangka panjang, sedangkan Value Proposition adalah janji kepada investor
+        </div>
+        <div class="quiz-option" onclick="selectOption(this,'b')">
+          <div class="quiz-letter">B</div>
+          Visi adalah gambaran dampak dunia yang ingin diciptakan, sedangkan Value Proposition adalah janji konkret manfaat unik kepada pelanggan
+        </div>
+        <div class="quiz-option" onclick="selectOption(this,'c')">
+          <div class="quiz-letter">C</div>
+          Keduanya sama — sama-sama menjelaskan produk yang dijual kepada pasar
+        </div>
+        <div class="quiz-option" onclick="selectOption(this,'d')">
+          <div class="quiz-letter">D</div>
+          Visi dibuat oleh tim teknis, sedangkan Value Proposition dibuat oleh tim marketing
+        </div>
+      </div>
+      <button class="btn-quiz-submit" onclick="submitQuiz()">Kirim Jawaban →</button>
+    </div>
+
+    <!-- NAVIGATION BUTTONS -->
+    <div class="video-nav">
+      <button class="btn-nav" onclick="prevLesson()">← Sebelumnya</button>
+      <button class="btn-nav primary" onclick="nextLesson()">Materi Berikutnya →</button>
+    </div>
+
+  </div><!-- /course-content -->
+</div><!-- /course-body -->
+
+<script>
+var isPlaying      = false;
+var selectedAnswer = null;
+var progressTimer  = null;
+var currentProgress = 0;
+
+(function() {
+  var name = localStorage.getItem('userName') || 'Pengguna';
+  var initials = name.split(' ').map(function(w){ return w[0]; }).join('').toUpperCase().slice(0,2) || 'U';
+  document.getElementById('userAvatar').textContent = initials;
+})();
+
+function doLogout() {
+  localStorage.removeItem('isLoggedIn');
+  localStorage.removeItem('userName');
+  window.location.href = '../index.html';
+}
+
+function toggleModule(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+// Phase bar
+var phaseMap = {
+  desc_bp_intro:    'fondasi',
+  desc_bp_visi:     'fondasi',
+  desc_bp_pasar:    'pasar',
+  desc_bp_bmc:      'model',
+  desc_bp_keuangan: 'keuangan',
+  desc_bp_gtm:      'gtm'
+};
+var phaseOrder = ['fondasi','pasar','model','keuangan','gtm'];
+
+function updatePhaseBar(activeKey) {
+  var activePhase = phaseMap[activeKey] || 'fondasi';
+  var activeIdx = phaseOrder.indexOf(activePhase);
+  phaseOrder.forEach(function(ph, i) {
+    var el = document.getElementById('phase-' + ph);
+    el.classList.remove('active','done');
+    if (i < activeIdx) el.classList.add('done');
+    else if (i === activeIdx) el.classList.add('active');
+  });
+  var connectors = document.querySelectorAll('.bp-phase-connector');
+  connectors.forEach(function(c, i) {
+    c.classList.toggle('done', i < activeIdx);
+  });
+}
+
+// Content data
+var descriptions = {
+  desc_bp_intro: {
+    title: 'Pengenalan Startup Business Plan',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-bp-lt);">🏗️</div><div class="phase-step-label">Fondasi</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">📊</div><div class="phase-step-label">Pasar</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🧩</div><div class="phase-step-label">Model Bisnis</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">💰</div><div class="phase-step-label">Keuangan</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🚀</div><div class="phase-step-label">Go-to-Market</div></div>
+      </div>
+      <p>Startup Business Plan adalah dokumen hidup yang menggambarkan arah, strategi, dan rencana operasional sebuah bisnis baru. Ini bukan dokumen kaku — business plan yang baik terus diperbarui seiring pertumbuhan dan pembelajaran startup Anda.</p>
+      <p>Dalam kursus ini, kita akan membangun business plan secara sistematis: dari fondasi visi hingga strategi go-to-market yang siap dipresentasikan kepada investor atau mitra bisnis.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>📋 Lean Business Plan</h4><p>Versi ringkas 1-2 halaman yang menangkap esensi bisnis tanpa boilerplate panjang — ideal untuk startup tahap awal.</p></div>
+        <div class="concept-card"><h4>📈 Full Business Plan</h4><p>Dokumen komprehensif 10-30 halaman untuk kebutuhan pendanaan formal, kemitraan strategis, atau ekspansi besar.</p></div>
+        <div class="concept-card"><h4>🗺️ Roadmap Kursus</h4><p>Fondasi → Analisis Pasar → Model Bisnis → Proyeksi Keuangan → Go-to-Market. Setiap bab saling terhubung.</p></div>
+        <div class="concept-card"><h4>🎯 Tujuan Business Plan</h4><p>Memperjelas arah founder, menarik investor, menyelaraskan tim, dan menjadi panduan operasional bisnis sehari-hari.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📚</span> Template Lean Canvas — Ash Maurya (leanstack.com)</li>
+        <li><span class="resource-icon">🏛️</span> SBA Business Plan Guide — sba.gov</li>
+      </ul>
+    `
+  },
+  desc_bp_visi: {
+    title: 'Visi, Misi & Value Proposition: Fondasi Identitas Startup',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🏗️</div><div class="phase-step-label">Fondasi</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-bp-lt);">📊</div><div class="phase-step-label">Pasar</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🧩</div><div class="phase-step-label">Model Bisnis</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">💰</div><div class="phase-step-label">Keuangan</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🚀</div><div class="phase-step-label">Go-to-Market</div></div>
+      </div>
+      <p>Sebelum menulis satu halaman pun dari business plan, setiap founder harus mampu menjawab tiga pertanyaan mendasar: mengapa startup ini ada, ke mana arahnya, dan apa yang membuatnya unik bagi pelanggan.</p>
+      <p><strong>Value Proposition</strong> adalah janji konkret kepada pelanggan — manfaat spesifik yang mereka dapatkan dan tidak bisa mereka temukan di tempat lain.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>🔭 Vision Statement</h4><p>Pernyataan aspiratif tentang dampak bisnis Anda di dunia. Bersifat inspiratif, ambisius, dan tidak terikat waktu pendek.</p></div>
+        <div class="concept-card"><h4>🎯 Mission Statement</h4><p>Penjelasan konkret tentang apa yang dilakukan bisnis Anda, untuk siapa, dan bagaimana caranya. Lebih operasional dari visi.</p></div>
+        <div class="concept-card"><h4>💎 Value Proposition Canvas</h4><p>Framework dari Strategyzer untuk memetakan kecocokan antara profil pelanggan (jobs, pains, gains) dan peta nilai produk Anda.</p></div>
+        <div class="concept-card"><h4>✍️ Unique Selling Point</h4><p>Satu kalimat yang membedakan produk Anda dari kompetitor — alasan utama mengapa pelanggan memilih Anda.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📄</span> Template Value Proposition Canvas — Strategyzer.com</li>
+        <li><span class="resource-icon">📖</span> Panduan Menulis Visi & Misi Startup — DigitalBiz Library</li>
+        <li><span class="resource-icon">🎥</span> Studi Kasus: Visi & Misi Gojek, Tokopedia, Traveloka</li>
+      </ul>
+    `
+  },
+  desc_bp_pasar: {
+    title: 'Analisis Pasar & Segmentasi: Kenali Medan Bermain Anda',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🏗️</div><div class="phase-step-label">Fondasi</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📊</div><div class="phase-step-label">Pasar</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-bp-lt);">🧩</div><div class="phase-step-label">Model Bisnis</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">💰</div><div class="phase-step-label">Keuangan</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🚀</div><div class="phase-step-label">Go-to-Market</div></div>
+      </div>
+      <p>Analisis pasar yang kuat menunjukkan kepada investor bahwa Anda memahami ekosistem di mana startup Anda beroperasi. Ini mencakup ukuran pasar, tren, perilaku konsumen, dan lanskap kompetitif.</p>
+      <p>Framework <strong>TAM-SAM-SOM</strong> membantu Anda mendefinisikan potensi pasar secara realistis — dari total pasar global hingga porsi yang bisa Anda raih dalam 3-5 tahun pertama.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>🌐 TAM-SAM-SOM</h4><p>Total Addressable Market → Serviceable Addressable Market → Serviceable Obtainable Market. Tiga lingkaran potensi pasar Anda.</p></div>
+        <div class="concept-card"><h4>👥 Segmentasi Pelanggan</h4><p>Membagi pasar berdasarkan demografi, psikografi, perilaku, dan geografi untuk menemukan segmen yang paling menguntungkan.</p></div>
+        <div class="concept-card"><h4>⚔️ Analisis Kompetitor</h4><p>Peta kompetitor langsung dan tidak langsung, kelebihan/kekurangan mereka, dan white space yang bisa Anda isi.</p></div>
+        <div class="concept-card"><h4>📐 Porter's Five Forces</h4><p>Analisis kekuatan persaingan: ancaman pendatang baru, kekuatan pemasok, pembeli, produk pengganti, dan persaingan industri.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📊</span> Template TAM-SAM-SOM Spreadsheet — DigitalBiz Library</li>
+        <li><span class="resource-icon">🔍</span> Data Pasar Indonesia — BPS.go.id & IPSOS Report</li>
+        <li><span class="resource-icon">🎥</span> Studi Kasus Analisis Pasar Fintech Indonesia</li>
+      </ul>
+    `
+  },
+  desc_bp_bmc: {
+    title: 'Business Model Canvas: Cetak Biru Bisnis Anda',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🏗️</div><div class="phase-step-label">Fondasi</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📊</div><div class="phase-step-label">Pasar</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🧩</div><div class="phase-step-label">Model Bisnis</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-bp-lt);">💰</div><div class="phase-step-label">Keuangan</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🚀</div><div class="phase-step-label">Go-to-Market</div></div>
+      </div>
+      <p><strong>Business Model Canvas (BMC)</strong> adalah alat visual satu halaman yang menggambarkan bagaimana bisnis Anda menciptakan, menyampaikan, dan menangkap nilai. Dikembangkan oleh Alexander Osterwalder, BMC menjadi standar industri startup global.</p>
+      <p>BMC terdiri dari 9 blok yang saling terhubung, dan mengisinya dengan benar akan mengungkap asumsi-asumsi kritis dalam bisnis Anda yang perlu divalidasi.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>🧩 9 Blok BMC</h4><p>Customer Segments, Value Propositions, Channels, Customer Relationships, Revenue Streams, Key Resources, Key Activities, Key Partnerships, Cost Structure.</p></div>
+        <div class="concept-card"><h4>🔄 Lean Canvas</h4><p>Versi modifikasi BMC oleh Ash Maurya yang lebih cocok untuk startup tahap awal, dengan blok tambahan: Problem, Solution, Unfair Advantage.</p></div>
+        <div class="concept-card"><h4>💵 Revenue Model</h4><p>Bagaimana bisnis menghasilkan uang: subscription, freemium, marketplace, transaksional, iklan, lisensi, atau kombinasinya.</p></div>
+        <div class="concept-card"><h4>🔑 Key Resources</h4><p>Aset paling kritis yang membuat model bisnis Anda bekerja: manusia, teknologi, IP, modal, atau jaringan distribusi.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">🧩</span> Template BMC Interaktif — Miro/FigJam</li>
+        <li><span class="resource-icon">📚</span> Buku Business Model Generation — Osterwalder & Pigneur</li>
+        <li><span class="resource-icon">🎥</span> Studi Kasus BMC Startup Unicorn Indonesia</li>
+      </ul>
+    `
+  },
+  desc_bp_keuangan: {
+    title: 'Proyeksi Keuangan & Break Even: Angka di Balik Mimpi',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🏗️</div><div class="phase-step-label">Fondasi</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📊</div><div class="phase-step-label">Pasar</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🧩</div><div class="phase-step-label">Model Bisnis</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">💰</div><div class="phase-step-label">Keuangan</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-bp-lt);">🚀</div><div class="phase-step-label">Go-to-Market</div></div>
+      </div>
+      <p>Proyeksi keuangan adalah bagian yang paling sering ditakuti oleh non-financial founder, sekaligus yang paling dinantikan oleh investor. Angka yang realistis dan bisa dipertanggungjawabkan menunjukkan kematangan berpikir seorang founder.</p>
+      <p><strong>Break Even Analysis</strong> menentukan pada titik penjualan berapa startup Anda mulai menghasilkan profit — ini adalah pertanyaan pertama yang diajukan oleh hampir setiap investor.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>📊 P&L Projection</h4><p>Proyeksi Profit & Loss 3 tahun ke depan: estimasi pendapatan, HPP, biaya operasional, dan net profit per kuartal.</p></div>
+        <div class="concept-card"><h4>💸 Cash Flow</h4><p>Arus kas masuk dan keluar setiap bulan. Banyak bisnis profitable tapi bangkrut karena cash flow negatif — ini lebih penting dari profit di awal.</p></div>
+        <div class="concept-card"><h4>⚖️ Break Even Point</h4><p>BEP = Fixed Cost ÷ (Harga per Unit - Variable Cost per Unit). Titik di mana total pendapatan = total biaya.</p></div>
+        <div class="concept-card"><h4>🔢 Unit Economics</h4><p>CAC (Customer Acquisition Cost) vs LTV (Lifetime Value). Bisnis sehat jika LTV minimal 3x CAC.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📊</span> Template Proyeksi Keuangan 3 Tahun — Excel DigitalBiz</li>
+        <li><span class="resource-icon">🧮</span> Kalkulator BEP & Unit Economics — DigitalBiz Tools</li>
+        <li><span class="resource-icon">📖</span> Panduan Membaca Laporan Keuangan Startup</li>
+      </ul>
+    `
+  },
+  desc_bp_gtm: {
+    title: 'Strategi Go-to-Market: Dari Ide ke Pasar Nyata',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🏗️</div><div class="phase-step-label">Fondasi</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📊</div><div class="phase-step-label">Pasar</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🧩</div><div class="phase-step-label">Model Bisnis</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">💰</div><div class="phase-step-label">Keuangan</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🚀</div><div class="phase-step-label">Go-to-Market</div></div>
+      </div>
+      <p>Strategi <strong>Go-to-Market (GTM)</strong> adalah rencana aksi bagaimana Anda akan membawa produk ke tangan pelanggan pertama Anda. GTM yang baik bukan tentang menjangkau semua orang — ini tentang menjangkau orang yang paling tepat, dengan pesan yang paling tepat, melalui saluran yang paling tepat.</p>
+      <p>Kesalahan terbesar startup adalah langsung mencoba scaling sebelum memvalidasi GTM pada segmen kecil. <strong>Find your beachhead market first.</strong></p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>🏖️ Beachhead Market</h4><p>Segmen pasar kecil dan spesifik yang menjadi target awal. Kuasai ini dulu sebelum ekspansi ke pasar yang lebih luas.</p></div>
+        <div class="concept-card"><h4>📣 Saluran Akuisisi</h4><p>Organic (SEO, content, word-of-mouth), Paid (ads, influencer), Partnership, Direct Sales — pilih saluran berdasarkan biaya dan skalabilitas.</p></div>
+        <div class="concept-card"><h4>🔄 Growth Loop</h4><p>Mekanisme pertumbuhan yang self-reinforcing: viral loop, content loop, paid loop. Startup terbesar memiliki minimal satu growth loop yang kuat.</p></div>
+        <div class="concept-card"><h4>📐 North Star Metric</h4><p>Satu metrik utama yang mencerminkan nilai nyata yang Anda berikan kepada pengguna. Contoh: Gojek = jumlah transaksi selesai per minggu.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">🚀</span> Template GTM Strategy — DigitalBiz Library</li>
+        <li><span class="resource-icon">📖</span> Buku Traction — Gabriel Weinberg (19 traction channels)</li>
+        <li><span class="resource-icon">🎥</span> Demo: Membangun Growth Loop untuk SaaS Indonesia</li>
+      </ul>
+    `
+  }
+};
+
+var videoBGs = {
+  desc_bp_intro:    { bg:'linear-gradient(135deg,#0c1a2e,#0a2744)', label:'STARTUP<br><span style="color:#f59e0b;">Business Plan</span>', icon:'📋' },
+  desc_bp_visi:     { bg:'linear-gradient(135deg,#0c1a2e,#0a3a5c)', label:'VISI & MISI<br><span style="color:#f59e0b;">Value Proposition</span>', icon:'🎯' },
+  desc_bp_pasar:    { bg:'linear-gradient(135deg,#0f1f2e,#1a3a2e)', label:'ANALISIS PASAR<br><span style="color:#34d399;">Segmentasi & Kompetitor</span>', icon:'📊' },
+  desc_bp_bmc:      { bg:'linear-gradient(135deg,#1a0c2e,#2d1a5e)', label:'BUSINESS MODEL<br><span style="color:#a78bfa;">Canvas</span>', icon:'🧩' },
+  desc_bp_keuangan: { bg:'linear-gradient(135deg,#0c2010,#1a4020)', label:'PROYEKSI<br><span style="color:#4ade80;">Keuangan & BEP</span>', icon:'💰' },
+  desc_bp_gtm:      { bg:'linear-gradient(135deg,#1a1200,#3d2a00)', label:'GO-TO-MARKET<br><span style="color:#fbbf24;">Strategi Peluncuran</span>', icon:'🚀' }
+};
+
+var videoDurations = {
+  desc_bp_intro:    '14:20',
+  desc_bp_visi:     '18:35',
+  desc_bp_pasar:    '22:10',
+  desc_bp_bmc:      '26:45',
+  desc_bp_keuangan: '30:00',
+  desc_bp_gtm:      '24:15'
+};
+
+var quizData = {
+  desc_bp_intro: {
+    q: '❓ Apa perbedaan utama antara Lean Business Plan dan Full Business Plan?',
+    options: [
+      { v:'a', text:'Lean Business Plan hanya untuk bisnis kecil, Full Business Plan untuk korporat besar' },
+      { v:'b', text:'Lean Business Plan adalah ringkasan 1-2 halaman untuk startup awal, Full Business Plan adalah dokumen komprehensif 10-30 halaman untuk kebutuhan formal' },
+      { v:'c', text:'Lean Business Plan tidak memerlukan proyeksi keuangan, Full Business Plan wajib menyertakannya' },
+      { v:'d', text:'Keduanya sama, hanya berbeda nama berdasarkan preferensi investor' }
+    ],
+    correct: 'b'
+  },
+  desc_bp_visi: {
+    q: '❓ Apa perbedaan utama antara Visi dan Value Proposition dalam sebuah business plan startup?',
+    options: [
+      { v:'a', text:'Visi adalah target pendapatan jangka panjang, sedangkan Value Proposition adalah janji kepada investor' },
+      { v:'b', text:'Visi adalah gambaran dampak dunia yang ingin diciptakan, sedangkan Value Proposition adalah janji konkret manfaat unik kepada pelanggan' },
+      { v:'c', text:'Keduanya sama — sama-sama menjelaskan produk yang dijual kepada pasar' },
+      { v:'d', text:'Visi dibuat oleh tim teknis, sedangkan Value Proposition dibuat oleh tim marketing' }
+    ],
+    correct: 'b'
+  },
+  desc_bp_pasar: {
+    q: '❓ Dalam framework TAM-SAM-SOM, apa yang dimaksud dengan SOM (Serviceable Obtainable Market)?',
+    options: [
+      { v:'a', text:'Seluruh potensi pasar global untuk produk sejenis, tanpa batasan geografi' },
+      { v:'b', text:'Bagian dari TAM yang dapat dilayani oleh model bisnis dan geografi Anda' },
+      { v:'c', text:'Porsi pasar yang realistis dapat Anda raih dalam 3-5 tahun pertama dengan sumber daya yang ada' },
+      { v:'d', text:'Total pendapatan yang akan diperoleh startup Anda di tahun pertama' }
+    ],
+    correct: 'c'
+  },
+  desc_bp_bmc: {
+    q: '❓ Berapa jumlah blok dalam Business Model Canvas (BMC) standar yang dikembangkan oleh Osterwalder?',
+    options: [
+      { v:'a', text:'5 blok — Value Proposition, Customers, Channels, Revenue, Costs' },
+      { v:'b', text:'7 blok — termasuk Problem dan Solution dari Lean Canvas' },
+      { v:'c', text:'9 blok — mencakup Customer Segments, Value Propositions, Channels, Customer Relationships, Revenue Streams, Key Resources, Key Activities, Key Partnerships, dan Cost Structure' },
+      { v:'d', text:'12 blok — termasuk Team, Timeline, dan Milestones' }
+    ],
+    correct: 'c'
+  },
+  desc_bp_keuangan: {
+    q: '❓ Apa formula yang benar untuk menghitung Break Even Point (BEP) dalam unit?',
+    options: [
+      { v:'a', text:'BEP = Total Pendapatan ÷ Total Biaya' },
+      { v:'b', text:'BEP = Fixed Cost ÷ (Harga per Unit - Variable Cost per Unit)' },
+      { v:'c', text:'BEP = Variable Cost × Jumlah Unit yang Dijual' },
+      { v:'d', text:'BEP = Net Profit ÷ Gross Margin' }
+    ],
+    correct: 'b'
+  },
+  desc_bp_gtm: {
+    q: '❓ Apa yang dimaksud dengan "Beachhead Market" dalam strategi Go-to-Market startup?',
+    options: [
+      { v:'a', text:'Pasar internasional yang menjadi target ekspansi pertama startup' },
+      { v:'b', text:'Segmen pasar terbesar dan paling menguntungkan yang harus dikuasai sejak awal' },
+      { v:'c', text:'Segmen pasar kecil dan spesifik yang menjadi target awal sebelum ekspansi ke pasar yang lebih luas' },
+      { v:'d', text:'Strategi pemasaran berbasis pantai dan destinasi wisata' }
+    ],
+    correct: 'c'
+  }
+};
+
+var currentDescKey = 'desc_bp_visi';
+
+function selectLesson(el, title, num, modName, descKey) {
+  document.querySelectorAll('.sidebar-lesson').forEach(function(l){ l.classList.remove('active'); });
+  el.classList.add('active');
+  currentDescKey = descKey;
+
+  document.getElementById('lesson-title').textContent = title;
+  document.getElementById('lesson-badge').textContent = 'Bab ' + num;
+  document.getElementById('lesson-module').textContent = modName;
+  document.getElementById('breadcrumb-module').textContent = title;
+  document.getElementById('video-title-overlay').textContent = title;
+
+  var desc = descriptions[descKey] || { title: title, body: '<p>Konten materi segera hadir.</p>' };
+  document.getElementById('desc-title').textContent = desc.title;
+  document.getElementById('desc-body').innerHTML = desc.body;
+
+  var vbg = videoBGs[descKey] || videoBGs['desc_bp_visi'];
+  var dur = videoDurations[descKey] || '00:00';
+  document.getElementById('video-bg').style.background = vbg.bg;
+  document.getElementById('video-bg').innerHTML =
+    '<div style="text-align:center;color:#fff;padding:0 40px;z-index:1;position:relative;">' +
+    '<div style="font-size:13px;font-weight:700;letter-spacing:3px;color:#38bdf8;text-transform:uppercase;margin-bottom:12px;">Startup Business Plan</div>' +
+    '<div style="font-size:34px;font-weight:800;letter-spacing:-1px;line-height:1.2;color:#e0f2fe;">' + vbg.label + '</div>' +
+    '</div>' +
+    '<div style="position:absolute;right:40px;bottom:0;font-size:100px;opacity:0.08;">' + vbg.icon + '</div>' +
+    '<div style="position:absolute;top:-40px;left:-40px;width:200px;height:200px;border-radius:50%;background:rgba(14,165,233,0.15);"></div>';
+
+  document.getElementById('video-time').textContent = '00:00 / ' + dur;
+
+  var qd = quizData[descKey] || quizData['desc_bp_visi'];
+  document.getElementById('quiz-question').textContent = qd.q;
+  var optsHtml = '';
+  qd.options.forEach(function(o) {
+    optsHtml += '<div class="quiz-option" onclick="selectOption(this,\'' + o.v + '\')">' +
+      '<div class="quiz-letter">' + o.v.toUpperCase() + '</div>' + o.text + '</div>';
+  });
+  document.getElementById('quizOptions').innerHTML = optsHtml;
+  document.querySelector('.btn-quiz-submit').textContent = 'Kirim Jawaban →';
+  document.querySelector('.btn-quiz-submit').style.background = '';
+
+  updatePhaseBar(descKey);
+  updateProgress();
+  stopProgress();
+  isPlaying = false;
+  document.getElementById('videoPlayer').classList.remove('playing');
+  document.getElementById('playBtn').innerHTML = '▶';
+  currentProgress = 0;
+  document.getElementById('video-prog-fill').style.width = '0%';
+  selectedAnswer = null;
+
+  switchTab('desc', document.querySelector('.content-tab'));
+  document.querySelectorAll('.content-tab')[0].classList.add('active');
+  document.querySelectorAll('.content-tab')[1].classList.remove('active');
+}
+
+function updateProgress() {
+  var done = document.querySelectorAll('.sidebar-lesson.done').length;
+  var total = document.querySelectorAll('.sidebar-lesson').length;
+  var pct = Math.round(done / total * 100);
+  document.getElementById('nav-progress-fill').style.width = pct + '%';
+  document.getElementById('nav-progress-text').textContent = done + '/' + total + ' video';
+}
+
+function togglePlay() {
+  var player = document.getElementById('videoPlayer');
+  if (isPlaying) {
+    isPlaying = false; player.classList.remove('playing');
+    document.getElementById('playBtn').innerHTML = '▶'; stopProgress();
+  } else {
+    isPlaying = true; player.classList.add('playing');
+    document.getElementById('playBtn').innerHTML = '⏸'; startProgress();
+  }
+}
+
+function startProgress() {
+  stopProgress();
+  var dur = videoDurations[currentDescKey] || '18:35';
+  var parts = dur.split(':');
+  var totalSec = parseInt(parts[0]) * 60 + parseInt(parts[1]);
+  progressTimer = setInterval(function() {
+    currentProgress += 0.5;
+    if (currentProgress >= 100) { currentProgress = 100; stopProgress(); }
+    document.getElementById('video-prog-fill').style.width = currentProgress + '%';
+    var elapsed = Math.round(totalSec * currentProgress / 100);
+    var m = Math.floor(elapsed/60), s = elapsed % 60;
+    var tm = Math.floor(totalSec/60), ts = totalSec % 60;
+    document.getElementById('video-time').textContent = pad(m)+':'+pad(s)+' / '+pad(tm)+':'+pad(ts);
+  }, 300);
+}
+
+function stopProgress() { if (progressTimer) { clearInterval(progressTimer); progressTimer = null; } }
+function pad(n) { return n < 10 ? '0'+n : n; }
+
+function switchTab(tab, el) {
+  document.querySelectorAll('.content-tab').forEach(function(t){ t.classList.remove('active'); });
+  if (el) el.classList.add('active');
+  var dp = document.getElementById('tab-desc');
+  var qp = document.getElementById('tab-quiz');
+  if (tab === 'desc') {
+    dp.classList.remove('hidden'); dp.style.display = '';
+    qp.classList.remove('show');
+  } else {
+    dp.classList.add('hidden');
+    qp.classList.add('show');
+    selectedAnswer = null;
+    document.querySelectorAll('.quiz-option').forEach(function(o){ o.className='quiz-option'; });
+    document.querySelector('.btn-quiz-submit').textContent = 'Kirim Jawaban →';
+    document.querySelector('.btn-quiz-submit').style.background = '';
+  }
+}
+
+function openQuiz(mod) {
+  switchTab('quiz', document.querySelectorAll('.content-tab')[1]);
+  document.querySelectorAll('.content-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.content-tab')[1].classList.add('active');
+}
+
+function selectOption(el, val) {
+  if (selectedAnswer) return;
+  selectedAnswer = val; el.classList.add('selected');
+}
+
+function submitQuiz() {
+  if (!selectedAnswer) { alert('Pilih salah satu jawaban terlebih dahulu.'); return; }
+  var qd = quizData[currentDescKey] || quizData['desc_bp_visi'];
+  var opts = document.querySelectorAll('.quiz-option');
+  opts.forEach(function(o) {
+    var letter = o.querySelector('.quiz-letter').textContent.toLowerCase();
+    if (letter === qd.correct) { o.classList.add('correct'); }
+    else if (letter === selectedAnswer && selectedAnswer !== qd.correct) { o.classList.add('wrong'); }
+    o.style.pointerEvents = 'none';
+  });
+  var btn = document.querySelector('.btn-quiz-submit');
+  if (selectedAnswer === qd.correct) {
+    btn.textContent = '✓ Jawaban Benar!'; btn.style.background = '#22c55e';
+  } else {
+    btn.textContent = '✗ Coba Lagi'; btn.style.background = '#ef4444';
+  }
+}
+
+function nextLesson() {
+  var lessons = Array.from(document.querySelectorAll('.sidebar-lesson'));
+  var activeIdx = lessons.findIndex(function(l){ return l.classList.contains('active'); });
+  if (activeIdx < lessons.length - 1) {
+    lessons[activeIdx].classList.remove('active');
+    lessons[activeIdx].classList.add('done');
+    lessons[activeIdx].querySelector('.lesson-icon').textContent = '✓';
+    lessons[activeIdx + 1].click();
+  } else {
+    alert('🎉 Selamat! Anda telah menyelesaikan semua materi Startup Business Plan. Saatnya wujudkan business plan Anda!');
+  }
+}
+
+function prevLesson() {
+  var lessons = Array.from(document.querySelectorAll('.sidebar-lesson'));
+  var activeIdx = lessons.findIndex(function(l){ return l.classList.contains('active'); });
+  if (activeIdx > 0) { lessons[activeIdx - 1].click(); }
+}
+
+updateProgress();
+updatePhaseBar('desc_bp_visi');
+</script>
+</body>
+</html>
