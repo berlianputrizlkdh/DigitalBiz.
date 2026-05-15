@@ -268,7 +268,7 @@
                     <div class="prog-meta-item">📅 <span>8 Minggu</span></div>
                     <div class="prog-meta-item">📖 <span>7 Modul</span></div>
                 </div>
-                <button class="btn-prog" onclick="goToKelas('dm','Digital Marketing')">Lanjutkan →</button>
+                <button class="btn-prog" onclick="goToKelasDM('dm','Digital Marketing')">Lanjutkan →</button>
             </div>
 
             <div class="prog-card" data-category="data" style="--card-accent:#0ea5e9">
@@ -303,7 +303,7 @@
                     <div class="prog-meta-item">📅 <span>6 Minggu</span></div>
                     <div class="prog-meta-item">📖 <span>5 Modul</span></div>
                 </div>
-                <button class="btn-prog" onclick="goToKelas('seo','Fundamental SEO')">Mulai Belajar →</button>
+                <button class="btn-prog" onclick="goToKelasSEO('seo','Fundamental SEO')">Mulai Belajar →</button>
             </div>
 
             <div class="prog-card" data-category="bisnis" style="--card-accent:#f97316">
@@ -321,7 +321,7 @@
                     <div class="prog-meta-item">📅 <span>10 Minggu</span></div>
                     <div class="prog-meta-item">📖 <span>8 Modul</span></div>
                 </div>
-                <button class="btn-prog" onclick="goToKelas('startup','Startup Business Plan')">Mulai Belajar →</button>
+                <button class="btn-prog" onclick="goToKelasBP('bp','Startup Business Plan')">Mulai Belajar →</button>
             </div>
 
         </div><!-- /prog-grid -->
@@ -484,11 +484,17 @@
         if (courseId === 'dt')   { window.location.href = 'kelas/kelasdt.html';   return; }
         if (courseId === 'uiux') { window.location.href = 'kelas/kelasuiux.html'; return; }
         if (courseId === 'ds') { window.location.href = 'kelas/kelasds.html'; return; }
+        if (courseId === 'dm') { window.location.href = 'kelas/kelasdm.html'; return; }
+         if (courseId === 'bp') { window.location.href = 'kelas/kelasbp.html'; return; }
+        if (courseId === 'seo') { window.location.href = 'kelas/kelasseo.html'; return; }
         alert('Halaman kelas "' + courseName + '" belum tersedia.');
     }
     function goToKelasUIUX(id, name) { goToKelas(id, name); }
     function goToKelasDT(id, name)   { goToKelas(id, name); }
     function goToKelasDS(id, name)   { goToKelas(id, name); }
+    function goToKelasDM(id, name)   { goToKelas(id, name); }
+    function goToKelasBP(id, name)   { goToKelas(id, name); }
+    function goToKelasSEO(id, name)   { goToKelas(id, name); }
 
     /* ─── FILTER PROGRAM ─── */
     function filterProg(btn) {
