@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fundamental SEO — DigitalBiz Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/kelas/kelasseo.css">
+</head>
+<body>
+
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<nav class="topnav" id="topnav">
+  <button class="topnav__back-btn" onclick="window.history.back()" title="Kembali ke Dashboard">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 12L6 8l4-4"/>
+    </svg>
+    Dashboard
+  </button>
+
+  <a href="dashboard.html" class="topnav__logo">DigitalBiz<span>.</span></a>
+
+  <div class="topnav__breadcrumb">
+    <strong id="breadcrumb-course">Fundamental SEO</strong>
+    <span class="sep">›</span>
+    <span id="breadcrumb-module" style="color:#6b7280;">Cara Kerja Search Engine</span>
+  </div>
+
+  <div class="topnav__progress-wrap">
+    <div class="topnav__progress-bar">
+      <div class="topnav__progress-fill" id="nav-progress-fill" style="width:14%"></div>
+    </div>
+    <div class="topnav__progress-text" id="nav-progress-text">1/7 video</div>
+  </div>
+
+  <div style="flex:1;"></div>
+
+  <div class="topnav__actions">
+    <div class="topnav__avatar" id="userAvatar">U</div>
+    <button class="topnav__logout-btn" onclick="doLogout()">Keluar</button>
+  </div>
+</nav>
+
+<!-- ============================================================
+     COURSE BODY
+     ============================================================ -->
+<div class="course-body">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="courseSidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-course-tag">Digital Marketing</div>
+      <div class="sidebar-course-title">Fundamental SEO</div>
+      <div class="sidebar-progress">
+        <div class="sidebar-progress-bar">
+          <div class="sidebar-progress-fill" style="width:14%"></div>
+        </div>
+        <div class="sidebar-progress-text">1 dari 7 video selesai</div>
+      </div>
+    </div>
+
+    <div class="sidebar-label">Modul Fundamental SEO</div>
+
+    <!-- MODULE 1: Fondasi SEO -->
+    <div class="sidebar-module open" id="mod-seo1">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-seo1')">
+        MODUL 1 · FONDASI SEO
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson done" onclick="selectLesson(this,'Cara Kerja Search Engine','1.1','Fondasi SEO','desc_seo_engine')">
+          <div class="lesson-icon">✓</div>
+          <div class="lesson-name">Cara Kerja Search Engine</div>
+          <div class="lesson-duration">12:30</div>
+        </div>
+        <div class="sidebar-lesson active" onclick="selectLesson(this,'Keyword Research: Temukan Kata Kunci Tepat','1.2','Keyword Research','desc_seo_keyword')">
+          <div class="lesson-icon">▶</div>
+          <div class="lesson-name">Keyword Research: Temukan Kata Kunci Tepat</div>
+          <div class="lesson-duration">20:15</div>
+        </div>
+        <div class="sidebar-quiz" onclick="openQuiz('seo-fondasi')">
+          <div class="quiz-icon">📝</div>
+          <div class="quiz-name">Quiz Modul 1</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 2: On-Page SEO -->
+    <div class="sidebar-module" id="mod-seo2">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-seo2')">
+        MODUL 2 · ON-PAGE SEO
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson" onclick="selectLesson(this,'On-Page SEO: Optimasi Konten & Struktur','2.1','On-Page SEO','desc_seo_onpage')">
+          <div class="lesson-icon">2</div>
+          <div class="lesson-name">On-Page SEO: Optimasi Konten &amp; Struktur</div>
+          <div class="lesson-duration">22:40</div>
+        </div>
+        <div class="sidebar-lesson" onclick="selectLesson(this,'Technical SEO: Kecepatan & Struktur Teknis','2.2','Technical SEO','desc_seo_technical')">
+          <div class="lesson-icon">2</div>
+          <div class="lesson-name">Technical SEO: Kecepatan &amp; Struktur Teknis</div>
+          <div class="lesson-duration">18:50</div>
+        </div>
+        <div class="sidebar-quiz" onclick="openQuiz('seo-onpage')">
+          <div class="quiz-icon">📝</div>
+          <div class="quiz-name">Quiz Modul 2</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 3: Off-Page SEO & Audit -->
+    <div class="sidebar-module" id="mod-seo3">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-seo3')">
+        MODUL 3 · OFF-PAGE &amp; AUDIT
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson" onclick="selectLesson(this,'Off-Page SEO: Backlink & Otoritas Domain','3.1','Off-Page SEO','desc_seo_offpage')">
+          <div class="lesson-icon">3</div>
+          <div class="lesson-name">Off-Page SEO: Backlink &amp; Otoritas Domain</div>
+          <div class="lesson-duration">17:20</div>
+        </div>
+        <div class="sidebar-lesson" onclick="selectLesson(this,'SEO Audit & Tools Profesional','3.2','SEO Audit','desc_seo_audit')">
+          <div class="lesson-icon">3</div>
+          <div class="lesson-name">SEO Audit &amp; Tools Profesional</div>
+          <div class="lesson-duration">24:00</div>
+        </div>
+        <div class="sidebar-lesson" onclick="selectLesson(this,'Strategi Konten & Pengukuran Hasil','3.3','Strategi Konten','desc_seo_strategy')">
+          <div class="lesson-icon">3</div>
+          <div class="lesson-name">Strategi Konten &amp; Pengukuran Hasil</div>
+          <div class="lesson-duration">19:35</div>
+        </div>
+        <div class="sidebar-quiz" onclick="openQuiz('seo-audit')">
+          <div class="quiz-icon">📝</div>
+          <div class="quiz-name">Quiz Final</div>
+        </div>
+      </div>
+    </div>
+
+  </aside><!-- /sidebar -->
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <div class="course-content">
+
+    <!-- SEO Funnel Bar -->
+    <div class="dt-phase-bar" id="phaseBar">
+      <div class="dt-phase-item done" id="phase-crawl">
+        <div class="dt-phase-circle">🕷️</div>
+        <div class="dt-phase-name">Crawl</div>
+      </div>
+      <div class="dt-phase-connector done"></div>
+      <div class="dt-phase-item active" id="phase-index">
+        <div class="dt-phase-circle">📂</div>
+        <div class="dt-phase-name">Index</div>
+      </div>
+      <div class="dt-phase-connector"></div>
+      <div class="dt-phase-item" id="phase-optimize">
+        <div class="dt-phase-circle">⚙️</div>
+        <div class="dt-phase-name">Optimize</div>
+      </div>
+      <div class="dt-phase-connector"></div>
+      <div class="dt-phase-item" id="phase-rank">
+        <div class="dt-phase-circle">🏆</div>
+        <div class="dt-phase-name">Rank</div>
+      </div>
+      <div class="dt-phase-connector"></div>
+      <div class="dt-phase-item" id="phase-traffic">
+        <div class="dt-phase-circle">📈</div>
+        <div class="dt-phase-name">Traffic</div>
+      </div>
+    </div>
+
+    <!-- Course Top Info -->
+    <div class="course-top">
+      <div class="course-content-title" id="lesson-title">Keyword Research: Temukan Kata Kunci Tepat</div>
+      <div class="course-content-meta">
+        <span class="lesson-badge" id="lesson-badge">Modul 1.2</span>
+        <span class="meta-dot"></span>
+        <span id="lesson-module">Keyword Research</span>
+      </div>
+    </div>
+
+    <!-- Video Player -->
+    <div class="video-player" id="videoPlayer" onclick="togglePlay()">
+      <div class="video-bg" id="video-bg"
+        style="background:linear-gradient(135deg,#052e16,#065f46);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+        <div style="text-align:center;color:#fff;padding:0 40px;z-index:1;position:relative;">
+          <div style="font-size:13px;font-weight:700;letter-spacing:3px;color:#6ee7b7;text-transform:uppercase;margin-bottom:12px;">Fundamental SEO · Modul 1</div>
+          <div style="font-size:34px;font-weight:800;letter-spacing:-1px;line-height:1.2;color:#d1fae5;" id="video-title-label">KEYWORD RESEARCH<br><span style="color:#fbbf24;">Temukan Kata Kunci Tepat</span></div>
+        </div>
+        <div style="position:absolute;right:40px;bottom:0;font-size:100px;opacity:0.08;">🔑</div>
+        <div style="position:absolute;top:-40px;left:-40px;width:200px;height:200px;border-radius:50%;background:rgba(16,185,129,0.12);"></div>
+        <div style="position:absolute;bottom:-60px;right:100px;width:160px;height:160px;border-radius:50%;background:rgba(251,191,36,0.06);"></div>
+      </div>
+      <div class="video-overlay">
+        <button class="video-play-btn" id="playBtn">▶</button>
+      </div>
+      <div class="video-bottom">
+        <div class="video-title-overlay" id="video-title-overlay">Keyword Research: Temukan Kata Kunci Tepat</div>
+        <div class="video-controls">
+          <div class="video-progress" onclick="event.stopPropagation()">
+            <div class="video-progress-fill" id="video-prog-fill" style="width:0%"></div>
+          </div>
+          <div class="video-time" id="video-time">00:00 / 20:15</div>
+          <button class="video-vol" onclick="event.stopPropagation()">🔊</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="content-tabs">
+      <div class="content-tab active" onclick="switchTab('desc',this)">Deskripsi</div>
+      <div class="content-tab" onclick="switchTab('quiz',this)">Quiz</div>
+    </div>
+
+    <!-- DESCRIPTION PANEL -->
+    <div class="desc-panel" id="tab-desc">
+      <div class="desc-title" id="desc-title">Keyword Research: Fondasi dari Semua Strategi SEO</div>
+      <div class="desc-body" id="desc-body">
+
+        <!-- SEO Funnel visual -->
+        <div class="phase-steps">
+          <div class="phase-step done">
+            <div class="phase-step-icon" style="background:#f0fdf4;">🕷️</div>
+            <div class="phase-step-label">Crawl</div>
+          </div>
+          <div class="phase-step current">
+            <div class="phase-step-icon" style="background:var(--accent-seo-lt);">📂</div>
+            <div class="phase-step-label">Index</div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-step-icon" style="background:#f8fafc;">⚙️</div>
+            <div class="phase-step-label">Optimize</div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-step-icon" style="background:#f8fafc;">🏆</div>
+            <div class="phase-step-label">Rank</div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-step-icon" style="background:#f8fafc;">📈</div>
+            <div class="phase-step-label">Traffic</div>
+          </div>
+        </div>
+
+        <p><strong>Keyword Research</strong> adalah proses menemukan kata dan frasa yang digunakan audiens target saat mencari di Google. Tanpa keyword research yang solid, seluruh upaya SEO bisa sia-sia karena kamu mengoptimasi untuk kata yang salah — terlalu kompetitif, volume terlalu kecil, atau tidak relevan dengan intent pengguna.</p>
+
+        <p>Di tahap <strong>Index</strong>, Google sudah mengidentifikasi konten kamu. Sekarang tugasnya memastikan konten itu relevan dengan apa yang dicari orang. Keyword research menjembatani kebutuhan pengguna dengan konten yang kamu buat.</p>
+
+        <div class="key-concepts">
+          <div class="concept-card">
+            <h4>📊 Search Volume & KD</h4>
+            <p>Search Volume = berapa orang mencari per bulan. Keyword Difficulty (KD) = seberapa sulit bersaing di halaman 1. Target: volume cukup, KD realistis sesuai otoritas domain.</p>
+          </div>
+          <div class="concept-card">
+            <h4>🎯 Search Intent</h4>
+            <p>4 tipe intent: <strong>Informational</strong> (mencari info), <strong>Navigational</strong> (mencari brand), <strong>Commercial</strong> (membandingkan produk), <strong>Transactional</strong> (siap beli). Cocokkan konten dengan intent.</p>
+          </div>
+          <div class="concept-card">
+            <h4>🌱 Long-tail Keywords</h4>
+            <p>Frasa panjang dan spesifik (3+ kata). Volume lebih kecil tapi conversion lebih tinggi dan persaingan lebih rendah. Cocok untuk website baru yang belum punya otoritas besar.</p>
+          </div>
+          <div class="concept-card">
+            <h4>🔧 Tools Keyword Research</h4>
+            <p>Google Keyword Planner (gratis), Ahrefs Keywords Explorer, Semrush, Ubersuggest, AnswerThePublic — masing-masing punya kelebihan untuk jenis riset berbeda.</p>
+          </div>
+        </div>
+
+        <ul class="resource-list">
+          <li><span class="resource-icon">📄</span> Google Keyword Planner — ads.google.com (Gratis)</li>
+          <li><span class="resource-icon">🛠️</span> Ubersuggest Free Tier — Neil Patel</li>
+          <li><span class="resource-icon">🎥</span> Studi Kasus: Keyword Research untuk UMKM Indonesia</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- QUIZ PANEL -->
+    <div class="quiz-panel" id="tab-quiz">
+      <div class="quiz-header">
+        <h3>Quiz — Fundamental SEO: Keyword Research</h3>
+        <p>Uji pemahaman Anda tentang riset kata kunci dan search intent.</p>
+      </div>
+      <div class="quiz-question" id="quiz-question">
+        ❓ Apa yang dimaksud dengan "Search Intent" dalam SEO?
+      </div>
+      <div class="quiz-options" id="quizOptions">
+        <div class="quiz-option" onclick="selectOption(this,'a')">
+          <div class="quiz-letter">A</div>
+          Jumlah orang yang mencari kata kunci tertentu per bulan di Google
+        </div>
+        <div class="quiz-option" onclick="selectOption(this,'b')">
+          <div class="quiz-letter">B</div>
+          Tujuan atau motivasi di balik pencarian pengguna — apa yang sebenarnya mereka cari
+        </div>
+        <div class="quiz-option" onclick="selectOption(this,'c')">
+          <div class="quiz-letter">C</div>
+          Tingkat kesulitan untuk menempatkan website di halaman pertama Google
+        </div>
+        <div class="quiz-option" onclick="selectOption(this,'d')">
+          <div class="quiz-letter">D</div>
+          Algoritma Google yang menentukan relevansi konten dengan kata kunci
+        </div>
+      </div>
+      <button class="btn-quiz-submit" onclick="submitQuiz()">Kirim Jawaban →</button>
+    </div>
+
+    <!-- NAVIGATION BUTTONS -->
+    <div class="video-nav">
+      <button class="btn-nav" onclick="prevLesson()">← Sebelumnya</button>
+      <button class="btn-nav primary" onclick="nextLesson()">Materi Berikutnya →</button>
+    </div>
+
+  </div><!-- /course-content -->
+</div><!-- /course-body -->
+
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+// ── State ──────────────────────────────────────────────────────
+var isPlaying      = false;
+var selectedAnswer = null;
+var progressTimer  = null;
+var currentProgress = 0;
+var currentDescKey = 'desc_seo_keyword';
+
+// ── Init user ──────────────────────────────────────────────────
+(function() {
+  var name = localStorage.getItem('userName') || 'Pengguna';
+  var initials = name.split(' ').map(function(w){ return w[0]; }).join('').toUpperCase().slice(0,2) || 'U';
+  document.getElementById('userAvatar').textContent = initials;
+})();
+
+// ── Logout ─────────────────────────────────────────────────────
+function doLogout() {
+  localStorage.removeItem('isLoggedIn');
+  localStorage.removeItem('userName');
+  window.location.href = '../index.html';
+}
+
+// ── Sidebar toggle ─────────────────────────────────────────────
+function toggleModule(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+// ── SEO Funnel bar updater ─────────────────────────────────────
+var phaseMap = {
+  desc_seo_engine:    'crawl',
+  desc_seo_keyword:   'index',
+  desc_seo_onpage:    'optimize',
+  desc_seo_technical: 'optimize',
+  desc_seo_offpage:   'rank',
+  desc_seo_audit:     'rank',
+  desc_seo_strategy:  'traffic'
+};
+
+var phaseOrder = ['crawl','index','optimize','rank','traffic'];
+
+function updatePhaseBar(activeKey) {
+  var activePhase = phaseMap[activeKey] || 'crawl';
+  var activeIdx = phaseOrder.indexOf(activePhase);
+  phaseOrder.forEach(function(ph, i) {
+    var el = document.getElementById('phase-' + ph);
+    el.classList.remove('active','done');
+    if (i < activeIdx) el.classList.add('done');
+    else if (i === activeIdx) el.classList.add('active');
+  });
+  var connectors = document.querySelectorAll('.dt-phase-connector');
+  connectors.forEach(function(c, i) {
+    c.classList.toggle('done', i < activeIdx);
+  });
+}
+
+// ── Content descriptions ───────────────────────────────────────
+var descriptions = {
+  desc_seo_engine: {
+    title: 'Cara Kerja Search Engine: Crawl, Index, Rank',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-seo-lt);">🕷️</div><div class="phase-step-label">Crawl</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">📂</div><div class="phase-step-label">Index</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">⚙️</div><div class="phase-step-label">Optimize</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🏆</div><div class="phase-step-label">Rank</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">📈</div><div class="phase-step-label">Traffic</div></div>
+      </div>
+      <p>Sebelum bisa mengoptimasi, kamu harus paham cara Google bekerja. Proses dimulai dari <strong>Crawling</strong> — Google mengirim bot (Googlebot) untuk menjelajahi halaman web melalui tautan. Bot ini membaca konten dan mengikuti link dari halaman ke halaman.</p>
+      <p>Setelah crawled, konten disimpan dalam <strong>Index</strong> Google — database raksasa yang berisi salinan halaman web. Saat pengguna mencari, Google tidak mencari internet secara langsung; ia mencari indeksnya sendiri lalu mengurutkan hasil dengan algoritma ranking.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>🕷️ Crawling</h4><p>Googlebot menelusuri web mengikuti link. Halaman yang tidak terhubung (orphan pages) sulit ditemukan. Pastikan sitemap XML dan internal linking kamu berfungsi baik.</p></div>
+        <div class="concept-card"><h4>📂 Indexing</h4><p>Hanya halaman yang diindex bisa muncul di hasil pencarian. Cek di Google Search Console atau ketik <code>site:domainmu.com</code> di Google untuk lihat halaman terindex.</p></div>
+        <div class="concept-card"><h4>🏆 Ranking Algorithm</h4><p>Google menggunakan 200+ faktor ranking. Faktor utama: relevansi konten, kualitas dan jumlah backlink, kecepatan halaman, pengalaman pengguna (Core Web Vitals).</p></div>
+        <div class="concept-card"><h4>🔄 Crawl Budget</h4><p>Google membatasi seberapa banyak halaman yang di-crawl per hari. Hapus halaman tidak berguna, perbaiki redirect chains, dan blokir halaman duplikat lewat robots.txt.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📄</span> Google Search Central Documentation — developers.google.com/search</li>
+        <li><span class="resource-icon">🛠️</span> Google Search Console — Pantau indexing dan crawling gratis</li>
+        <li><span class="resource-icon">🎥</span> Webmaster Guidelines — Panduan resmi Google untuk SEO</li>
+      </ul>
+    `
+  },
+  desc_seo_keyword: {
+    title: 'Keyword Research: Fondasi dari Semua Strategi SEO',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🕷️</div><div class="phase-step-label">Crawl</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-seo-lt);">📂</div><div class="phase-step-label">Index</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">⚙️</div><div class="phase-step-label">Optimize</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🏆</div><div class="phase-step-label">Rank</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">📈</div><div class="phase-step-label">Traffic</div></div>
+      </div>
+      <p><strong>Keyword Research</strong> adalah proses menemukan kata dan frasa yang digunakan audiens target saat mencari di Google. Tanpa riset keyword yang solid, seluruh upaya SEO bisa sia-sia karena kamu mengoptimasi untuk kata yang salah.</p>
+      <p>Kunci keyword research bukan cari volume terbesar, tapi menemukan titik temu antara: volume yang cukup, tingkat kompetisi yang realistis, dan kesesuaian dengan <strong>search intent</strong> audiens.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>📊 Search Volume & KD</h4><p>Search Volume = berapa orang mencari per bulan. Keyword Difficulty (KD) = seberapa sulit menembus halaman 1. Target volume cukup dengan KD sesuai otoritas domainmu.</p></div>
+        <div class="concept-card"><h4>🎯 Search Intent</h4><p>4 tipe: <strong>Informational</strong> (cari info), <strong>Navigational</strong> (cari brand), <strong>Commercial</strong> (bandingkan produk), <strong>Transactional</strong> (siap beli). Konten harus cocok dengan intentnya.</p></div>
+        <div class="concept-card"><h4>🌱 Long-tail Keywords</h4><p>Frasa panjang 3+ kata. Volume lebih kecil, konversi lebih tinggi, persaingan lebih rendah. Cocok untuk website baru yang belum punya otoritas domain besar.</p></div>
+        <div class="concept-card"><h4>🔧 Tools Riset</h4><p>Google Keyword Planner (gratis), Ahrefs Keywords Explorer, Semrush, Ubersuggest, AnswerThePublic. Mulai dari yang gratis, upgrade kalau butuh data lebih dalam.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📄</span> Google Keyword Planner — ads.google.com (Gratis)</li>
+        <li><span class="resource-icon">🛠️</span> Ubersuggest Free Tier — Neil Patel</li>
+        <li><span class="resource-icon">🎥</span> Studi Kasus: Keyword Research untuk UMKM Indonesia</li>
+      </ul>
+    `
+  },
+  desc_seo_onpage: {
+    title: 'On-Page SEO: Optimasi Konten dan Struktur Halaman',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🕷️</div><div class="phase-step-label">Crawl</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📂</div><div class="phase-step-label">Index</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-seo-lt);">⚙️</div><div class="phase-step-label">Optimize</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🏆</div><div class="phase-step-label">Rank</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">📈</div><div class="phase-step-label">Traffic</div></div>
+      </div>
+      <p><strong>On-Page SEO</strong> adalah semua optimasi yang dilakukan langsung pada halaman website — mulai dari konten, tag HTML, struktur URL, sampai pengalaman pengguna. Ini yang paling bisa kamu kendalikan sepenuhnya.</p>
+      <p>Konten yang baik untuk SEO bukan sekadar diisi keyword sebanyak mungkin (keyword stuffing justru bisa dihukum Google). Yang dicari adalah konten yang benar-benar menjawab kebutuhan pengguna, terstruktur dengan baik, dan menggunakan keyword secara natural.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>📝 Title Tag & Meta Description</h4><p>Title tag: sertakan keyword utama di depan, max 60 karakter. Meta description: ringkasan menarik 150-160 karakter yang mendorong klik. Keduanya muncul di hasil pencarian.</p></div>
+        <div class="concept-card"><h4>🏗️ Heading Structure</h4><p>H1 hanya satu per halaman berisi keyword utama. H2-H6 untuk subheading. Struktur yang jelas membantu crawler memahami hierarki dan topik konten.</p></div>
+        <div class="concept-card"><h4>🔗 Internal Linking</h4><p>Hubungkan halaman terkait dengan anchor text deskriptif. Membantu crawler menemukan halaman baru, mendistribusikan otoritas link, dan meningkatkan waktu kunjungan pengguna.</p></div>
+        <div class="concept-card"><h4>🖼️ Image Optimization</h4><p>Kompres ukuran file gambar, gunakan nama file deskriptif, isi <code>alt text</code> dengan keyword relevan. Gambar yang tidak dioptimasi memperlambat loading — faktor negatif untuk ranking.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">🛠️</span> Yoast SEO / Rank Math — Plugin WordPress untuk on-page</li>
+        <li><span class="resource-icon">📄</span> Google's On-Page SEO Starter Guide — Gratis</li>
+        <li><span class="resource-icon">🎥</span> Studi Kasus: Optimasi Artikel Blog dari Halaman 5 ke Halaman 1</li>
+      </ul>
+    `
+  },
+  desc_seo_technical: {
+    title: 'Technical SEO: Kecepatan, Struktur, dan Kesehatan Website',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🕷️</div><div class="phase-step-label">Crawl</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📂</div><div class="phase-step-label">Index</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-seo-lt);">⚙️</div><div class="phase-step-label">Optimize</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🏆</div><div class="phase-step-label">Rank</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">📈</div><div class="phase-step-label">Traffic</div></div>
+      </div>
+      <p><strong>Technical SEO</strong> memastikan mesin pencari bisa mengakses, mengcrawl, mengindex, dan memahami website kamu tanpa hambatan teknis. Konten sebaik apapun tidak akan ranking kalau ada masalah teknis fundamental.</p>
+      <p>Sejak 2021, Google menjadikan <strong>Core Web Vitals</strong> sebagai faktor ranking resmi — ini mengukur pengalaman nyata pengguna: seberapa cepat halaman dimuat, seberapa stabil layout, seberapa responsif terhadap interaksi.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>⚡ Core Web Vitals</h4><p>LCP (Largest Contentful Paint): loading &lt;2.5 detik. FID/INP: interaktivitas cepat. CLS (Cumulative Layout Shift): layout stabil. Ukur di Google PageSpeed Insights.</p></div>
+        <div class="concept-card"><h4>📱 Mobile-First</h4><p>Google menggunakan mobile version website untuk indexing. Pastikan tampilan responsif, font cukup besar, tombol mudah diklik, dan tidak ada konten yang tersembunyi di mobile.</p></div>
+        <div class="concept-card"><h4>🔒 HTTPS & Security</h4><p>HTTPS adalah sinyal ranking. Website tanpa SSL ditandai "Not Secure" di browser — meningkatkan bounce rate. Pasang sertifikat SSL, idealnya yang selalu diperbarui otomatis.</p></div>
+        <div class="concept-card"><h4>🗺️ Sitemap & robots.txt</h4><p>Sitemap XML membantu crawler menemukan semua halaman penting. robots.txt memberi tahu crawler halaman mana yang tidak perlu diindex (admin panel, halaman duplikat, dll).</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">🛠️</span> Google PageSpeed Insights — pagespeed.web.dev (Gratis)</li>
+        <li><span class="resource-icon">📄</span> Google Search Console — Laporan Core Web Vitals real-time</li>
+        <li><span class="resource-icon">🔧</span> Screaming Frog SEO Spider — Crawl audit lengkap (gratis s/d 500 URL)</li>
+      </ul>
+    `
+  },
+  desc_seo_offpage: {
+    title: 'Off-Page SEO: Backlink, Otoritas Domain, dan Reputasi',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🕷️</div><div class="phase-step-label">Crawl</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📂</div><div class="phase-step-label">Index</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">⚙️</div><div class="phase-step-label">Optimize</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-seo-lt);">🏆</div><div class="phase-step-label">Rank</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">📈</div><div class="phase-step-label">Traffic</div></div>
+      </div>
+      <p><strong>Off-Page SEO</strong> adalah semua aktivitas di luar website yang mempengaruhi ranking — terutama membangun backlink berkualitas. Backlink adalah "suara" dari website lain yang menandakan kontenmu layak dipercaya dan dirujuk.</p>
+      <p>Tidak semua backlink sama nilainya. Satu backlink dari media nasional besar jauh lebih berharga dari 100 backlink dari website spam. Kualitas, relevansi, dan otoritas sumber adalah yang paling penting.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>🔗 Domain Authority (DA)</h4><p>Metrik (0-100) yang mengindikasikan otoritas domain secara keseluruhan. Makin tinggi DA website yang memberi backlink, makin besar pengaruhnya ke ranking kamu.</p></div>
+        <div class="concept-card"><h4>✍️ Link Building Strategies</h4><p>Guest posting di website relevan, membuat konten yang layak dikutip (link-worthy content), broken link building, dan digital PR — bangun hubungan nyata, bukan beli link.</p></div>
+        <div class="concept-card"><h4>🌐 Brand Mentions</h4><p>Google juga mempertimbangkan mention brand tanpa link (implied links). Bangun reputasi online lewat media coverage, forum, dan komunitas industri.</p></div>
+        <div class="concept-card"><h4>⚠️ Toxic Backlinks</h4><p>Backlink dari website spam, PBN, atau skema link berbahaya bisa merusak ranking. Gunakan Google Disavow Tool untuk "menolak" backlink buruk yang kamu temukan.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">🛠️</span> Ahrefs Backlink Checker (versi gratis) — ahrefs.com/backlink-checker</li>
+        <li><span class="resource-icon">📄</span> Google Disavow Tool — Search Console</li>
+        <li><span class="resource-icon">🎥</span> Studi Kasus: Membangun 50 Backlink Berkualitas dalam 3 Bulan</li>
+      </ul>
+    `
+  },
+  desc_seo_audit: {
+    title: 'SEO Audit: Diagnosa & Perbaiki Masalah Website Secara Sistematis',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🕷️</div><div class="phase-step-label">Crawl</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📂</div><div class="phase-step-label">Index</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">⚙️</div><div class="phase-step-label">Optimize</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-seo-lt);">🏆</div><div class="phase-step-label">Rank</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">📈</div><div class="phase-step-label">Traffic</div></div>
+      </div>
+      <p><strong>SEO Audit</strong> adalah proses sistematis untuk mengidentifikasi masalah teknis, konten, dan off-page yang menghambat performa website di mesin pencari. Audit reguler adalah kebiasaan SEO profesional, bukan aktivitas sekali jalan.</p>
+      <p>Pendekatan yang benar: gunakan data dari Google Search Console sebagai titik awal, lalu perkuat dengan tool third-party. Prioritaskan perbaikan berdasarkan dampak vs. effort.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>🔍 Google Search Console</h4><p>Tool wajib gratis dari Google. Cek halaman terindex, error crawl, performa keyword, Core Web Vitals, dan masalah mobile usability langsung dari sumber terpercaya.</p></div>
+        <div class="concept-card"><h4>🕷️ Screaming Frog</h4><p>Crawl seluruh website untuk menemukan broken links (404), redirect chains, duplicate title/meta, missing alt text, dan masalah teknis lainnya secara otomatis.</p></div>
+        <div class="concept-card"><h4>📊 Ahrefs / Semrush</h4><p>Analisis backlink profile, temukan keyword gap dengan kompetitor, pantau ranking secara berkala, dan audit konten untuk menemukan halaman yang butuh diperbarui atau digabung.</p></div>
+        <div class="concept-card"><h4>📋 Audit Checklist</h4><p>Prioritas: (1) Fix crawl errors, (2) perbaiki Core Web Vitals, (3) optimasi halaman ranking halaman 2-3, (4) hapus atau perbaiki konten tipis, (5) bangun backlink ke halaman strategis.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">🛠️</span> Google Search Console — search.google.com/search-console (Gratis)</li>
+        <li><span class="resource-icon">🔧</span> Screaming Frog SEO Spider — Gratis s/d 500 URL</li>
+        <li><span class="resource-icon">📋</span> SEO Audit Template — DigitalBiz Library</li>
+      </ul>
+    `
+  },
+  desc_seo_strategy: {
+    title: 'Strategi Konten SEO & Pengukuran Hasil yang Tepat',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🕷️</div><div class="phase-step-label">Crawl</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📂</div><div class="phase-step-label">Index</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">⚙️</div><div class="phase-step-label">Optimize</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🏆</div><div class="phase-step-label">Rank</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-seo-lt);">📈</div><div class="phase-step-label">Traffic</div></div>
+      </div>
+      <p><strong>SEO tanpa strategi konten adalah taktik tanpa arah.</strong> Konten yang baik bukan hanya dioptimasi untuk keyword — ia harus dirancang untuk menjawab kebutuhan pengguna secara menyeluruh, membangun kepercayaan, dan mendorong konversi.</p>
+      <p>Di tahap akhir pipeline ini, fokus berpindah dari "bagaimana ranking?" ke "bagaimana mengubah traffic organik menjadi hasil bisnis nyata?" — dan ini diukur dengan data, bukan asumsi.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>🏛️ Topical Authority</h4><p>Bangun kluster konten: satu pillar page untuk topik utama, dikelilingi cluster articles untuk subtopik spesifik. Google memberi bobot lebih pada website yang membahas topik secara mendalam dan komprehensif.</p></div>
+        <div class="concept-card"><h4>♻️ Content Refresh</h4><p>Artikel lama yang ranking turun lebih mudah dipulihkan daripada menulis konten baru. Update data, tambah informasi relevan, perbaiki struktur — ini adalah salah satu quick win terbaik di SEO.</p></div>
+        <div class="concept-card"><h4>📊 KPI yang Benar</h4><p>Jangan hanya ukur traffic. Ukur: organic clicks (GSC), keyword ranking, CTR (Click-Through Rate), time on page, konversi dari organic. Jangan fokus pada vanity metrics seperti jumlah backlink semata.</p></div>
+        <div class="concept-card"><h4>⏱️ Ekspektasi Realistis</h4><p>SEO adalah investasi jangka panjang. Website baru biasanya butuh 6-12 bulan untuk melihat hasil signifikan. Konsistensi dan kesabaran lebih penting dari "trik" cepat yang berisiko penalti.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📄</span> Google Analytics 4 — analytics.google.com (Gratis)</li>
+        <li><span class="resource-icon">🛠️</span> Google Search Console — Performa konten organik</li>
+        <li><span class="resource-icon">📚</span> The Art of SEO — Enge, Spencer, Stricchiola (O'Reilly)</li>
+      </ul>
+    `
+  }
+};
+
+var videoBGs = {
+  desc_seo_engine:    { bg:'linear-gradient(135deg,#0c1e14,#1a4731)', label:'CARA KERJA<br><span style="color:#fbbf24;">Search Engine</span>', icon:'🔍', course:'Fundamental SEO · Modul 1', titleColor:'#d1fae5' },
+  desc_seo_keyword:   { bg:'linear-gradient(135deg,#052e16,#065f46)', label:'KEYWORD RESEARCH<br><span style="color:#fbbf24;">Temukan Kata Kunci Tepat</span>', icon:'🔑', course:'Fundamental SEO · Modul 1', titleColor:'#d1fae5' },
+  desc_seo_onpage:    { bg:'linear-gradient(135deg,#0c1a2e,#1a3a5c)', label:'ON-PAGE SEO<br><span style="color:#34d399;">Optimasi Konten & Struktur</span>', icon:'📝', course:'Fundamental SEO · Modul 2', titleColor:'#bae6fd' },
+  desc_seo_technical: { bg:'linear-gradient(135deg,#1a1200,#3d2a00)', label:'TECHNICAL SEO<br><span style="color:#34d399;">Kecepatan & Struktur Teknis</span>', icon:'⚙️', course:'Fundamental SEO · Modul 2', titleColor:'#fef3c7' },
+  desc_seo_offpage:   { bg:'linear-gradient(135deg,#1a0e2e,#2d1b69)', label:'OFF-PAGE SEO<br><span style="color:#34d399;">Backlink & Otoritas Domain</span>', icon:'🔗', course:'Fundamental SEO · Modul 3', titleColor:'#ede9fe' },
+  desc_seo_audit:     { bg:'linear-gradient(135deg,#0c1e14,#163a26)', label:'SEO AUDIT<br><span style="color:#fbbf24;">Tools & Diagnosa</span>', icon:'🛠️', course:'Fundamental SEO · Modul 3', titleColor:'#d1fae5' },
+  desc_seo_strategy:  { bg:'linear-gradient(135deg,#052e16,#0a4429)', label:'STRATEGI KONTEN<br><span style="color:#fbbf24;">& Pengukuran Hasil</span>', icon:'📈', course:'Fundamental SEO · Modul 3', titleColor:'#d1fae5' }
+};
+
+var videoDurations = {
+  desc_seo_engine:    '12:30',
+  desc_seo_keyword:   '20:15',
+  desc_seo_onpage:    '22:40',
+  desc_seo_technical: '18:50',
+  desc_seo_offpage:   '17:20',
+  desc_seo_audit:     '24:00',
+  desc_seo_strategy:  '19:35'
+};
+
+var quizData = {
+  desc_seo_engine: {
+    q: '❓ Apa yang dimaksud dengan "Crawl Budget" dalam SEO?',
+    options: [
+      { v:'a', text:'Anggaran yang perlu dikeluarkan untuk menyewa jasa SEO profesional' },
+      { v:'b', text:'Batas jumlah halaman yang akan di-crawl Googlebot dalam periode waktu tertentu' },
+      { v:'c', text:'Jumlah keyword yang bisa dioptimasi dalam satu halaman secara bersamaan' },
+      { v:'d', text:'Waktu yang dibutuhkan Google untuk mengindex halaman baru setelah dipublikasikan' }
+    ],
+    correct: 'b'
+  },
+  desc_seo_keyword: {
+    q: '❓ Apa yang dimaksud dengan "Search Intent" dalam SEO?',
+    options: [
+      { v:'a', text:'Jumlah orang yang mencari kata kunci tertentu per bulan di Google' },
+      { v:'b', text:'Tujuan atau motivasi di balik pencarian pengguna — apa yang sebenarnya mereka cari' },
+      { v:'c', text:'Tingkat kesulitan untuk menempatkan website di halaman pertama Google' },
+      { v:'d', text:'Algoritma Google yang menentukan relevansi konten dengan kata kunci' }
+    ],
+    correct: 'b'
+  },
+  desc_seo_onpage: {
+    q: '❓ Apa praktik yang BENAR dalam menggunakan heading (H1-H6) untuk SEO?',
+    options: [
+      { v:'a', text:'Gunakan sebanyak mungkin H1 agar Google menganggap lebih banyak topik penting' },
+      { v:'b', text:'Hanya gunakan H1 dan H2 saja, hindari H3 ke bawah karena tidak berpengaruh ke SEO' },
+      { v:'c', text:'Satu H1 per halaman berisi keyword utama, lalu gunakan H2-H6 secara hierarkis untuk subheading' },
+      { v:'d', text:'H1 sebaiknya disembunyikan dari tampilan pengguna agar tidak mengganggu desain' }
+    ],
+    correct: 'c'
+  },
+  desc_seo_technical: {
+    q: '❓ Apa yang diukur oleh "LCP" (Largest Contentful Paint) dalam Core Web Vitals?',
+    options: [
+      { v:'a', text:'Seberapa stabil layout halaman saat konten dimuat, diukur dari pergeseran elemen visual' },
+      { v:'b', text:'Seberapa cepat waktu respons server dalam mengirimkan byte pertama ke browser' },
+      { v:'c', text:'Waktu yang dibutuhkan untuk memuat elemen konten terbesar yang terlihat di viewport' },
+      { v:'d', text:'Total waktu yang dibutuhkan seluruh halaman untuk selesai dimuat secara penuh' }
+    ],
+    correct: 'c'
+  },
+  desc_seo_offpage: {
+    q: '❓ Mengapa kualitas backlink lebih penting dari kuantitasnya dalam SEO modern?',
+    options: [
+      { v:'a', text:'Karena Google tidak lagi menghitung jumlah total backlink sejak update Panda 2011' },
+      { v:'b', text:'Karena backlink dari website berkualitas tinggi dan relevan memberikan sinyal kepercayaan yang lebih kuat, sementara banyak backlink rendah kualitas bisa memicu penalti' },
+      { v:'c', text:'Karena kuantitas backlink hanya berpengaruh pada ranking di Bing, bukan Google' },
+      { v:'d', text:'Karena Google Disavow Tool secara otomatis memblokir semua backlink baru yang masuk' }
+    ],
+    correct: 'b'
+  },
+  desc_seo_audit: {
+    q: '❓ Mana yang sebaiknya menjadi prioritas PERTAMA dalam SEO audit website baru?',
+    options: [
+      { v:'a', text:'Langsung membangun sebanyak mungkin backlink ke semua halaman' },
+      { v:'b', text:'Menulis konten baru sebanyak mungkin untuk meningkatkan jumlah halaman terindex' },
+      { v:'c', text:'Memperbaiki crawl errors dan memastikan halaman-halaman penting bisa diindex dengan benar' },
+      { v:'d', text:'Mendaftarkan website ke sebanyak mungkin direktori bisnis online' }
+    ],
+    correct: 'c'
+  },
+  desc_seo_strategy: {
+    q: '❓ Apa yang dimaksud dengan "Topical Authority" dalam strategi konten SEO?',
+    options: [
+      { v:'a', text:'Jumlah total backlink yang mengarah ke halaman konten spesifik di website kamu' },
+      { v:'b', text:'Kemampuan website untuk ranking di semua keyword sekaligus dalam satu halaman' },
+      { v:'c', text:'Persepsi Google bahwa sebuah website adalah sumber terpercaya dan komprehensif untuk topik tertentu, dibangun lewat kluster konten yang mendalam' },
+      { v:'d', text:'Metrik yang mengukur seberapa cepat konten baru kamu diindex oleh Google' }
+    ],
+    correct: 'c'
+  }
+};
+
+// ── Lesson selection ────────────────────────────────────────────
+function selectLesson(el, title, num, modName, descKey) {
+  document.querySelectorAll('.sidebar-lesson').forEach(function(l){ l.classList.remove('active'); });
+  el.classList.add('active');
+
+  currentDescKey = descKey;
+
+  document.getElementById('lesson-title').textContent = title;
+  document.getElementById('lesson-badge').textContent = 'Modul ' + num;
+  document.getElementById('lesson-module').textContent = modName;
+  document.getElementById('breadcrumb-module').textContent = title;
+  document.getElementById('video-title-overlay').textContent = title;
+
+  // Update description
+  var desc = descriptions[descKey] || { title: title, body: '<p>Konten materi segera hadir.</p>' };
+  document.getElementById('desc-title').textContent = desc.title;
+  document.getElementById('desc-body').innerHTML = desc.body;
+
+  // Update video background
+  var vbg = videoBGs[descKey] || videoBGs['desc_seo_keyword'];
+  var dur  = videoDurations[descKey] || '00:00';
+  document.getElementById('video-bg').style.background = vbg.bg;
+  document.getElementById('video-bg').innerHTML =
+    '<div style="text-align:center;color:#fff;padding:0 40px;z-index:1;position:relative;">' +
+    '<div style="font-size:13px;font-weight:700;letter-spacing:3px;color:#6ee7b7;text-transform:uppercase;margin-bottom:12px;">' + vbg.course + '</div>' +
+    '<div style="font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1.2;color:' + vbg.titleColor + ';">' + vbg.label + '</div>' +
+    '</div>' +
+    '<div style="position:absolute;right:40px;bottom:0;font-size:100px;opacity:0.08;">' + vbg.icon + '</div>' +
+    '<div style="position:absolute;top:-40px;left:-40px;width:200px;height:200px;border-radius:50%;background:rgba(16,185,129,0.12);"></div>';
+
+  document.getElementById('video-time').textContent = '00:00 / ' + dur;
+
+  // Update quiz
+  var qd = quizData[descKey] || quizData['desc_seo_keyword'];
+  document.getElementById('quiz-question').innerHTML = qd.q;
+  var optsHtml = '';
+  qd.options.forEach(function(o) {
+    optsHtml += '<div class="quiz-option" onclick="selectOption(this,\'' + o.v + '\')">' +
+      '<div class="quiz-letter">' + o.v.toUpperCase() + '</div>' + o.text + '</div>';
+  });
+  document.getElementById('quizOptions').innerHTML = optsHtml;
+  document.querySelector('.btn-quiz-submit').textContent = 'Kirim Jawaban →';
+  document.querySelector('.btn-quiz-submit').style.background = '';
+
+  // Update quiz header
+  document.querySelector('.quiz-header h3').textContent = 'Quiz — Fundamental SEO: ' + modName;
+
+  // Update SEO funnel bar
+  updatePhaseBar(descKey);
+
+  // Update progress
+  updateProgress();
+
+  // Reset player
+  stopProgress();
+  isPlaying = false;
+  document.getElementById('videoPlayer').classList.remove('playing');
+  document.getElementById('playBtn').innerHTML = '▶';
+  currentProgress = 0;
+  document.getElementById('video-prog-fill').style.width = '0%';
+  selectedAnswer = null;
+
+  // Reset tabs to desc
+  switchTab('desc', document.querySelector('.content-tab'));
+  document.querySelectorAll('.content-tab')[0].classList.add('active');
+  document.querySelectorAll('.content-tab')[1].classList.remove('active');
+}
+
+function updateProgress() {
+  var done = document.querySelectorAll('.sidebar-lesson.done').length;
+  var total = document.querySelectorAll('.sidebar-lesson').length;
+  var pct = Math.round(done / total * 100);
+  document.getElementById('nav-progress-fill').style.width = pct + '%';
+  document.getElementById('nav-progress-text').textContent = done + '/' + total + ' video';
+}
+
+// ── Video ───────────────────────────────────────────────────────
+function togglePlay() {
+  var player = document.getElementById('videoPlayer');
+  if (isPlaying) {
+    isPlaying = false; player.classList.remove('playing');
+    document.getElementById('playBtn').innerHTML = '▶'; stopProgress();
+  } else {
+    isPlaying = true; player.classList.add('playing');
+    document.getElementById('playBtn').innerHTML = '⏸'; startProgress();
+  }
+}
+
+function startProgress() {
+  stopProgress();
+  var dur = videoDurations[currentDescKey] || '20:15';
+  var parts = dur.split(':');
+  var totalSec = parseInt(parts[0]) * 60 + parseInt(parts[1]);
+  progressTimer = setInterval(function() {
+    currentProgress += 0.5;
+    if (currentProgress >= 100) { currentProgress = 100; stopProgress(); }
+    document.getElementById('video-prog-fill').style.width = currentProgress + '%';
+    var elapsed = Math.round(totalSec * currentProgress / 100);
+    var m = Math.floor(elapsed/60), s = elapsed % 60;
+    var tm = Math.floor(totalSec/60), ts = totalSec % 60;
+    document.getElementById('video-time').textContent = pad(m)+':'+pad(s)+' / '+pad(tm)+':'+pad(ts);
+  }, 300);
+}
+
+function stopProgress() { if (progressTimer) { clearInterval(progressTimer); progressTimer = null; } }
+function pad(n) { return n < 10 ? '0'+n : n; }
+
+// ── Tabs ────────────────────────────────────────────────────────
+function switchTab(tab, el) {
+  document.querySelectorAll('.content-tab').forEach(function(t){ t.classList.remove('active'); });
+  if (el) el.classList.add('active');
+  var dp = document.getElementById('tab-desc');
+  var qp = document.getElementById('tab-quiz');
+  if (tab === 'desc') {
+    dp.classList.remove('hidden'); dp.style.display = '';
+    qp.classList.remove('show');
+  } else {
+    dp.classList.add('hidden');
+    qp.classList.add('show');
+    selectedAnswer = null;
+    document.querySelectorAll('.quiz-option').forEach(function(o){ o.className='quiz-option'; });
+    document.querySelector('.btn-quiz-submit').textContent = 'Kirim Jawaban →';
+    document.querySelector('.btn-quiz-submit').style.background = '';
+  }
+}
+
+// ── Quiz ────────────────────────────────────────────────────────
+function openQuiz(mod) {
+  switchTab('quiz', document.querySelectorAll('.content-tab')[1]);
+  document.querySelectorAll('.content-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.content-tab')[1].classList.add('active');
+}
+
+function selectOption(el, val) {
+  if (selectedAnswer) return;
+  selectedAnswer = val; el.classList.add('selected');
+}
+
+function submitQuiz() {
+  if (!selectedAnswer) { alert('Pilih salah satu jawaban terlebih dahulu.'); return; }
+  var qd = quizData[currentDescKey] || quizData['desc_seo_keyword'];
+  var opts = document.querySelectorAll('.quiz-option');
+  opts.forEach(function(o) {
+    var letter = o.querySelector('.quiz-letter').textContent.toLowerCase();
+    if (letter === qd.correct) { o.classList.add('correct'); }
+    else if (letter === selectedAnswer && selectedAnswer !== qd.correct) { o.classList.add('wrong'); }
+    o.style.pointerEvents = 'none';
+  });
+  var btn = document.querySelector('.btn-quiz-submit');
+  if (selectedAnswer === qd.correct) {
+    btn.textContent = '✓ Jawaban Benar!'; btn.style.background = '#22c55e';
+  } else {
+    btn.textContent = '✗ Coba Lagi'; btn.style.background = '#ef4444';
+  }
+}
+
+// ── Navigation ──────────────────────────────────────────────────
+function nextLesson() {
+  var lessons = Array.from(document.querySelectorAll('.sidebar-lesson'));
+  var activeIdx = lessons.findIndex(function(l){ return l.classList.contains('active'); });
+  if (activeIdx < lessons.length - 1) {
+    lessons[activeIdx].classList.remove('active');
+    lessons[activeIdx].classList.add('done');
+    lessons[activeIdx].querySelector('.lesson-icon').textContent = '✓';
+    lessons[activeIdx + 1].click();
+  } else {
+    alert('🎉 Selamat! Kamu telah menyelesaikan semua materi Fundamental SEO. Sekarang waktunya praktek — audit website nyata dan mulai bangun organic traffic!');
+  }
+}
+
+function prevLesson() {
+  var lessons = Array.from(document.querySelectorAll('.sidebar-lesson'));
+  var activeIdx = lessons.findIndex(function(l){ return l.classList.contains('active'); });
+  if (activeIdx > 0) { lessons[activeIdx - 1].click(); }
+}
+
+// ── Init ─────────────────────────────────────────────────────────
+updateProgress();
+updatePhaseBar('desc_seo_keyword');
+</script>
+</body>
+</html>
