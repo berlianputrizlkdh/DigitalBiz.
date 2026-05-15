@@ -11,7 +11,7 @@
 
 <!-- ═══ NAVBAR ═══ -->
 <nav class="navbar">
-    <a href="index.html" class="navbar__logo">DigitalBiz<span>.</span></a>
+    <a href="../index.html" class="navbar__logo">DigitalBiz<span>.</span></a>
 
     <div class="navbar__links">
         <a href="#" class="nav-active" onclick="navigate('home'); return false;">Beranda</a>
@@ -42,7 +42,6 @@
             </div>
             <div class="welcome-btns">
                 <button class="btn-white" onclick="navigate('program')">Lanjut Belajar</button>
-                <button class="btn-ghost">Lihat Sertifikat</button>
             </div>
         </div>
 
@@ -53,16 +52,8 @@
                     <div class="stat-card__icon">📚</div>
                     <div class="stat-card__trend">↑ 12%</div>
                 </div>
-                <div class="stat-card__num">7</div>
-                <div class="stat-card__label">Kelas Diikuti</div>
-            </div>
-            <div class="stat-card" style="--accent:#10b981; --icon-bg:#d1fae5;">
-                <div class="stat-card__top">
-                    <div class="stat-card__icon">🎓</div>
-                    <div class="stat-card__trend">↑ 3</div>
-                </div>
                 <div class="stat-card__num">4</div>
-                <div class="stat-card__label">Sertifikat Diperoleh</div>
+                <div class="stat-card__label">Kelas Diikuti</div>
             </div>
             <div class="stat-card" style="--accent:#f59e0b; --icon-bg:#fef3c7;">
                 <div class="stat-card__top">
@@ -94,30 +85,30 @@
                 </div>
                 <div class="card__body">
                     <div class="progress-list">
-                        <div class="progress-item">
+                        <div class="progress-item" onclick="goToKelas('uiux','Web Design & UI/UX')" style="cursor:pointer;">
                             <div class="progress-item__top">
                                 <span class="progress-item__name">Web Design & UI/UX</span>
                                 <span class="progress-item__pct">72%</span>
                             </div>
                             <div class="progress-bar"><div class="progress-fill" style="width:72%"></div></div>
                         </div>
-                        <div class="progress-item">
+                        <div class="progress-item" onclick="goToKelas('dm','Digital Marketing')" style="cursor:pointer;">
                             <div class="progress-item__top">
                                 <span class="progress-item__name">Digital Marketing</span>
                                 <span class="progress-item__pct">45%</span>
                             </div>
                             <div class="progress-bar"><div class="progress-fill" style="width:45%"></div></div>
                         </div>
-                        <div class="progress-item">
+                        <div class="progress-item" onclick="localStorage.setItem('activeCourseId','dt');localStorage.setItem('activeCourseName','Design Thinking');window.location.href='kelas/kelasdt.html';" style="cursor:pointer;">
                             <div class="progress-item__top">
                                 <span class="progress-item__name">Design Thinking</span>
                                 <span class="progress-item__pct">89%</span>
                             </div>
                             <div class="progress-bar"><div class="progress-fill" style="width:89%"></div></div>
                         </div>
-                        <div class="progress-item">
+                        <div class="progress-item" onclick="goToKelas('ds','Data Science')" style="cursor:pointer;">
                             <div class="progress-item__top">
-                                <span class="progress-item__name">Business Analytics</span>
+                                <span class="progress-item__name">Data Science</span>
                                 <span class="progress-item__pct">30%</span>
                             </div>
                             <div class="progress-bar"><div class="progress-fill" style="width:30%"></div></div>
@@ -164,7 +155,7 @@
             </div>
         </div>
 
-        <!-- Jam Belajar — full width setelah jadwal dihapus -->
+        <!-- Jam Belajar -->
         <div class="card chart-card">
             <div class="card__head">
                 <div>
@@ -203,18 +194,19 @@
 
         <!-- Sub-hero -->
         <div class="prog-page-hero">
-            <div class="prog-page-badge">📚 8 Program Tersedia</div>
+            <div class="prog-page-badge">📚 6 Program Tersedia</div>
             <h2>Pilih Program yang <span>Tepat untuk Anda</span></h2>
             <p>Kurikulum dirancang bersama praktisi industri, relevan dengan kebutuhan pasar digital Indonesia dan global.</p>
         </div>
 
         <!-- Stats Banner -->
         <div class="prog-stats-banner">
-            <div class="prog-stats-banner-item"><strong>8</strong><span>Program Unggulan</span></div>
+            <div class="prog-stats-banner-item"><strong>6</strong><span>Program Unggulan</span></div>
             <div class="prog-stats-banner-item"><strong>50+</strong><span>Modul Kurikulum</span></div>
             <div class="prog-stats-banner-item"><strong>10K+</strong><span>Alumni Aktif</span></div>
             <div class="prog-stats-banner-item"><strong>98%</strong><span>Tingkat Kepuasan</span></div>
         </div>
+
         <div class="filter-bar">
             <button class="filter-btn active" data-filter="all"         onclick="filterProg(this)">Semua Program</button>
             <button class="filter-btn"         data-filter="kreativitas" onclick="filterProg(this)">Kreativitas</button>
@@ -240,9 +232,8 @@
                 <div class="prog-meta">
                     <div class="prog-meta-item">📅 <span>6 Minggu</span></div>
                     <div class="prog-meta-item">📖 <span>5 Modul</span></div>
-                    <div class="prog-meta-item">🎓 <span>Sertifikat</span></div>
                 </div>
-                <button class="btn-prog">Lanjutkan →</button>
+                <button class="btn-prog" onclick="localStorage.setItem('activeCourseId','dt');localStorage.setItem('activeCourseName','Design Thinking');window.location.href='kelas/kelasdt.html';">Lanjutkan →</button>
             </div>
 
             <div class="prog-card prog-card--featured" data-category="desain" style="--card-accent:#2563eb">
@@ -259,9 +250,8 @@
                 <div class="prog-meta">
                     <div class="prog-meta-item">📅 <span>10 Minggu</span></div>
                     <div class="prog-meta-item">📖 <span>8 Modul</span></div>
-                    <div class="prog-meta-item">🎓 <span>Sertifikat</span></div>
                 </div>
-                <button class="btn-prog btn-prog--primary">Lanjutkan →</button>
+                <button class="btn-prog btn-prog--primary" onclick="goToKelasUIUX('uiux','Web Design & UI/UX')">Lanjutkan →</button>
             </div>
 
             <div class="prog-card" data-category="pemasaran" style="--card-accent:#f59e0b">
@@ -277,9 +267,8 @@
                 <div class="prog-meta">
                     <div class="prog-meta-item">📅 <span>8 Minggu</span></div>
                     <div class="prog-meta-item">📖 <span>7 Modul</span></div>
-                    <div class="prog-meta-item">🎓 <span>Sertifikat</span></div>
                 </div>
-                <button class="btn-prog">Mulai Belajar →</button>
+                <button class="btn-prog" onclick="goToKelas('dm','Digital Marketing')">Lanjutkan →</button>
             </div>
 
             <div class="prog-card" data-category="data" style="--card-accent:#0ea5e9">
@@ -296,9 +285,8 @@
                 <div class="prog-meta">
                     <div class="prog-meta-item">📅 <span>12 Minggu</span></div>
                     <div class="prog-meta-item">📖 <span>10 Modul</span></div>
-                    <div class="prog-meta-item">🎓 <span>Sertifikat</span></div>
                 </div>
-                <button class="btn-prog">Mulai Belajar →</button>
+                <button class="btn-prog" onclick="goToKelas('ds','Data Science')">Lanjutkan →</button>
             </div>
 
             <div class="prog-card" data-category="pemasaran" style="--card-accent:#10b981">
@@ -314,9 +302,8 @@
                 <div class="prog-meta">
                     <div class="prog-meta-item">📅 <span>6 Minggu</span></div>
                     <div class="prog-meta-item">📖 <span>5 Modul</span></div>
-                    <div class="prog-meta-item">🎓 <span>Sertifikat</span></div>
                 </div>
-                <button class="btn-prog">Mulai Belajar →</button>
+                <button class="btn-prog" onclick="goToKelas('seo','Fundamental SEO')">Mulai Belajar →</button>
             </div>
 
             <div class="prog-card" data-category="bisnis" style="--card-accent:#f97316">
@@ -333,46 +320,8 @@
                 <div class="prog-meta">
                     <div class="prog-meta-item">📅 <span>10 Minggu</span></div>
                     <div class="prog-meta-item">📖 <span>8 Modul</span></div>
-                    <div class="prog-meta-item">🎓 <span>Sertifikat</span></div>
                 </div>
-                <button class="btn-prog">Mulai Belajar →</button>
-            </div>
-
-            <div class="prog-card" data-category="bisnis" style="--card-accent:#ec4899">
-                <div class="prog-badge-new">Baru</div>
-                <div class="prog-icon-wrap" style="background:#fdf2f8">🛒</div>
-                <div class="prog-category-tag">Bisnis & Strategi</div>
-                <h3>E-Commerce</h3>
-                <p>Bangun dan kelola toko online yang menguntungkan, dari pemilihan platform hingga strategi konversi pelanggan.</p>
-                <div class="prog-modules">
-                    <div class="prog-module-item">Platform & Setup Toko</div>
-                    <div class="prog-module-item">Product Listing & Foto</div>
-                    <div class="prog-module-item">Strategi Penjualan Online</div>
-                </div>
-                <div class="prog-meta">
-                    <div class="prog-meta-item">📅 <span>8 Minggu</span></div>
-                    <div class="prog-meta-item">📖 <span>6 Modul</span></div>
-                    <div class="prog-meta-item">🎓 <span>Sertifikat</span></div>
-                </div>
-                <button class="btn-prog">Mulai Belajar →</button>
-            </div>
-
-            <div class="prog-card" data-category="bisnis" style="--card-accent:#8b5cf6">
-                <div class="prog-icon-wrap" style="background:#f5f3ff">🧭</div>
-                <div class="prog-category-tag">Bisnis & Strategi</div>
-                <h3>SWOT Analysis</h3>
-                <p>Pelajari kerangka analisis strategis untuk mengevaluasi kekuatan, kelemahan, peluang, dan ancaman bisnis secara komprehensif.</p>
-                <div class="prog-modules">
-                    <div class="prog-module-item">Frameworks Strategi Bisnis</div>
-                    <div class="prog-module-item">Competitive Analysis</div>
-                    <div class="prog-module-item">Strategic Decision Making</div>
-                </div>
-                <div class="prog-meta">
-                    <div class="prog-meta-item">📅 <span>4 Minggu</span></div>
-                    <div class="prog-meta-item">📖 <span>4 Modul</span></div>
-                    <div class="prog-meta-item">🎓 <span>Sertifikat</span></div>
-                </div>
-                <button class="btn-prog">Mulai Belajar →</button>
+                <button class="btn-prog" onclick="goToKelas('startup','Startup Business Plan')">Mulai Belajar →</button>
             </div>
 
         </div><!-- /prog-grid -->
@@ -396,7 +345,6 @@
             </div>
             <div class="about-page-hero__btns">
                 <button class="btn-white" onclick="navigate('program')">Lihat Program</button>
-                <button class="btn-cta-outline">Pelajari Lebih</button>
             </div>
         </div>
 
@@ -405,13 +353,12 @@
             <div class="vm-card">
                 <div class="vm-icon">🎯</div>
                 <h3>Visi Kami</h3>
-                <p>Menjadi pusat keunggulan pendidikan bisnis digital yang melahirkan 1 juta talenta digital siap kerja dan mandiri pada tahun 2030. Kami percaya setiap orang berhak mendapatkan akses pendidikan berkualitas dunia.</p>
+                <p>Menjadi pusat keunggulan pendidikan bisnis digital yang melahirkan 1 juta talenta digital siap kerja dan mandiri pada tahun 2030.</p>
             </div>
             <div class="vm-card">
                 <div class="vm-icon">🚀</div>
                 <h3>Misi Utama</h3>
                 <ul>
-                    <li>Kurikulum berbasis proyek riil dari para ahli industri</li>
                     <li>Teknologi pembelajaran adaptif dengan AI tracking</li>
                     <li>Ekosistem komunitas untuk networking dan kolaborasi</li>
                     <li>Menjembatani teori akademis dengan realitas industri</li>
@@ -433,18 +380,6 @@
                 <div class="feature-card__icon">🗺️</div>
                 <div><h4>Path Terstruktur</h4><p>Kurikulum terstruktur dari level pemula hingga mahir yang disesuaikan.</p></div>
             </div>
-            <div class="feature-card">
-                <div class="feature-card__icon">🤝</div>
-                <div><h4>Komunitas Aktif</h4><p>Bergabung bersama 10.000+ pelajar dan bangun jaringan profesional.</p></div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-card__icon">🎓</div>
-                <div><h4>Sertifikat Resmi</h4><p>Sertifikat terverifikasi yang diakui ratusan perusahaan mitra kami.</p></div>
-            </div>
-            <div class="feature-card">
-                <div class="feature-card__icon">🧑‍🏫</div>
-                <div><h4>Mentor Industri</h4><p>Belajar langsung dari para praktisi berpengalaman di bidangnya.</p></div>
-            </div>
         </div>
 
         <!-- Tim Inti -->
@@ -455,62 +390,20 @@
             <div class="card__body">
                 <div class="team-grid">
                     <div class="team-card">
-                        <div class="team-avatar" style="background:linear-gradient(135deg,#2563eb,#7c3aed);">AS</div>
-                        <div class="team-name">Ahmad Santoso</div>
-                        <div class="team-role">CEO & Founder</div>
-                    </div>
-                    <div class="team-card">
-                        <div class="team-avatar" style="background:linear-gradient(135deg,#10b981,#0891b2);">FR</div>
-                        <div class="team-name">Fira Rahayu</div>
-                        <div class="team-role">Head of Content</div>
-                    </div>
-                    <div class="team-card">
-                        <div class="team-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444);">BP</div>
-                        <div class="team-name">Budi Pratama</div>
+                        <div class="team-avatar" style="background:linear-gradient(135deg,#2563eb,#7c3aed);">BP</div>
+                        <div class="team-name">Berlian Putri Z.</div>
                         <div class="team-role">Lead Instructor</div>
                     </div>
                     <div class="team-card">
-                        <div class="team-avatar" style="background:linear-gradient(135deg,#8b5cf6,#ec4899);">DN</div>
-                        <div class="team-name">Dina Nursanti</div>
+                        <div class="team-avatar" style="background:linear-gradient(135deg,#10b981,#0891b2);">HR</div>
+                        <div class="team-name">Hilma Raihana Ilham</div>
+                        <div class="team-role">UI Lead</div>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444);">NH</div>
+                        <div class="team-name">Nur Husna</div>
                         <div class="team-role">UX Lead</div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CTA Join -->
-        <div class="about-cta-box">
-            <div class="about-cta-box__text">
-                <h3>Tertarik Bergabung?</h3>
-                <p>Jadilah bagian dari komunitas DigitalBiz Academy dan mulai perjalanan digital Anda.</p>
-            </div>
-            <div class="about-cta-box__btns">
-                <button class="btn-cta-white" onclick="navigate('program')">Lihat Program</button>
-                <button class="btn-cta-outline">Hubungi Kami</button>
-            </div>
-        </div>
-
-        <!-- Kontak -->
-        <div class="contact-grid">
-            <div class="contact-item">
-                <div class="contact-item__icon">📞</div>
-                <div>
-                    <div class="contact-item__label">Telepon</div>
-                    <div class="contact-item__value">(021) 3086-0000</div>
-                </div>
-            </div>
-            <div class="contact-item">
-                <div class="contact-item__icon">📧</div>
-                <div>
-                    <div class="contact-item__label">Email</div>
-                    <div class="contact-item__value">connect@digitalbiz.id</div>
-                </div>
-            </div>
-            <div class="contact-item">
-                <div class="contact-item__icon">📍</div>
-                <div>
-                    <div class="contact-item__label">Lokasi</div>
-                    <div class="contact-item__value">Jakarta, Indonesia</div>
                 </div>
             </div>
         </div>
@@ -535,9 +428,7 @@
                     <h4>Eksplorasi</h4>
                     <ul>
                         <li><a href="#" onclick="navigate('about'); return false;">Visi &amp; Misi</a></li>
-                        <li><a href="#" onclick="navigate('about'); return false;">Metode Belajar</a></li>
                         <li><a href="#" onclick="navigate('program'); return false;">Program Kami</a></li>
-                        <li><a href="#">Syarat &amp; Ketentuan</a></li>
                     </ul>
                 </div>
                 <div class="dash-footer__col">
@@ -585,6 +476,17 @@
 
         document.querySelector('.content').scrollTop = 0;
     }
+
+    /* ─── NAVIGASI KE KELAS ─── */
+    function goToKelas(courseId, courseName) {
+        localStorage.setItem('activeCourseId', courseId);
+        localStorage.setItem('activeCourseName', courseName);
+        if (courseId === 'dt')   { window.location.href = 'kelas/kelasdt.html';   return; }
+        if (courseId === 'uiux') { window.location.href = 'kelas/kelasuiux.html'; return; }
+        alert('Halaman kelas "' + courseName + '" belum tersedia.');
+    }
+    function goToKelasUIUX(id, name) { goToKelas(id, name); }
+    function goToKelasDT(id, name)   { goToKelas(id, name); }
 
     /* ─── FILTER PROGRAM ─── */
     function filterProg(btn) {

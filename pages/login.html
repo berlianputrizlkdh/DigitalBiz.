@@ -163,13 +163,19 @@
         /* 4. LOGIN FORM */
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            var email = document.getElementById('email').value;
             var btn = this.querySelector('.btn-primary');
             var btnText = btn.querySelector('.btn-text');
             btnText.textContent = 'Masuk...';
             btn.disabled = true;
+
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userName', email.split('@')[0]);
+
             setTimeout(function() {
                 btnText.textContent = 'Berhasil! ✓';
                 btn.style.background = '#22c55e';
+                window.location.href = '../pages/dashboard.html';
             }, 1200);
         });
     </script>

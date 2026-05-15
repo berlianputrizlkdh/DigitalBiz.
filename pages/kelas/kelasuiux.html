@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kelas - DigitalBiz Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/kelas/kelasuiux.css">
+<style>
+/* ── Override: selaraskan navbar kelas dengan dashboard ───────── */
+:root {
+  --nav-h: 70px; /* sama dengan dashboard --topbar-h */
+}
+
+/* Navbar putih bersih — identik gaya dashboard */
+.topnav {
+  background: rgba(255,255,255,0.96) !important;
+  backdrop-filter: blur(14px) !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04) !important;
+}
+.topnav__logo { color: #2563eb !important; }
+.topnav__logo span { color: #f59e0b !important; }
+.topnav__hamburger span { background: #374151 !important; }
+
+/* Breadcrumb & progress → warna gelap di navbar putih */
+.topnav__breadcrumb { color: #6b7280 !important; }
+.topnav__breadcrumb span { color: #1f2937 !important; }
+.topnav__progress-bar { background: #e5e7eb !important; }
+.topnav__progress-fill { background: #2563eb !important; }
+.topnav__progress-text { color: #6b7280 !important; }
+
+/* Back button di navbar */
+.topnav__back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+}
+.topnav__back-btn:hover {
+  border-color: #2563eb;
+  color: #2563eb;
+  background: #eff6ff;
+}
+.topnav__back-btn svg { width:14px; height:14px; flex-shrink:0; }
+
+/* Logout di navbar putih */
+.topnav__logout-btn {
+  border-color: #e5e7eb !important;
+  color: #6b7280 !important;
+}
+.topnav__logout-btn:hover {
+  background: #f9fafb !important;
+  border-color: #9ca3af !important;
+  color: #374151 !important;
+}
+
+/* Avatar */
+.topnav__avatar {
+  background: linear-gradient(135deg,#2563eb,#7c3aed) !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+/* Sidebar selaras — warna tetap gelap tapi header diberi accent biru */
+.sidebar-header {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: linear-gradient(135deg, rgba(37,99,235,0.15), transparent);
+}
+
+/* Active lesson highlight */
+.sidebar-lesson.active { background: rgba(37,99,235,0.22) !important; border-left-color: #2563eb !important; }
+.sidebar-lesson.active .lesson-icon { background: #2563eb !important; }
+
+/* Course-list dashboard view heading */
+.dash-heading { font-size: 24px; font-weight: 800; }
+.dash-sub { font-size: 14px; color: #6b7280; margin-bottom: 28px; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR — selaras dengan dashboard (putih, biru)
+     ============================================================ -->
+<nav class="topnav" id="topnav">
+
+  <!-- Back to Dashboard -->
+  <button class="topnav__back-btn" onclick="backToDashboard()" title="Kembali ke Dashboard">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 12L6 8l4-4"/>
+    </svg>
+    Dashboard
+  </button>
+
+  <a href="../dashboard.html" class="topnav__logo" style="margin-left:16px;">DigitalBiz<span>.</span></a>
+
+  <!-- Course breadcrumb (tampil saat kelas terbuka) -->
+  <div class="topnav__breadcrumb" id="breadcrumb" style="display:flex;">
+    <span id="breadcrumb-course">Web Design &amp; UI/UX</span>
+    <span class="sep">›</span>
+    <span style="opacity:0.75;" id="breadcrumb-module">Progress Kelas</span>
+  </div>
+
+  <div class="topnav__progress-wrap" id="nav-progress" style="display:flex;">
+    <div class="topnav__progress-bar">
+      <div class="topnav__progress-fill" id="nav-progress-fill" style="width:35%"></div>
+    </div>
+    <div class="topnav__progress-text" id="nav-progress-text">5/14 video</div>
+  </div>
+
+  <div style="flex:1;" id="dash-spacer"></div>
+
+  <div class="topnav__actions">
+    <div class="topnav__avatar" id="userAvatar">U</div>
+    <button class="topnav__logout-btn" onclick="doLogout()">Keluar</button>
+  </div>
+</nav>
+
+<!-- ============================================================
+     VIEW: COURSE DETAIL
+     ============================================================ -->
+<div id="view-course">
+  <div class="course-body">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="courseSidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-course-title" id="sidebar-course-title">Web Design &amp; UI/UX</div>
+        <div class="sidebar-progress">
+          <div class="sidebar-progress-bar">
+            <div class="sidebar-progress-fill" id="sidebar-progress-fill" style="width:35%"></div>
+          </div>
+          <div class="sidebar-progress-text" id="sidebar-progress-text">5 dari 14 video selesai</div>
+        </div>
+      </div>
+
+      <div class="sidebar-label">Daftar Modul</div>
+
+      <!-- MODULE 1 -->
+      <div class="sidebar-module open" id="mod1">
+        <div class="sidebar-module-head" onclick="toggleModule('mod1')">
+          MODUL 1 · PENGENALAN UI/UX
+          <span class="sidebar-module-arrow">›</span>
+        </div>
+        <div class="sidebar-lessons">
+          <div class="sidebar-lesson done" onclick="selectLesson(this,'Apa Itu UI dan UX?','1.1','Pengenalan UI/UX','desc_uiux_1')">
+            <div class="lesson-icon">✓</div>
+            <div class="lesson-name">Apa Itu UI dan UX?</div>
+            <div class="lesson-duration">06:05</div>
+          </div>
+          <div class="sidebar-lesson done" onclick="selectLesson(this,'Prinsip Dasar Desain Antarmuka','1.2','Pengenalan UI/UX','desc_uiux_2')">
+            <div class="lesson-icon">✓</div>
+            <div class="lesson-name">Prinsip Dasar Desain Antarmuka</div>
+            <div class="lesson-duration">10:08</div>
+          </div>
+          <div class="sidebar-lesson active" onclick="selectLesson(this,'UI Designer vs UX Designer','1.3','Pengenalan UI/UX','desc_uiux_3')">
+            <div class="lesson-icon">▶</div>
+            <div class="lesson-name">UI Designer vs UX Designer</div>
+            <div class="lesson-duration">18:11</div>
+          </div>
+          <div class="sidebar-quiz" onclick="openQuiz('mod1')">
+            <div class="quiz-icon">📝</div>
+            <div class="quiz-name">Quiz</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODULE 2 -->
+      <div class="sidebar-module open" id="mod2">
+        <div class="sidebar-module-head" onclick="toggleModule('mod2')">
+          MODUL 2 · USER RESEARCH
+          <span class="sidebar-module-arrow">›</span>
+        </div>
+        <div class="sidebar-lessons">
+          <div class="sidebar-lesson done" onclick="selectLesson(this,'Pengenalan User Research','2.1','User Research','desc_ur_1')">
+            <div class="lesson-icon">✓</div>
+            <div class="lesson-name">Pengenalan User Research</div>
+            <div class="lesson-duration">44:33</div>
+          </div>
+          <div class="sidebar-lesson done" onclick="selectLesson(this,'Membuat Proto-Persona','2.2','User Research','desc_ur_2')">
+            <div class="lesson-icon">✓</div>
+            <div class="lesson-name">Membuat Proto-Persona</div>
+            <div class="lesson-duration">34:50</div>
+          </div>
+          <div class="sidebar-quiz" onclick="openQuiz('mod2')">
+            <div class="quiz-icon">📝</div>
+            <div class="quiz-name">Quiz Modul 2</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODULE 3 -->
+      <div class="sidebar-module" id="mod3">
+        <div class="sidebar-module-head" onclick="toggleModule('mod3')">
+          MODUL 3 · WIREFRAMING
+          <span class="sidebar-module-arrow">›</span>
+        </div>
+        <div class="sidebar-lessons">
+          <div class="sidebar-lesson" onclick="selectLesson(this,'Low-fidelity Wireframe','3.1','Wireframing','desc_wf_1')">
+            <div class="lesson-icon">3</div>
+            <div class="lesson-name">Low-fidelity Wireframe</div>
+            <div class="lesson-duration">22:17</div>
+          </div>
+          <div class="sidebar-lesson" onclick="selectLesson(this,'Prinsip Dasar Desain','3.2','Wireframing','desc_wf_2')">
+            <div class="lesson-icon">3</div>
+            <div class="lesson-name">Prinsip Dasar Desain</div>
+            <div class="lesson-duration">15:44</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODULE 4 -->
+      <div class="sidebar-module" id="mod4">
+        <div class="sidebar-module-head" onclick="toggleModule('mod4')">
+          MODUL 4 · VISUAL DESIGN
+          <span class="sidebar-module-arrow">›</span>
+        </div>
+        <div class="sidebar-lessons">
+          <div class="sidebar-lesson" onclick="selectLesson(this,'Color Theory untuk UI','4.1','Visual Design','desc_vd_1')">
+            <div class="lesson-icon">4</div>
+            <div class="lesson-name">Color Theory untuk UI</div>
+            <div class="lesson-duration">19:30</div>
+          </div>
+          <div class="sidebar-lesson" onclick="selectLesson(this,'Typography System','4.2','Visual Design','desc_vd_2')">
+            <div class="lesson-icon">4</div>
+            <div class="lesson-name">Typography System</div>
+            <div class="lesson-duration">14:22</div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div class="course-content">
+
+      <!-- Course top info -->
+      <div class="course-top">
+        <div class="course-content-title" id="lesson-title">UI Designer vs UX Designer</div>
+        <div class="course-content-meta">
+          <span class="lesson-badge" id="lesson-badge">Modul 1.3</span>
+          <span class="meta-dot"></span>
+          <span id="lesson-module">Pengenalan UI/UX</span>
+        </div>
+      </div>
+
+      <!-- Video Player -->
+      <div class="video-player" id="videoPlayer" onclick="togglePlay()">
+        <div class="video-bg" id="video-bg" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0f2044,#1a3a7a);overflow:hidden;">
+          <div style="text-align:center;color:#fff;padding:0 40px;z-index:1;position:relative;">
+            <div style="font-size:36px;font-weight:800;letter-spacing:-1px;line-height:1.2;color:#f59e0b;" id="video-title-overlay-bg">UX DESIGN vs<br>UI DESIGN</div>
+          </div>
+          <div style="position:absolute;right:40px;bottom:0;font-size:90px;opacity:0.12;">👤</div>
+        </div>
+        <div class="video-overlay">
+          <button class="video-play-btn" id="playBtn">▶</button>
+        </div>
+        <div class="video-bottom">
+          <div class="video-title-overlay" id="video-title-overlay">UI Designer vs UX Designer</div>
+          <div class="video-controls">
+            <div class="video-progress" onclick="event.stopPropagation()">
+              <div class="video-progress-fill" id="video-prog-fill" style="width:0%"></div>
+            </div>
+            <div class="video-time" id="video-time">00:00 / 18:11</div>
+            <button class="video-vol" onclick="event.stopPropagation()">🔊</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABS -->
+      <div class="content-tabs">
+        <div class="content-tab active" onclick="switchTab('desc',this)">Deskripsi</div>
+        <div class="content-tab" onclick="switchTab('quiz',this)">Quiz</div>
+      </div>
+
+      <!-- DESCRIPTION -->
+      <div class="desc-panel" id="tab-desc">
+        <div class="desc-title" id="desc-title">Perbedaan UI Designer vs UX Designer</div>
+        <div class="desc-body" id="desc-body">
+          <p>Artikel yang sering membingungkan perbedaan antara UI Designer dan UX Designer dalam dunia desain. Di video ini kita bahas, bedanya profesi tersebut, tools yang diperlukan, dan bagaimana keduanya berkolaborasi satu sama lain dalam satu proyek.</p>
+          <p>UI (User Interface) berfokus pada tampilan visual dari sebuah produk digital — mulai dari pilihan warna, tipografi, layout, hingga komponen interaktif. Sementara UX (User Experience) lebih mengutamakan bagaimana pengguna merasakan dan berinteraksi dengan produk tersebut secara keseluruhan.</p>
+          <p>Dalam industri modern, keduanya saling melengkapi. UI tanpa UX yang baik akan membuat produk terlihat cantik namun membingungkan; UX tanpa UI yang solid akan menciptakan alur yang logis namun kurang menarik secara visual.</p>
+        </div>
+      </div>
+
+      <!-- QUIZ PANEL -->
+      <div class="quiz-panel" id="tab-quiz">
+        <div class="quiz-question">❓ Apa perbedaan utama antara UI Designer dan UX Designer?</div>
+        <div class="quiz-options" id="quizOptions">
+          <div class="quiz-option" onclick="selectOption(this,'a')">
+            <div class="quiz-letter">A</div>
+            UI berfokus pada tampilan visual, UX pada pengalaman pengguna
+          </div>
+          <div class="quiz-option" onclick="selectOption(this,'b')">
+            <div class="quiz-letter">B</div>
+            Keduanya memiliki tugas yang sama persis
+          </div>
+          <div class="quiz-option" onclick="selectOption(this,'c')">
+            <div class="quiz-letter">C</div>
+            UX hanya mengurusi coding, UI mengurusi desain
+          </div>
+          <div class="quiz-option" onclick="selectOption(this,'d')">
+            <div class="quiz-letter">D</div>
+            UI Designer tidak bekerja sama dengan UX Designer
+          </div>
+        </div>
+        <button class="btn-quiz-submit" onclick="submitQuiz()">Kirim Jawaban →</button>
+      </div>
+
+      <!-- NAV BUTTONS -->
+      <div class="video-nav">
+        <button class="btn-nav" onclick="prevLesson()">← Sebelumnya</button>
+        <button class="btn-nav primary" onclick="nextLesson()">Materi Berikutnya →</button>
+      </div>
+    </div><!-- /course-content -->
+
+  </div>
+</div><!-- /view-course -->
+
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+// ── State ─────────────────────────────────────────────────────
+var isPlaying     = false;
+var selectedAnswer= null;
+var progressTimer = null;
+var currentProgress=0;
+
+// ── Init user dari localStorage ───────────────────────────────
+(function(){
+  var name = localStorage.getItem('userName') || 'P';
+  var initials = name.split(' ').map(function(w){return w[0];}).join('').toUpperCase().slice(0,2) || 'P';
+  document.getElementById('userAvatar').textContent = initials;
+})();
+
+// ── Buka kelas yang dipilih dari dashboard.html ───────────────
+(function(){
+  var courseId   = localStorage.getItem('activeCourseId');
+  var courseName = localStorage.getItem('activeCourseName');
+  if (courseId && courseName) {
+    // Langsung buka course view
+    openCourse(courseId, courseName, '');
+    localStorage.removeItem('activeCourseId');
+    localStorage.removeItem('activeCourseName');
+  } else {
+    // Tampilkan daftar kelas
+    showDashboard();
+  }
+})();
+
+// ── Kembali ke dashboard.html ────────────────────────────────
+function backToDashboard() {
+  window.location.href = '../dashboard.html';
+}
+
+// ── Logout ───────────────────────────────────────────────────
+function doLogout() {
+  localStorage.removeItem('isLoggedIn');
+  localStorage.removeItem('userName');
+  window.location.href = '../index.html';
+}
+
+// ── View switching ───────────────────────────────────────────
+function showDashboard() {
+  document.getElementById('view-dashboard').style.display = 'block';
+  document.getElementById('view-course').style.display   = 'none';
+  document.getElementById('breadcrumb').style.display    = 'none';
+  document.getElementById('nav-progress').style.display  = 'none';
+  document.getElementById('dash-spacer').style.display   = 'flex';
+  stopProgress();
+}
+
+function openCourse(id, name, instructor) {
+  document.getElementById('view-dashboard').style.display = 'none';
+  document.getElementById('view-course').style.display   = 'block';
+  document.getElementById('breadcrumb').style.display    = 'flex';
+  document.getElementById('nav-progress').style.display  = 'flex';
+  document.getElementById('dash-spacer').style.display   = 'none';
+  document.getElementById('breadcrumb-course').innerHTML = name;
+  document.getElementById('sidebar-course-title').innerHTML = name;
+
+  // Reset player
+  stopProgress();
+  isPlaying = false;
+  document.getElementById('videoPlayer').classList.remove('playing');
+  document.getElementById('playBtn').innerHTML = '▶';
+  currentProgress = 0;
+  document.getElementById('video-prog-fill').style.width = '0%';
+  document.getElementById('video-time').textContent = '00:00 / 18:11';
+}
+
+// ── Sidebar toggle ─────────────────────────────────────────────
+function toggleSidebar() {
+  document.getElementById('courseSidebar').classList.toggle('open');
+}
+
+function toggleModule(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+// ── Lesson selection ──────────────────────────────────────────
+function selectLesson(el, title, num, modName, descKey) {
+  document.querySelectorAll('.sidebar-lesson').forEach(function(l){ l.classList.remove('active'); });
+  el.classList.add('active');
+
+  document.getElementById('lesson-title').textContent = title;
+  document.getElementById('lesson-badge').textContent = 'Modul ' + num;
+  document.getElementById('lesson-module').textContent = modName;
+  document.getElementById('breadcrumb-module').textContent = title;
+  document.getElementById('video-title-overlay').textContent = title;
+
+  var desc = descriptions[descKey] || { title: title, body: '<p>Konten materi segera hadir.</p>' };
+  document.getElementById('desc-title').textContent = desc.title;
+  document.getElementById('desc-body').innerHTML    = desc.body;
+
+  var vbg = videoBGs[descKey] || videoBGs['desc_uiux_3'];
+  document.getElementById('video-bg').style.background = vbg.bg;
+  document.getElementById('video-bg').innerHTML =
+    '<div style="text-align:center;color:#fff;padding:0 40px;z-index:1;position:relative;">' +
+    '<div style="font-size:36px;font-weight:800;letter-spacing:-1px;line-height:1.2;color:' + vbg.accent + ';">' + vbg.label + '</div>' +
+    '</div>' +
+    '<div style="position:absolute;right:40px;bottom:0;font-size:90px;opacity:0.12;">👤</div>';
+
+  stopProgress();
+  isPlaying = false;
+  document.getElementById('videoPlayer').classList.remove('playing');
+  document.getElementById('playBtn').innerHTML = '▶';
+  currentProgress = 0;
+  document.getElementById('video-prog-fill').style.width = '0%';
+
+  switchTab('desc', document.querySelector('.content-tab'));
+  document.querySelectorAll('.content-tab')[0].classList.add('active');
+  document.querySelectorAll('.content-tab')[1].classList.remove('active');
+}
+
+// ── Video play/pause ─────────────────────────────────────────
+function togglePlay() {
+  var player = document.getElementById('videoPlayer');
+  if (isPlaying) {
+    isPlaying = false; player.classList.remove('playing');
+    document.getElementById('playBtn').innerHTML = '▶'; stopProgress();
+  } else {
+    isPlaying = true; player.classList.add('playing');
+    document.getElementById('playBtn').innerHTML = '⏸'; startProgress();
+  }
+}
+
+function startProgress() {
+  stopProgress();
+  progressTimer = setInterval(function() {
+    currentProgress += 0.5;
+    if (currentProgress >= 100) { currentProgress = 100; stopProgress(); }
+    document.getElementById('video-prog-fill').style.width = currentProgress + '%';
+    var totalSec = 1091;
+    var elapsed  = Math.round(totalSec * currentProgress / 100);
+    var m = Math.floor(elapsed/60), s = elapsed % 60;
+    var tm= Math.floor(totalSec/60), ts= totalSec % 60;
+    document.getElementById('video-time').textContent = pad(m)+':'+pad(s)+' / '+pad(tm)+':'+pad(ts);
+  }, 300);
+}
+
+function stopProgress() { if (progressTimer) { clearInterval(progressTimer); progressTimer = null; } }
+function pad(n) { return n < 10 ? '0'+n : n; }
+
+// ── Tabs ──────────────────────────────────────────────────────
+function switchTab(tab, el) {
+  document.querySelectorAll('.content-tab').forEach(function(t){ t.classList.remove('active'); });
+  if (el) el.classList.add('active');
+  document.getElementById('tab-desc').classList.toggle('hidden', tab !== 'desc');
+  var qp = document.getElementById('tab-quiz');
+  if (tab === 'quiz') { qp.classList.add('show'); } else { qp.classList.remove('show'); }
+  selectedAnswer = null;
+  document.querySelectorAll('.quiz-option').forEach(function(o){ o.className='quiz-option'; });
+  document.querySelector('.btn-quiz-submit').textContent = 'Kirim Jawaban →';
+}
+
+// ── Quiz ──────────────────────────────────────────────────────
+function openQuiz(mod) {
+  switchTab('quiz', document.querySelectorAll('.content-tab')[1]);
+  document.querySelectorAll('.content-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.content-tab')[1].classList.add('active');
+}
+
+function selectOption(el, val) {
+  if (selectedAnswer) return;
+  selectedAnswer = val; el.classList.add('selected');
+}
+
+function submitQuiz() {
+  if (!selectedAnswer) { alert('Pilih salah satu jawaban terlebih dahulu.'); return; }
+  var opts = document.querySelectorAll('.quiz-option');
+  opts.forEach(function(o, i) {
+    var letters = ['a','b','c','d'];
+    if (letters[i] === 'a') { o.classList.add('correct'); }
+    else if (letters[i] === selectedAnswer && selectedAnswer !== 'a') { o.classList.add('wrong'); }
+    o.style.pointerEvents = 'none';
+  });
+  var btn = document.querySelector('.btn-quiz-submit');
+  if (selectedAnswer === 'a') { btn.textContent = '✓ Jawaban Benar!'; btn.style.background = '#22c55e'; }
+  else                        { btn.textContent = '✗ Coba Lagi';      btn.style.background = '#ef4444'; }
+}
+
+// ── Navigasi lesson ───────────────────────────────────────────
+function nextLesson() {
+  var lessons   = Array.from(document.querySelectorAll('.sidebar-lesson'));
+  var activeIdx = lessons.findIndex(function(l){ return l.classList.contains('active'); });
+  if (activeIdx < lessons.length - 1) { lessons[activeIdx + 1].click(); }
+  else { alert('🎉 Selamat! Anda telah menyelesaikan semua materi yang tersedia.'); }
+}
+
+function prevLesson() {
+  var lessons   = Array.from(document.querySelectorAll('.sidebar-lesson'));
+  var activeIdx = lessons.findIndex(function(l){ return l.classList.contains('active'); });
+  if (activeIdx > 0) { lessons[activeIdx - 1].click(); }
+}
+
+// ── Data konten ───────────────────────────────────────────────
+var descriptions = {
+  desc_uiux_1: { title:'Apa Itu UI dan UX?', body:'<p>UI (User Interface) adalah tampilan antar muka yang mempertemukan pengguna dengan sebuah layanan atau aplikasi. Ia berbeda dari tampilan visual saja karena mencakup seluruh elemen yang dapat dilihat pengguna saat menggunakan produk, mulai dari tombol, ikon, warna, hingga animasi.</p><p>UX (User Experience) berfokus pada pengalaman — apa yang dirasakan pengguna, apakah produk mudah digunakan, dan apakah tujuan pengguna tercapai dengan efisien. UX melibatkan riset, arsitektur informasi, dan pengujian pengguna.</p>' },
+  desc_uiux_2: { title:'Prinsip Dasar Desain Antarmuka', body:'<p>Prinsip desain antarmuka adalah panduan fundamental yang membantu desainer menciptakan produk yang efektif, efisien, dan menyenangkan. Prinsip-prinsip ini mencakup konsistensi visual, kontras, feedback, simplisitas, dan estetika. Kelima prinsip ini menjadi standar yang digunakan secara universal dalam industri desain.</p><p>Penerapan yang baik dari prinsip-prinsip ini akan menciptakan pengalaman yang intuitif, meminimalkan kurva belajar pengguna, dan meningkatkan tingkat kepuasan serta kesetiaan pengguna terhadap produk.</p>' },
+  desc_uiux_3: { title:'Perbedaan UI Designer vs UX Designer', body:'<p>Artikel yang sering membingungkan perbedaan antara UI Designer dan UX Designer dalam dunia desain. Di video ini kita bahas, bedanya profesi tersebut, tools yang diperlukan, dan bagaimana keduanya berkolaborasi satu sama lain dalam satu proyek.</p><p>UI (User Interface) berfokus pada tampilan visual dari sebuah produk digital — mulai dari pilihan warna, tipografi, layout, hingga komponen interaktif. Sementara UX (User Experience) lebih mengutamakan bagaimana pengguna merasakan dan berinteraksi dengan produk tersebut secara keseluruhan.</p>' },
+  desc_ur_1:  { title:'Pengenalan User Research', body:'<p>User Research adalah proses sistematis untuk memahami siapa pengguna Anda, apa yang mereka butuhkan, dan bagaimana mereka berinteraksi dengan produk. Dalam proses desain yang berpusat pada pengguna, user research menjadi fondasi yang tidak bisa diabaikan.</p><p>Metode user research mencakup wawancara, survei, observasi, usability testing, dan analisis data kuantitatif. Setiap metode memberikan perspektif yang berbeda dan saling melengkapi.</p>' },
+  desc_ur_2:  { title:'Membuat Proto-Persona', body:'<p>Proto-persona adalah representasi fiktif dari tipe pengguna berdasarkan asumsi dan data awal sebelum riset mendalam dilakukan. Ia berbeda dengan personas karena dibangun dari data asumsi tim internal, bukan dari wawancara pengguna langsung.</p><p>Proto-persona berguna di awal proyek saat waktu dan anggaran terbatas. Ia membantu tim untuk tetap fokus pada perspektif pengguna meski dengan data yang belum sempurna.</p>' },
+  desc_wf_1:  { title:'Low-fidelity Wireframe', body:'<p>Low-fidelity wireframe adalah sketsa awal antarmuka aplikasi yang menggambarkan tata letak dasar seperti posisi elemen, navigasi, dan konten tanpa detail visual. Fokus pada level fidelity wireframe ini adalah fungsi dan alur pengguna, bukan estetika.</p><p>Wireframe biasanya dibuat menggunakan tools seperti Figma, Balsamiq, atau bahkan kertas. Tujuannya adalah untuk memvalidasi konsep dengan cepat dan murah sebelum melanjutkan ke desain detail.</p>' },
+  desc_wf_2:  { title:'Prinsip Dasar Desain', body:'<p>Prinsip dasar desain adalah landasan yang digunakan untuk mengatur elemen visual seperti garis, bentuk, warna, tekstur, ruang, dan tipografi. Pemahaman yang kuat terhadap prinsip-prinsip ini akan sangat membantu seorang desainer pemula yang ingin menghasilkan karya berkualitas.</p>' },
+  desc_vd_1:  { title:'Color Theory untuk UI', body:'<p>Color theory untuk UI mencakup bagaimana warna bekerja secara visual dan psikologis dalam konteks antarmuka digital. Pemilihan palet warna yang tepat dapat meningkatkan keterbacaan, aksesibilitas, dan perasaan emosional pengguna saat berinteraksi dengan produk.</p><p>Komponen utamanya meliputi hue (warna dasar), saturation (kecerahan), dan brightness, serta konsep seperti warna komplementer, analog, dan triadic.</p>' },
+  desc_vd_2:  { title:'Typography System', body:'<p>Typography system adalah kerangka terstruktur yang mendefinisikan bagaimana teks digunakan secara konsisten dalam sebuah produk digital. Ini mencakup pemilihan font family, ukuran, berat (weight), tinggi baris (line-height), dan hierarki tipografi.</p><p>Typography yang kuat membuat konten lebih mudah dibaca, menciptakan hierarki visual yang jelas, dan berkontribusi pada identitas visual brand secara keseluruhan.</p>' }
+};
+
+var videoBGs = {
+  desc_uiux_1: { bg:'linear-gradient(135deg,#0d1117,#1a2744)', label:'Apa Itu<br>UI & UX Design?',         accent:'#60a5fa' },
+  desc_uiux_2: { bg:'linear-gradient(135deg,#0a1628,#1e3a5f)', label:'Prinsip Dasar<br>Desain Antarmuka',  accent:'#93c5fd' },
+  desc_uiux_3: { bg:'linear-gradient(135deg,#0f2044,#1a3a7a)', label:'UX DESIGN vs<br>UI DESIGN',          accent:'#f59e0b' },
+  desc_ur_1:   { bg:'linear-gradient(135deg,#0f172a,#1e293b)', label:'Mengenal User Research<br>dalam UI/UX Design', accent:'#34d399' },
+  desc_ur_2:   { bg:'linear-gradient(135deg,#1a0533,#2d0b5e)', label:'Membuat<br>Proto-Persona',            accent:'#a78bfa' },
+  desc_wf_1:   { bg:'linear-gradient(135deg,#0a1628,#1a3a5c)', label:'Low-Fidelity<br>Wireframes in Figma', accent:'#38bdf8' },
+  desc_wf_2:   { bg:'linear-gradient(135deg,#1a1a2e,#2d2d44)', label:'5 Prinsip Dasar<br>Desain Grafis',    accent:'#fbbf24' },
+  desc_vd_1:   { bg:'linear-gradient(135deg,#0c1a0c,#1a3a1a)', label:'Color Theory<br>untuk UI',            accent:'#4ade80' },
+  desc_vd_2:   { bg:'linear-gradient(135deg,#1a0a0a,#3a1a1a)', label:'Typography<br>System',                accent:'#f87171' }
+};
+</script>
+</body>
+</html>

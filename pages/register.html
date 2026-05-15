@@ -136,13 +136,19 @@
         /* 3. REGISTER FORM */
         document.getElementById('registerForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            var nama = document.getElementById('nama').value;
             var btn = this.querySelector('.btn-primary');
             var btnText = btn.querySelector('.btn-text');
             btnText.textContent = 'Mendaftar...';
             btn.disabled = true;
+
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('userName', nama);
+
             setTimeout(function() {
                 btnText.textContent = 'Berhasil! ✓';
                 btn.style.background = '#22c55e';
+                window.location.href = '../pages/dashboard.html';
             }, 1200);
         });
     </script>

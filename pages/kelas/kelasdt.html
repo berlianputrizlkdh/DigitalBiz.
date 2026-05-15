@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Thinking — DigitalBiz Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/kelas/kelasdt.css">
+
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<nav class="topnav" id="topnav">
+  <button class="topnav__back-btn" onclick="window.history.back()" title="Kembali ke Dashboard">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 12L6 8l4-4"/>
+    </svg>
+    Dashboard
+  </button>
+
+  <a href="dashboard.html" class="topnav__logo">DigitalBiz<span>.</span></a>
+
+  <div class="topnav__breadcrumb">
+    <strong id="breadcrumb-course">Design Thinking</strong>
+    <span class="sep">›</span>
+    <span id="breadcrumb-module" style="color:#6b7280;">Design Thinking</span>
+  </div>
+
+  <div class="topnav__progress-wrap">
+    <div class="topnav__progress-bar">
+      <div class="topnav__progress-fill" id="nav-progress-fill" style="width:20%"></div>
+    </div>
+    <div class="topnav__progress-text" id="nav-progress-text">1/5 video</div>
+  </div>
+
+  <div style="flex:1;"></div>
+
+  <div class="topnav__actions">
+    <div class="topnav__avatar" id="userAvatar">U</div>
+    <button class="topnav__logout-btn" onclick="doLogout()">Keluar</button>
+  </div>
+</nav>
+
+<!-- ============================================================
+     COURSE BODY
+     ============================================================ -->
+<div class="course-body">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="courseSidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-course-tag">Kreativitas</div>
+      <div class="sidebar-course-title">Design Thinking</div>
+      <div class="sidebar-progress">
+        <div class="sidebar-progress-bar">
+          <div class="sidebar-progress-fill" style="width:20%"></div>
+        </div>
+        <div class="sidebar-progress-text">1 dari 5 video selesai</div>
+      </div>
+    </div>
+
+    <div class="sidebar-label">Modul Design Thinking</div>
+
+    <!-- MODULE 1: Empathize -->
+    <div class="sidebar-module open" id="mod-dt1">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-dt1')">
+        FASE 1 · EMPATHIZE
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson done" onclick="selectLesson(this,'Pengenalan Design Thinking','1.1','Pengenalan','desc_dt_intro')">
+          <div class="lesson-icon">✓</div>
+          <div class="lesson-name">Pengenalan Design Thinking</div>
+          <div class="lesson-duration">12:30</div>
+        </div>
+        <div class="sidebar-lesson active" onclick="selectLesson(this,'Empathize — Memahami Pengguna','1.2','Empathize','desc_dt_empathize')">
+          <div class="lesson-icon">▶</div>
+          <div class="lesson-name">Empathize — Memahami Pengguna</div>
+          <div class="lesson-duration">20:45</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 2: Define -->
+    <div class="sidebar-module open" id="mod-dt2">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-dt2')">
+        FASE 2 · DEFINE
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson" onclick="selectLesson(this,'Define — Menyusun Problem Statement','2.1','Define','desc_dt_define')">
+          <div class="lesson-icon">2</div>
+          <div class="lesson-name">Define — Problem Statement</div>
+          <div class="lesson-duration">17:22</div>
+        </div>
+        <div class="sidebar-quiz" onclick="openQuiz('dt-define')">
+          <div class="quiz-icon">📝</div>
+          <div class="quiz-name">Quiz Fase 1 &amp; 2</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 3: Ideate -->
+    <div class="sidebar-module" id="mod-dt3">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-dt3')">
+        FASE 3 · IDEATE
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson" onclick="selectLesson(this,'Ideate — Brainstorming Solusi','3.1','Ideate','desc_dt_ideate')">
+          <div class="lesson-icon">3</div>
+          <div class="lesson-name">Ideate — Brainstorming Solusi</div>
+          <div class="lesson-duration">23:08</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 4: Prototype -->
+    <div class="sidebar-module" id="mod-dt4">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-dt4')">
+        FASE 4 · PROTOTYPE
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson" onclick="selectLesson(this,'Prototype — Membangun Solusi Cepat','4.1','Prototype','desc_dt_prototype')">
+          <div class="lesson-icon">4</div>
+          <div class="lesson-name">Prototype — Solusi Cepat</div>
+          <div class="lesson-duration">28:15</div>
+        </div>
+        <div class="sidebar-quiz" onclick="openQuiz('dt-prototype')">
+          <div class="quiz-icon">📝</div>
+          <div class="quiz-name">Quiz Fase 3 &amp; 4</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 5: Test -->
+    <div class="sidebar-module" id="mod-dt5">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-dt5')">
+        FASE 5 · TEST
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson" onclick="selectLesson(this,'Test &amp; Iterasi — Uji Solusi Anda','5.1','Test','desc_dt_test')">
+          <div class="lesson-icon">5</div>
+          <div class="lesson-name">Test &amp; Iterasi</div>
+          <div class="lesson-duration">19:50</div>
+        </div>
+        <div class="sidebar-quiz" onclick="openQuiz('dt-final')">
+          <div class="quiz-icon">📝</div>
+          <div class="quiz-name">Quiz Final</div>
+        </div>
+      </div>
+    </div>
+
+  </aside><!-- /sidebar -->
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <div class="course-content">
+
+    <!-- Design Thinking Phase Bar -->
+    <div class="dt-phase-bar" id="phaseBar">
+      <div class="dt-phase-item done" id="phase-empathize">
+        <div class="dt-phase-circle">🔍</div>
+        <div class="dt-phase-name">Empathize</div>
+      </div>
+      <div class="dt-phase-connector done"></div>
+      <div class="dt-phase-item active" id="phase-define">
+        <div class="dt-phase-circle">📌</div>
+        <div class="dt-phase-name">Define</div>
+      </div>
+      <div class="dt-phase-connector"></div>
+      <div class="dt-phase-item" id="phase-ideate">
+        <div class="dt-phase-circle">💡</div>
+        <div class="dt-phase-name">Ideate</div>
+      </div>
+      <div class="dt-phase-connector"></div>
+      <div class="dt-phase-item" id="phase-prototype">
+        <div class="dt-phase-circle">🛠️</div>
+        <div class="dt-phase-name">Prototype</div>
+      </div>
+      <div class="dt-phase-connector"></div>
+      <div class="dt-phase-item" id="phase-test">
+        <div class="dt-phase-circle">✅</div>
+        <div class="dt-phase-name">Test</div>
+      </div>
+    </div>
+
+    <!-- Course Top Info -->
+    <div class="course-top">
+      <div class="course-content-title" id="lesson-title">Empathize — Memahami Pengguna</div>
+      <div class="course-content-meta">
+        <span class="lesson-badge" id="lesson-badge">Fase 1.2</span>
+        <span class="meta-dot"></span>
+        <span id="lesson-module">Empathize</span>
+      </div>
+    </div>
+
+    <!-- Video Player -->
+    <div class="video-player" id="videoPlayer" onclick="togglePlay()">
+      <div class="video-bg" id="video-bg"
+        style="background:linear-gradient(135deg,#1a0533,#2d0b5e);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+        <div style="text-align:center;color:#fff;padding:0 40px;z-index:1;position:relative;">
+          <div style="font-size:13px;font-weight:700;letter-spacing:3px;color:#a78bfa;text-transform:uppercase;margin-bottom:12px;">Design Thinking · Fase 1</div>
+          <div style="font-size:34px;font-weight:800;letter-spacing:-1px;line-height:1.2;color:#e9d5ff;" id="video-title-label">EMPATHIZE<br><span style="color:#f59e0b;">Memahami Pengguna</span></div>
+        </div>
+        <div style="position:absolute;right:40px;bottom:0;font-size:100px;opacity:0.08;">🔍</div>
+        <!-- Decorative circles -->
+        <div style="position:absolute;top:-40px;left:-40px;width:200px;height:200px;border-radius:50%;background:rgba(124,58,237,0.15);"></div>
+        <div style="position:absolute;bottom:-60px;right:100px;width:160px;height:160px;border-radius:50%;background:rgba(245,158,11,0.08);"></div>
+      </div>
+      <div class="video-overlay">
+        <button class="video-play-btn" id="playBtn">▶</button>
+      </div>
+      <div class="video-bottom">
+        <div class="video-title-overlay" id="video-title-overlay">Empathize — Memahami Pengguna</div>
+        <div class="video-controls">
+          <div class="video-progress" onclick="event.stopPropagation()">
+            <div class="video-progress-fill" id="video-prog-fill" style="width:0%"></div>
+          </div>
+          <div class="video-time" id="video-time">00:00 / 20:45</div>
+          <button class="video-vol" onclick="event.stopPropagation()">🔊</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="content-tabs">
+      <div class="content-tab active" onclick="switchTab('desc',this)">Deskripsi</div>
+      <div class="content-tab" onclick="switchTab('quiz',this)">Quiz</div>
+    </div>
+
+    <!-- DESCRIPTION PANEL -->
+    <div class="desc-panel" id="tab-desc">
+      <div class="desc-title" id="desc-title">Empathize: Memahami Pengguna Secara Mendalam</div>
+      <div class="desc-body" id="desc-body">
+
+        <!-- Phase Overview -->
+        <div class="phase-steps">
+          <div class="phase-step done">
+            <div class="phase-step-icon" style="background:#f0fdf4;">🔍</div>
+            <div class="phase-step-label">Empathize</div>
+          </div>
+          <div class="phase-step current">
+            <div class="phase-step-icon" style="background:var(--accent-dt-lt);">📌</div>
+            <div class="phase-step-label">Define</div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-step-icon" style="background:#f8fafc;">💡</div>
+            <div class="phase-step-label">Ideate</div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-step-icon" style="background:#f8fafc;">🛠️</div>
+            <div class="phase-step-label">Prototype</div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-step-icon" style="background:#f8fafc;">✅</div>
+            <div class="phase-step-label">Test</div>
+          </div>
+        </div>
+
+        <p>Tahap <strong>Empathize</strong> adalah pondasi dari seluruh proses Design Thinking. Sebelum kita bisa merancang solusi yang tepat, kita harus benar-benar memahami siapa pengguna kita, apa yang mereka rasakan, dan tantangan nyata apa yang mereka hadapi dalam kehidupan sehari-hari.</p>
+
+        <p>Empathize bukan sekadar survei atau asumsi. Ini adalah proses aktif untuk mendengar, mengamati, dan merasakan pengalaman pengguna secara langsung. Seorang desainer yang baik harus mampu melepaskan ego dan perspektifnya sendiri, lalu benar-benar masuk ke dalam dunia pengguna.</p>
+
+        <div class="key-concepts">
+          <div class="concept-card">
+            <h4>🎤 User Interview</h4>
+            <p>Wawancara mendalam dengan pengguna untuk menggali kebutuhan, motivasi, dan frustrasi mereka secara langsung.</p>
+          </div>
+          <div class="concept-card">
+            <h4>👁️ Observasi Lapangan</h4>
+            <p>Amati pengguna dalam konteks nyata penggunaan produk, tanpa intervensi, untuk menemukan insight yang tersembunyi.</p>
+          </div>
+          <div class="concept-card">
+            <h4>🗺️ Empathy Map</h4>
+            <p>Tool visual untuk merangkum apa yang dikatakan, dipikirkan, dirasakan, dan dilakukan pengguna dalam satu kanvas.</p>
+          </div>
+          <div class="concept-card">
+            <h4>👤 User Journey</h4>
+            <p>Peta perjalanan pengguna dari awal hingga akhir berinteraksi dengan produk, termasuk titik nyeri (pain points) di setiap langkah.</p>
+          </div>
+        </div>
+
+        <p>Dalam konteks UI/UX, Empathize membantu kita menghindari jebakan merancang berdasarkan asumsi. Banyak produk gagal bukan karena teknis yang buruk, melainkan karena desainernya tidak cukup mengenal penggunanya. Dengan empati yang kuat, kita bisa membangun produk yang benar-benar berdampak.</p>
+
+        <ul class="resource-list">
+          <li><span class="resource-icon">📄</span> Template Empathy Map — Figma Community</li>
+          <li><span class="resource-icon">📖</span> Panduan User Interview — DigitalBiz Library</li>
+          <li><span class="resource-icon">🎥</span> Contoh Observasi Lapangan — Studi Kasus Tokopedia</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- QUIZ PANEL -->
+    <div class="quiz-panel" id="tab-quiz">
+      <div class="quiz-header">
+        <h3>Quiz — Design Thinking: Empathize</h3>
+        <p>Uji pemahaman Anda tentang tahap Empathize dalam proses Design Thinking.</p>
+      </div>
+      <div class="quiz-question" id="quiz-question">
+        ❓ Apa tujuan utama dari tahap Empathize dalam Design Thinking?
+      </div>
+      <div class="quiz-options" id="quizOptions">
+        <div class="quiz-option" onclick="selectOption(this,'a')">
+          <div class="quiz-letter">A</div>
+          Memahami kebutuhan dan pengalaman nyata pengguna secara mendalam
+        </div>
+        <div class="quiz-option" onclick="selectOption(this,'b')">
+          <div class="quiz-letter">B</div>
+          Membuat wireframe dan prototype secepat mungkin
+        </div>
+        <div class="quiz-option" onclick="selectOption(this,'c')">
+          <div class="quiz-letter">C</div>
+          Menentukan fitur produk berdasarkan tren pasar
+        </div>
+        <div class="quiz-option" onclick="selectOption(this,'d')">
+          <div class="quiz-letter">D</div>
+          Menganalisis kompetitor dan benchmarking desain
+        </div>
+      </div>
+      <button class="btn-quiz-submit" onclick="submitQuiz()">Kirim Jawaban →</button>
+    </div>
+
+    <!-- NAVIGATION BUTTONS -->
+    <div class="video-nav">
+      <button class="btn-nav" onclick="prevLesson()">← Sebelumnya</button>
+      <button class="btn-nav primary" onclick="nextLesson()">Materi Berikutnya →</button>
+    </div>
+
+  </div><!-- /course-content -->
+</div><!-- /course-body -->
+
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+// ── State ──────────────────────────────────────────────────────
+var isPlaying      = false;
+var selectedAnswer = null;
+var progressTimer  = null;
+var currentProgress = 0;
+
+// ── Init user ──────────────────────────────────────────────────
+(function() {
+  var name = localStorage.getItem('userName') || 'Pengguna';
+  var initials = name.split(' ').map(function(w){ return w[0]; }).join('').toUpperCase().slice(0,2) || 'U';
+  document.getElementById('userAvatar').textContent = initials;
+})();
+
+// ── Logout ─────────────────────────────────────────────────────
+function doLogout() {
+  localStorage.removeItem('isLoggedIn');
+  localStorage.removeItem('userName');
+  window.location.href = '../index.html';
+}
+
+// ── Sidebar toggle ─────────────────────────────────────────────
+function toggleModule(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+// ── Phase bar updater ──────────────────────────────────────────
+var phaseMap = {
+  desc_dt_intro:     'empathize',
+  desc_dt_empathize: 'empathize',
+  desc_dt_define:    'define',
+  desc_dt_ideate:    'ideate',
+  desc_dt_prototype: 'prototype',
+  desc_dt_test:      'test'
+};
+
+var phaseOrder = ['empathize','define','ideate','prototype','test'];
+
+function updatePhaseBar(activeKey) {
+  var activePhase = phaseMap[activeKey] || 'empathize';
+  var activeIdx = phaseOrder.indexOf(activePhase);
+  phaseOrder.forEach(function(ph, i) {
+    var el = document.getElementById('phase-' + ph);
+    el.classList.remove('active','done');
+    if (i < activeIdx) el.classList.add('done');
+    else if (i === activeIdx) el.classList.add('active');
+  });
+  // Update connectors
+  var connectors = document.querySelectorAll('.dt-phase-connector');
+  connectors.forEach(function(c, i) {
+    c.classList.toggle('done', i < activeIdx);
+  });
+}
+
+// ── Content data ───────────────────────────────────────────────
+var descriptions = {
+  desc_dt_intro: {
+    title: 'Pengenalan Design Thinking',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step active"><div class="phase-step-icon" style="background:var(--accent-dt-lt);">🔍</div><div class="phase-step-label">Empathize</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">📌</div><div class="phase-step-label">Define</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">💡</div><div class="phase-step-label">Ideate</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🛠️</div><div class="phase-step-label">Prototype</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">✅</div><div class="phase-step-label">Test</div></div>
+      </div>
+      <p>Design Thinking adalah pendekatan inovasi yang berpusat pada manusia (human-centered), dikembangkan oleh IDEO dan dipopulerkan oleh Stanford d.school. Pendekatan ini menggabungkan kepekaan desainer dengan metode ilmiah untuk mencocokkan kebutuhan manusia dengan apa yang secara teknologi dan bisnis memungkinkan.</p>
+      <p>Proses Design Thinking terdiri dari 5 fase yang saling terhubung: Empathize, Define, Ideate, Prototype, dan Test. Meskipun digambarkan secara linear, dalam praktiknya proses ini bersifat iteratif — Anda bisa kembali ke fase sebelumnya kapan saja berdasarkan temuan baru.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>🧠 Human-Centered</h4><p>Berfokus pada manusia di setiap tahap — kebutuhan, emosi, dan konteks pengguna adalah panduan utama solusi.</p></div>
+        <div class="concept-card"><h4>🔄 Iteratif</h4><p>Tidak linier — proses bisa berulang dan kembali ke fase sebelumnya seiring ditemukannya insight baru.</p></div>
+        <div class="concept-card"><h4>⚡ Cepat & Eksperimen</h4><p>Prototype dibuat cepat dan murah. Gagal lebih awal, belajar lebih cepat — fail fast, learn faster.</p></div>
+        <div class="concept-card"><h4>🤝 Kolaboratif</h4><p>Melibatkan tim multidisiplin untuk mendapatkan perspektif beragam dalam memecahkan masalah kompleks.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📚</span> IDEO Design Thinking Guide — ideo.com</li>
+        <li><span class="resource-icon">🏛️</span> Stanford d.school Bootleg Deck — dschool.stanford.edu</li>
+      </ul>
+    `
+  },
+  desc_dt_empathize: {
+    title: 'Empathize: Memahami Pengguna Secara Mendalam',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🔍</div><div class="phase-step-label">Empathize</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-dt-lt);">📌</div><div class="phase-step-label">Define</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">💡</div><div class="phase-step-label">Ideate</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🛠️</div><div class="phase-step-label">Prototype</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">✅</div><div class="phase-step-label">Test</div></div>
+      </div>
+      <p>Tahap <strong>Empathize</strong> adalah pondasi dari seluruh proses Design Thinking. Sebelum merancang solusi, kita harus benar-benar memahami siapa pengguna kita — apa yang mereka rasakan, butuhkan, dan hadapi setiap hari.</p>
+      <p>Empathize bukan survei atau asumsi. Ini adalah proses aktif untuk mendengar, mengamati, dan merasakan pengalaman pengguna secara langsung. Seorang desainer yang baik harus melepaskan ego dan perspektifnya sendiri, lalu masuk ke dalam dunia pengguna.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>🎤 User Interview</h4><p>Wawancara mendalam untuk menggali kebutuhan, motivasi, dan frustrasi pengguna secara langsung.</p></div>
+        <div class="concept-card"><h4>👁️ Observasi Lapangan</h4><p>Amati pengguna dalam konteks nyata untuk menemukan insight tersembunyi yang tidak terungkap lewat wawancara.</p></div>
+        <div class="concept-card"><h4>🗺️ Empathy Map</h4><p>Tool visual untuk merangkum apa yang dikatakan, dipikirkan, dirasakan, dan dilakukan pengguna.</p></div>
+        <div class="concept-card"><h4>👤 User Journey Map</h4><p>Peta perjalanan pengguna dari awal hingga akhir interaksi, termasuk pain points di setiap langkah.</p></div>
+      </div>
+      <p>Dalam konteks UI/UX, Empathize membantu menghindari jebakan merancang berdasarkan asumsi. Dengan empati yang kuat, kita bisa membangun produk yang benar-benar berdampak bagi pengguna.</p>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📄</span> Template Empathy Map — Figma Community</li>
+        <li><span class="resource-icon">📖</span> Panduan User Interview — DigitalBiz Library</li>
+        <li><span class="resource-icon">🎥</span> Studi Kasus Observasi Lapangan — Tokopedia</li>
+      </ul>
+    `
+  },
+  desc_dt_define: {
+    title: 'Define: Merumuskan Problem Statement yang Tepat',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🔍</div><div class="phase-step-label">Empathize</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📌</div><div class="phase-step-label">Define</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-dt-lt);">💡</div><div class="phase-step-label">Ideate</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🛠️</div><div class="phase-step-label">Prototype</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">✅</div><div class="phase-step-label">Test</div></div>
+      </div>
+      <p>Tahap <strong>Define</strong> adalah proses menyaring semua insight dari fase Empathize menjadi sebuah problem statement yang tajam dan bermakna. Problem yang terdefinisi dengan baik adalah separuh dari solusi.</p>
+      <p>Alat utama dalam fase Define adalah <strong>Point of View (POV) Statement</strong> dan <strong>"How Might We" (HMW) Questions</strong>. POV menggabungkan user, kebutuhan, dan insight menjadi satu kalimat yang memandu seluruh proses desain.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>📌 POV Statement</h4><p>Format: [User] membutuhkan [kebutuhan] karena [insight]. Contoh: Ibu muda membutuhkan cara mudah melacak pengeluaran karena ia sering lupa mencatat transaksi kecil.</p></div>
+        <div class="concept-card"><h4>❓ HMW Questions</h4><p>"Bagaimana kita bisa...?" — pertanyaan terbuka yang mengundang kreativitas tanpa membatasi solusi yang mungkin.</p></div>
+        <div class="concept-card"><h4>🎯 Afinity Diagram</h4><p>Mengelompokkan temuan riset ke dalam kategori tema untuk menemukan pola dan prioritas masalah.</p></div>
+        <div class="concept-card"><h4>📊 Insight Synthesis</h4><p>Proses mengubah data mentah dari wawancara dan observasi menjadi pernyataan insight yang actionable.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📄</span> Template POV Statement & HMW — Figma</li>
+        <li><span class="resource-icon">📖</span> Panduan Afinity Diagram — DigitalBiz Library</li>
+      </ul>
+    `
+  },
+  desc_dt_ideate: {
+    title: 'Ideate: Brainstorming Solusi Tanpa Batas',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🔍</div><div class="phase-step-label">Empathize</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📌</div><div class="phase-step-label">Define</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">💡</div><div class="phase-step-label">Ideate</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-dt-lt);">🛠️</div><div class="phase-step-label">Prototype</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">✅</div><div class="phase-step-label">Test</div></div>
+      </div>
+      <p>Tahap <strong>Ideate</strong> adalah momen untuk berpikir liar — kuantitas lebih penting dari kualitas di awal. Tujuannya adalah menghasilkan sebanyak mungkin ide solusi, lalu menyaring yang paling potensial.</p>
+      <p>Kunci ideasi yang sukses adalah menciptakan lingkungan psikologis yang aman, di mana tidak ada ide yang "salah". Setiap ide, bahkan yang tampak mustahil, bisa menjadi batu loncatan menuju solusi terbaik.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>⚡ Brainstorming</h4><p>Sesi generasi ide cepat secara kelompok. Aturan utama: tidak ada kritik, setiap ide disambut.</p></div>
+        <div class="concept-card"><h4>🌿 Mind Mapping</h4><p>Visualisasi koneksi antar ide secara non-linear untuk menemukan hubungan dan kemungkinan tak terduga.</p></div>
+        <div class="concept-card"><h4>🔀 SCAMPER</h4><p>Teknik ideasi: Substitute, Combine, Adapt, Modify, Put to other uses, Eliminate, Reverse.</p></div>
+        <div class="concept-card"><h4>🗳️ Dot Voting</h4><p>Metode demokratis untuk menyaring dan memprioritaskan ide terbaik dari hasil brainstorming.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📄</span> Template Brainstorming Board — FigJam</li>
+        <li><span class="resource-icon">🎥</span> Video: Sesi Ideasi Real-time — DigitalBiz Studio</li>
+      </ul>
+    `
+  },
+  desc_dt_prototype: {
+    title: 'Prototype: Wujudkan Ide Menjadi Sesuatu yang Nyata',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🔍</div><div class="phase-step-label">Empathize</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📌</div><div class="phase-step-label">Define</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">💡</div><div class="phase-step-label">Ideate</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🛠️</div><div class="phase-step-label">Prototype</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-dt-lt);">✅</div><div class="phase-step-label">Test</div></div>
+      </div>
+      <p>Tahap <strong>Prototype</strong> adalah proses membangun representasi kasar dari solusi terbaik Anda — cepat, murah, dan cukup nyata untuk bisa diuji. Prototype tidak harus sempurna; tujuannya adalah belajar.</p>
+      <p>Dalam UI/UX, prototype bisa berupa sketsa kertas, wireframe di Figma, atau mockup interaktif. Pilih tingkat fidelitas yang sesuai dengan pertanyaan yang ingin Anda jawab melalui pengujian.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>✏️ Paper Prototype</h4><p>Sketsa tangan yang cepat dan murah untuk menguji alur dan konsep dasar sebelum masuk ke tool digital.</p></div>
+        <div class="concept-card"><h4>🖥️ Digital Wireframe</h4><p>Representasi struktur dan layout antarmuka menggunakan Figma atau Adobe XD tanpa detail visual.</p></div>
+        <div class="concept-card"><h4>🔗 Interactive Prototype</h4><p>Mockup yang bisa diklik dan dinavigasi untuk mensimulasikan pengalaman pengguna yang sesungguhnya.</p></div>
+        <div class="concept-card"><h4>⚡ Fail Fast</h4><p>Prinsip utama: buat dan uji secepat mungkin. Kegagalan awal adalah data berharga, bukan kekalahan.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">🛠️</span> Figma Prototyping Guide — figma.com/resources</li>
+        <li><span class="resource-icon">📄</span> Template Wireframe Kit — DigitalBiz Library</li>
+      </ul>
+    `
+  },
+  desc_dt_test: {
+    title: 'Test & Iterasi: Uji Solusi, Pelajari, Ulangi',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🔍</div><div class="phase-step-label">Empathize</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📌</div><div class="phase-step-label">Define</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">💡</div><div class="phase-step-label">Ideate</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🛠️</div><div class="phase-step-label">Prototype</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">✅</div><div class="phase-step-label">Test</div></div>
+      </div>
+      <p>Tahap <strong>Test</strong> adalah fase di mana Anda membawa prototype ke hadapan pengguna nyata dan mengamati bagaimana mereka berinteraksi dengannya. Setiap reaksi, kebingungan, dan komentar adalah data berharga.</p>
+      <p>Ingat: Anda bukan sedang menguji pengguna — Anda sedang menguji desain Anda. Jika pengguna mengalami kesulitan, itu bukan salah mereka; itu adalah sinyal bahwa desain perlu diperbaiki.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>🧪 Usability Testing</h4><p>Pengguna diminta menyelesaikan tugas tertentu sambil diobservasi. Rekam kesulitan dan pola yang muncul.</p></div>
+        <div class="concept-card"><h4>🔍 Think Aloud</h4><p>Minta pengguna berbicara keras selama menggunakan prototype untuk mengetahui proses berpikir mereka.</p></div>
+        <div class="concept-card"><h4>📊 Analisis Hasil</h4><p>Kelompokkan temuan pengujian, identifikasi pola, dan tentukan apa yang perlu diubah di iterasi berikutnya.</p></div>
+        <div class="concept-card"><h4>🔄 Iterasi</h4><p>Revisi design berdasarkan temuan testing, lalu uji lagi. Siklus ini terus berulang hingga solusi terbaik ditemukan.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📋</span> Template Usability Testing Script — DigitalBiz</li>
+        <li><span class="resource-icon">🎥</span> Demo Sesi Testing — Studi Kasus Gojek</li>
+        <li><span class="resource-icon">📊</span> Rainbow Spreadsheet Analysis Template</li>
+      </ul>
+    `
+  }
+};
+
+var videoBGs = {
+  desc_dt_intro:     { bg:'linear-gradient(135deg,#0d1117,#1a2744)', label:'Pengenalan<br><span style="color:#f59e0b;">Design Thinking</span>', icon:'💡' },
+  desc_dt_empathize: { bg:'linear-gradient(135deg,#1a0533,#2d0b5e)', label:'EMPATHIZE<br><span style="color:#f59e0b;">Memahami Pengguna</span>', icon:'🔍' },
+  desc_dt_define:    { bg:'linear-gradient(135deg,#0f172a,#1e3a5f)', label:'DEFINE<br><span style="color:#34d399;">Problem Statement</span>', icon:'📌' },
+  desc_dt_ideate:    { bg:'linear-gradient(135deg,#1a1200,#3d2a00)', label:'IDEATE<br><span style="color:#fbbf24;">Brainstorming Solusi</span>', icon:'💡' },
+  desc_dt_prototype: { bg:'linear-gradient(135deg,#0a1628,#1a3a5c)', label:'PROTOTYPE<br><span style="color:#38bdf8;">Wujudkan Ide</span>', icon:'🛠️' },
+  desc_dt_test:      { bg:'linear-gradient(135deg,#0c1a0c,#1a3a1a)', label:'TEST<br><span style="color:#4ade80;">Uji & Iterasi</span>', icon:'✅' }
+};
+
+var videoDurations = {
+  desc_dt_intro:     '12:30',
+  desc_dt_empathize: '20:45',
+  desc_dt_define:    '17:22',
+  desc_dt_ideate:    '23:08',
+  desc_dt_prototype: '28:15',
+  desc_dt_test:      '19:50'
+};
+
+var quizData = {
+  desc_dt_empathize: {
+    q: '❓ Apa tujuan utama dari tahap Empathize dalam Design Thinking?',
+    options: [
+      { v:'a', text:'Memahami kebutuhan dan pengalaman nyata pengguna secara mendalam' },
+      { v:'b', text:'Membuat wireframe dan prototype secepat mungkin' },
+      { v:'c', text:'Menentukan fitur produk berdasarkan tren pasar' },
+      { v:'d', text:'Menganalisis kompetitor dan benchmarking desain' }
+    ],
+    correct: 'a'
+  },
+  desc_dt_define: {
+    q: '❓ Apa format yang benar untuk menulis POV (Point of View) Statement?',
+    options: [
+      { v:'a', text:'[User] membutuhkan [kebutuhan] karena [insight]' },
+      { v:'b', text:'[Fitur] harus [spesifikasi] agar [tujuan bisnis]' },
+      { v:'c', text:'[Tim] akan membuat [produk] dengan [teknologi]' },
+      { v:'d', text:'[Masalah] terjadi karena [biaya] dan [waktu]' }
+    ],
+    correct: 'a'
+  },
+  desc_dt_ideate: {
+    q: '❓ Apa prinsip utama yang harus dipegang saat sesi brainstorming di tahap Ideate?',
+    options: [
+      { v:'a', text:'Hanya ide yang realistis dan murah yang boleh dikemukakan' },
+      { v:'b', text:'Kuantitas ide lebih penting dari kualitas — tidak ada ide yang salah' },
+      { v:'c', text:'Pemimpin tim berhak memveto ide yang dianggap tidak relevan' },
+      { v:'d', text:'Setiap ide harus didukung data sebelum dikemukakan' }
+    ],
+    correct: 'b'
+  },
+  desc_dt_prototype: {
+    q: '❓ Apa yang dimaksud dengan prinsip "Fail Fast" dalam tahap Prototype?',
+    options: [
+      { v:'a', text:'Membuat produk akhir secepat mungkin tanpa pengujian' },
+      { v:'b', text:'Mengabaikan masukan pengguna demi efisiensi waktu' },
+      { v:'c', text:'Membangun dan menguji prototype dengan cepat agar bisa belajar dan memperbaiki lebih awal' },
+      { v:'d', text:'Segera merilis produk ke pasar sebelum kompetitor' }
+    ],
+    correct: 'c'
+  },
+  desc_dt_test: {
+    q: '❓ Dalam usability testing, apa yang sebenarnya sedang diuji?',
+    options: [
+      { v:'a', text:'Kemampuan dan kecerdasan pengguna dalam menggunakan teknologi' },
+      { v:'b', text:'Kualitas desain dan apakah solusi yang dibuat efektif untuk pengguna' },
+      { v:'c', text:'Kecepatan server dan performa teknis aplikasi' },
+      { v:'d', text:'Seberapa banyak fitur yang bisa digunakan pengguna dalam waktu singkat' }
+    ],
+    correct: 'b'
+  },
+  desc_dt_intro: {
+    q: '❓ Bagaimana sifat proses Design Thinking yang membedakannya dari metode desain konvensional?',
+    options: [
+      { v:'a', text:'Linear dan sekuensial — setiap fase harus selesai sebelum ke fase berikutnya' },
+      { v:'b', text:'Berfokus pada teknologi terbaru sebagai titik awal solusi' },
+      { v:'c', text:'Iteratif dan human-centered — proses bisa berulang dan kembali ke fase sebelumnya' },
+      { v:'d', text:'Dijalankan hanya oleh tim desain tanpa melibatkan stakeholder lain' }
+    ],
+    correct: 'c'
+  }
+};
+
+var currentDescKey = 'desc_dt_empathize';
+
+// ── Lesson selection ───────────────────────────────────────────
+function selectLesson(el, title, num, modName, descKey) {
+  document.querySelectorAll('.sidebar-lesson').forEach(function(l){ l.classList.remove('active'); });
+  el.classList.add('active');
+
+  currentDescKey = descKey;
+
+  document.getElementById('lesson-title').textContent = title;
+  document.getElementById('lesson-badge').textContent = 'Fase ' + num;
+  document.getElementById('lesson-module').textContent = modName;
+  document.getElementById('breadcrumb-module').textContent = title;
+  document.getElementById('video-title-overlay').textContent = title;
+
+  // Update description
+  var desc = descriptions[descKey] || { title: title, body: '<p>Konten materi segera hadir.</p>' };
+  document.getElementById('desc-title').textContent = desc.title;
+  document.getElementById('desc-body').innerHTML = desc.body;
+
+  // Update video background
+  var vbg = videoBGs[descKey] || videoBGs['desc_dt_empathize'];
+  var dur  = videoDurations[descKey] || '00:00';
+  document.getElementById('video-bg').style.background = vbg.bg;
+  document.getElementById('video-bg').innerHTML =
+    '<div style="text-align:center;color:#fff;padding:0 40px;z-index:1;position:relative;">' +
+    '<div style="font-size:13px;font-weight:700;letter-spacing:3px;color:#a78bfa;text-transform:uppercase;margin-bottom:12px;">Design Thinking</div>' +
+    '<div style="font-size:34px;font-weight:800;letter-spacing:-1px;line-height:1.2;color:#e9d5ff;">' + vbg.label + '</div>' +
+    '</div>' +
+    '<div style="position:absolute;right:40px;bottom:0;font-size:100px;opacity:0.08;">' + vbg.icon + '</div>' +
+    '<div style="position:absolute;top:-40px;left:-40px;width:200px;height:200px;border-radius:50%;background:rgba(124,58,237,0.15);"></div>';
+
+  document.getElementById('video-time').textContent = '00:00 / ' + dur;
+
+  // Update quiz
+  var qd = quizData[descKey] || quizData['desc_dt_empathize'];
+  document.getElementById('quiz-question').textContent = qd.q;
+  var optsHtml = '';
+  qd.options.forEach(function(o) {
+    optsHtml += '<div class="quiz-option" onclick="selectOption(this,\'' + o.v + '\')">' +
+      '<div class="quiz-letter">' + o.v.toUpperCase() + '</div>' + o.text + '</div>';
+  });
+  document.getElementById('quizOptions').innerHTML = optsHtml;
+  document.querySelector('.btn-quiz-submit').textContent = 'Kirim Jawaban →';
+  document.querySelector('.btn-quiz-submit').style.background = '';
+
+  // Update phase bar
+  updatePhaseBar(descKey);
+
+  // Update progress
+  updateProgress();
+
+  // Reset player
+  stopProgress();
+  isPlaying = false;
+  document.getElementById('videoPlayer').classList.remove('playing');
+  document.getElementById('playBtn').innerHTML = '▶';
+  currentProgress = 0;
+  document.getElementById('video-prog-fill').style.width = '0%';
+  selectedAnswer = null;
+
+  // Reset tabs to desc
+  switchTab('desc', document.querySelector('.content-tab'));
+  document.querySelectorAll('.content-tab')[0].classList.add('active');
+  document.querySelectorAll('.content-tab')[1].classList.remove('active');
+}
+
+function updateProgress() {
+  var done = document.querySelectorAll('.sidebar-lesson.done').length;
+  var total = document.querySelectorAll('.sidebar-lesson').length;
+  var pct = Math.round(done / total * 100);
+  document.getElementById('nav-progress-fill').style.width = pct + '%';
+  document.getElementById('nav-progress-text').textContent = done + '/' + total + ' video';
+}
+
+// ── Video ──────────────────────────────────────────────────────
+function togglePlay() {
+  var player = document.getElementById('videoPlayer');
+  if (isPlaying) {
+    isPlaying = false; player.classList.remove('playing');
+    document.getElementById('playBtn').innerHTML = '▶'; stopProgress();
+  } else {
+    isPlaying = true; player.classList.add('playing');
+    document.getElementById('playBtn').innerHTML = '⏸'; startProgress();
+  }
+}
+
+function startProgress() {
+  stopProgress();
+  var dur = videoDurations[currentDescKey] || '20:45';
+  var parts = dur.split(':');
+  var totalSec = parseInt(parts[0]) * 60 + parseInt(parts[1]);
+  progressTimer = setInterval(function() {
+    currentProgress += 0.5;
+    if (currentProgress >= 100) { currentProgress = 100; stopProgress(); }
+    document.getElementById('video-prog-fill').style.width = currentProgress + '%';
+    var elapsed = Math.round(totalSec * currentProgress / 100);
+    var m = Math.floor(elapsed/60), s = elapsed % 60;
+    var tm = Math.floor(totalSec/60), ts = totalSec % 60;
+    document.getElementById('video-time').textContent = pad(m)+':'+pad(s)+' / '+pad(tm)+':'+pad(ts);
+  }, 300);
+}
+
+function stopProgress() { if (progressTimer) { clearInterval(progressTimer); progressTimer = null; } }
+function pad(n) { return n < 10 ? '0'+n : n; }
+
+// ── Tabs ──────────────────────────────────────────────────────
+function switchTab(tab, el) {
+  document.querySelectorAll('.content-tab').forEach(function(t){ t.classList.remove('active'); });
+  if (el) el.classList.add('active');
+  var dp = document.getElementById('tab-desc');
+  var qp = document.getElementById('tab-quiz');
+  if (tab === 'desc') {
+    dp.classList.remove('hidden'); dp.style.display = '';
+    qp.classList.remove('show');
+  } else {
+    dp.classList.add('hidden');
+    qp.classList.add('show');
+    selectedAnswer = null;
+    document.querySelectorAll('.quiz-option').forEach(function(o){ o.className='quiz-option'; });
+    document.querySelector('.btn-quiz-submit').textContent = 'Kirim Jawaban →';
+    document.querySelector('.btn-quiz-submit').style.background = '';
+  }
+}
+
+// ── Quiz ──────────────────────────────────────────────────────
+function openQuiz(mod) {
+  switchTab('quiz', document.querySelectorAll('.content-tab')[1]);
+  document.querySelectorAll('.content-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.content-tab')[1].classList.add('active');
+}
+
+function selectOption(el, val) {
+  if (selectedAnswer) return;
+  selectedAnswer = val; el.classList.add('selected');
+}
+
+function submitQuiz() {
+  if (!selectedAnswer) { alert('Pilih salah satu jawaban terlebih dahulu.'); return; }
+  var qd = quizData[currentDescKey] || quizData['desc_dt_empathize'];
+  var opts = document.querySelectorAll('.quiz-option');
+  opts.forEach(function(o) {
+    var letter = o.querySelector('.quiz-letter').textContent.toLowerCase();
+    if (letter === qd.correct) { o.classList.add('correct'); }
+    else if (letter === selectedAnswer && selectedAnswer !== qd.correct) { o.classList.add('wrong'); }
+    o.style.pointerEvents = 'none';
+  });
+  var btn = document.querySelector('.btn-quiz-submit');
+  if (selectedAnswer === qd.correct) {
+    btn.textContent = '✓ Jawaban Benar!'; btn.style.background = '#22c55e';
+  } else {
+    btn.textContent = '✗ Coba Lagi'; btn.style.background = '#ef4444';
+  }
+}
+
+// ── Navigation ────────────────────────────────────────────────
+function nextLesson() {
+  var lessons = Array.from(document.querySelectorAll('.sidebar-lesson'));
+  var activeIdx = lessons.findIndex(function(l){ return l.classList.contains('active'); });
+  if (activeIdx < lessons.length - 1) {
+    // Mark current as done
+    lessons[activeIdx].classList.remove('active');
+    lessons[activeIdx].classList.add('done');
+    lessons[activeIdx].querySelector('.lesson-icon').textContent = '✓';
+    lessons[activeIdx + 1].click();
+  } else {
+    alert('🎉 Selamat! Anda telah menyelesaikan semua materi Design Thinking. Anda siap menjadi design thinker!');
+  }
+}
+
+function prevLesson() {
+  var lessons = Array.from(document.querySelectorAll('.sidebar-lesson'));
+  var activeIdx = lessons.findIndex(function(l){ return l.classList.contains('active'); });
+  if (activeIdx > 0) { lessons[activeIdx - 1].click(); }
+}
+
+// ── Init ──────────────────────────────────────────────────────
+updateProgress();
+updatePhaseBar('desc_dt_empathize');
+</script>
+</body>
+</html>
