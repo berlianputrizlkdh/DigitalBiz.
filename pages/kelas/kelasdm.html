@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Marketing — DigitalBiz Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/kelas/kelasdm.css">
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<nav class="topnav" id="topnav">
+  <button class="topnav__back-btn" onclick="window.history.back()" title="Kembali ke Dashboard">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 12L6 8l4-4"/>
+    </svg>
+    Dashboard
+  </button>
+
+  <a href="dashboard.html" class="topnav__logo">DigitalBiz<span>.</span></a>
+
+  <div class="topnav__breadcrumb">
+    <strong id="breadcrumb-course">Digital Marketing</strong>
+    <span class="sep">›</span>
+    <span id="breadcrumb-module" style="color:#6b7280;">Pengenalan Digital Marketing</span>
+  </div>
+
+  <div class="topnav__progress-wrap">
+    <div class="topnav__progress-bar">
+      <div class="topnav__progress-fill" id="nav-progress-fill" style="width:20%"></div>
+    </div>
+    <div class="topnav__progress-text" id="nav-progress-text">1/5 video</div>
+  </div>
+
+  <div style="flex:1;"></div>
+
+  <div class="topnav__actions">
+    <div class="topnav__avatar" id="userAvatar">U</div>
+    <button class="topnav__logout-btn" onclick="doLogout()">Keluar</button>
+  </div>
+</nav>
+
+<!-- ============================================================
+     COURSE BODY
+     ============================================================ -->
+<div class="course-body">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="courseSidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-course-tag">Marketing</div>
+      <div class="sidebar-course-title">Digital Marketing</div>
+      <div class="sidebar-progress">
+        <div class="sidebar-progress-bar">
+          <div class="sidebar-progress-fill" style="width:20%"></div>
+        </div>
+        <div class="sidebar-progress-text">1 dari 5 video selesai</div>
+      </div>
+    </div>
+
+    <div class="sidebar-label">Modul Digital Marketing</div>
+
+    <!-- MODULE 1: Awareness -->
+    <div class="sidebar-module open" id="mod-dm1">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-dm1')">
+        MODUL 1 · AWARENESS
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson done" onclick="selectLesson(this,'Pengenalan Digital Marketing','1.1','Awareness','desc_dm_intro')">
+          <div class="lesson-icon">✓</div>
+          <div class="lesson-name">Pengenalan Digital Marketing</div>
+          <div class="lesson-duration">14:20</div>
+        </div>
+        <div class="sidebar-lesson active" onclick="selectLesson(this,'SEO — Optimasi Mesin Pencari','1.2','Awareness','desc_dm_seo')">
+          <div class="lesson-icon">▶</div>
+          <div class="lesson-name">SEO — Optimasi Mesin Pencari</div>
+          <div class="lesson-duration">22:10</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 2: Engagement -->
+    <div class="sidebar-module open" id="mod-dm2">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-dm2')">
+        MODUL 2 · ENGAGEMENT
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson" onclick="selectLesson(this,'Social Media Marketing','2.1','Engagement','desc_dm_sosmed')">
+          <div class="lesson-icon">2</div>
+          <div class="lesson-name">Social Media Marketing</div>
+          <div class="lesson-duration">18:35</div>
+        </div>
+        <div class="sidebar-quiz" onclick="openQuiz('dm-engagement')">
+          <div class="quiz-icon">📝</div>
+          <div class="quiz-name">Quiz Modul 1 &amp; 2</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 3: Conversion -->
+    <div class="sidebar-module" id="mod-dm3">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-dm3')">
+        MODUL 3 · CONVERSION
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson" onclick="selectLesson(this,'Email Marketing & Funnels','3.1','Conversion','desc_dm_email')">
+          <div class="lesson-icon">3</div>
+          <div class="lesson-name">Email Marketing &amp; Funnels</div>
+          <div class="lesson-duration">25:00</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 4: Retention -->
+    <div class="sidebar-module" id="mod-dm4">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-dm4')">
+        MODUL 4 · RETENTION
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson" onclick="selectLesson(this,'Content Marketing & Analytics','4.1','Retention','desc_dm_content')">
+          <div class="lesson-icon">4</div>
+          <div class="lesson-name">Content Marketing &amp; Analytics</div>
+          <div class="lesson-duration">30:10</div>
+        </div>
+        <div class="sidebar-quiz" onclick="openQuiz('dm-retention')">
+          <div class="quiz-icon">📝</div>
+          <div class="quiz-name">Quiz Modul 3 &amp; 4</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 5: Advocacy -->
+    <div class="sidebar-module" id="mod-dm5">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-dm5')">
+        MODUL 5 · ADVOCACY
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson" onclick="selectLesson(this,'Paid Ads & Growth Strategy','5.1','Advocacy','desc_dm_ads')">
+          <div class="lesson-icon">5</div>
+          <div class="lesson-name">Paid Ads &amp; Growth Strategy</div>
+          <div class="lesson-duration">21:45</div>
+        </div>
+        <div class="sidebar-quiz" onclick="openQuiz('dm-final')">
+          <div class="quiz-icon">📝</div>
+          <div class="quiz-name">Quiz Final</div>
+        </div>
+      </div>
+    </div>
+
+  </aside><!-- /sidebar -->
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <div class="course-content">
+
+    <!-- Digital Marketing Funnel Phase Bar -->
+    <div class="dt-phase-bar" id="phaseBar">
+      <div class="dt-phase-item done" id="phase-awareness">
+        <div class="dt-phase-circle">📣</div>
+        <div class="dt-phase-name">Awareness</div>
+      </div>
+      <div class="dt-phase-connector done"></div>
+      <div class="dt-phase-item active" id="phase-engagement">
+        <div class="dt-phase-circle">💬</div>
+        <div class="dt-phase-name">Engagement</div>
+      </div>
+      <div class="dt-phase-connector"></div>
+      <div class="dt-phase-item" id="phase-conversion">
+        <div class="dt-phase-circle">🎯</div>
+        <div class="dt-phase-name">Conversion</div>
+      </div>
+      <div class="dt-phase-connector"></div>
+      <div class="dt-phase-item" id="phase-retention">
+        <div class="dt-phase-circle">🔁</div>
+        <div class="dt-phase-name">Retention</div>
+      </div>
+      <div class="dt-phase-connector"></div>
+      <div class="dt-phase-item" id="phase-advocacy">
+        <div class="dt-phase-circle">⭐</div>
+        <div class="dt-phase-name">Advocacy</div>
+      </div>
+    </div>
+
+    <!-- Course Top Info -->
+    <div class="course-top">
+      <div class="course-content-title" id="lesson-title">SEO — Optimasi Mesin Pencari</div>
+      <div class="course-content-meta">
+        <span class="lesson-badge" id="lesson-badge">Modul 1.2</span>
+        <span class="meta-dot"></span>
+        <span id="lesson-module">Awareness</span>
+      </div>
+    </div>
+
+    <!-- Video Player -->
+    <div class="video-player" id="videoPlayer" onclick="togglePlay()">
+      <div class="video-bg" id="video-bg"
+        style="background:linear-gradient(135deg,#0c1a2e,#0a3d62);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+        <div style="text-align:center;color:#fff;padding:0 40px;z-index:1;position:relative;">
+          <div style="font-size:13px;font-weight:700;letter-spacing:3px;color:#38bdf8;text-transform:uppercase;margin-bottom:12px;">Digital Marketing · Modul 1</div>
+          <div style="font-size:34px;font-weight:800;letter-spacing:-1px;line-height:1.2;color:#e0f2fe;" id="video-title-label">SEO<br><span style="color:#f59e0b;">Optimasi Mesin Pencari</span></div>
+        </div>
+        <div style="position:absolute;right:40px;bottom:0;font-size:100px;opacity:0.08;">🔍</div>
+        <div style="position:absolute;top:-40px;left:-40px;width:200px;height:200px;border-radius:50%;background:rgba(14,165,233,0.15);"></div>
+        <div style="position:absolute;bottom:-60px;right:100px;width:160px;height:160px;border-radius:50%;background:rgba(245,158,11,0.08);"></div>
+      </div>
+      <div class="video-overlay">
+        <button class="video-play-btn" id="playBtn">▶</button>
+      </div>
+      <div class="video-bottom">
+        <div class="video-title-overlay" id="video-title-overlay">SEO — Optimasi Mesin Pencari</div>
+        <div class="video-controls">
+          <div class="video-progress" onclick="event.stopPropagation()">
+            <div class="video-progress-fill" id="video-prog-fill" style="width:0%"></div>
+          </div>
+          <div class="video-time" id="video-time">00:00 / 22:10</div>
+          <button class="video-vol" onclick="event.stopPropagation()">🔊</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="content-tabs">
+      <div class="content-tab active" onclick="switchTab('desc',this)">Deskripsi</div>
+      <div class="content-tab" onclick="switchTab('quiz',this)">Quiz</div>
+    </div>
+
+    <!-- DESCRIPTION PANEL -->
+    <div class="desc-panel" id="tab-desc">
+      <div class="desc-title" id="desc-title">SEO: Strategi Organik untuk Mendatangkan Trafik</div>
+      <div class="desc-body" id="desc-body">
+
+        <!-- Funnel Phase Overview -->
+        <div class="phase-steps">
+          <div class="phase-step done">
+            <div class="phase-step-icon" style="background:#f0fdf4;">📣</div>
+            <div class="phase-step-label">Awareness</div>
+          </div>
+          <div class="phase-step current">
+            <div class="phase-step-icon" style="background:var(--accent-dm-lt);">💬</div>
+            <div class="phase-step-label">Engagement</div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-step-icon" style="background:#f8fafc;">🎯</div>
+            <div class="phase-step-label">Conversion</div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-step-icon" style="background:#f8fafc;">🔁</div>
+            <div class="phase-step-label">Retention</div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-step-icon" style="background:#f8fafc;">⭐</div>
+            <div class="phase-step-label">Advocacy</div>
+          </div>
+        </div>
+
+        <p><strong>SEO (Search Engine Optimization)</strong> adalah strategi untuk meningkatkan visibilitas website di halaman hasil mesin pencari seperti Google secara organik — tanpa biaya iklan. Di era digital marketing, SEO adalah fondasi yang menentukan seberapa mudah calon pelanggan menemukan bisnis Anda.</p>
+
+        <p>SEO bukan sekadar memasukkan kata kunci sebanyak-banyaknya. Ini adalah kombinasi teknikal, konten berkualitas, dan otoritas domain yang bekerja bersama untuk memenangkan kepercayaan mesin pencari dan audiens.</p>
+
+        <div class="key-concepts">
+          <div class="concept-card">
+            <h4>🔑 Keyword Research</h4>
+            <p>Identifikasi kata kunci yang dicari target audiens menggunakan tools seperti Google Keyword Planner, Ahrefs, atau Ubersuggest.</p>
+          </div>
+          <div class="concept-card">
+            <h4>📄 On-Page SEO</h4>
+            <p>Optimasi elemen di dalam halaman: judul, meta description, heading, URL, internal link, dan kecepatan halaman.</p>
+          </div>
+          <div class="concept-card">
+            <h4>🔗 Off-Page SEO</h4>
+            <p>Membangun otoritas domain melalui backlink berkualitas, brand mention, dan strategi digital PR.</p>
+          </div>
+          <div class="concept-card">
+            <h4>⚙️ Technical SEO</h4>
+            <p>Pastikan website bisa di-crawl dan di-index: sitemap XML, robots.txt, schema markup, dan mobile-friendly.</p>
+          </div>
+        </div>
+
+        <p>Dengan strategi SEO yang tepat, bisnis Anda bisa muncul di halaman pertama Google untuk kata kunci relevan — mendatangkan trafik organik yang konsisten dan bertarget tanpa harus terus-menerus mengeluarkan biaya iklan.</p>
+
+        <ul class="resource-list">
+          <li><span class="resource-icon">🛠️</span> Google Search Console — search.google.com/search-console</li>
+          <li><span class="resource-icon">📖</span> Panduan SEO Lengkap — DigitalBiz Library</li>
+          <li><span class="resource-icon">🎥</span> Studi Kasus SEO Tokopedia & Traveloka</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- QUIZ PANEL -->
+    <div class="quiz-panel" id="tab-quiz">
+      <div class="quiz-header">
+        <h3>Quiz — Digital Marketing: SEO</h3>
+        <p>Uji pemahaman Anda tentang strategi SEO dalam Digital Marketing.</p>
+      </div>
+      <div class="quiz-question" id="quiz-question">
+        ❓ Apa yang dimaksud dengan SEO dalam konteks digital marketing?
+      </div>
+      <div class="quiz-options" id="quizOptions">
+        <div class="quiz-option" onclick="selectOption(this,'a')">
+          <div class="quiz-letter">A</div>
+          Strategi berbayar untuk menampilkan iklan di halaman pertama Google
+        </div>
+        <div class="quiz-option" onclick="selectOption(this,'b')">
+          <div class="quiz-letter">B</div>
+          Optimasi website agar muncul di hasil pencarian organik mesin pencari
+        </div>
+        <div class="quiz-option" onclick="selectOption(this,'c')">
+          <div class="quiz-letter">C</div>
+          Teknik untuk mempercepat loading halaman website secara teknis
+        </div>
+        <div class="quiz-option" onclick="selectOption(this,'d')">
+          <div class="quiz-letter">D</div>
+          Program afiliasi untuk mendapatkan komisi dari penjualan produk
+        </div>
+      </div>
+      <button class="btn-quiz-submit" onclick="submitQuiz()">Kirim Jawaban →</button>
+    </div>
+
+    <!-- NAVIGATION BUTTONS -->
+    <div class="video-nav">
+      <button class="btn-nav" onclick="prevLesson()">← Sebelumnya</button>
+      <button class="btn-nav primary" onclick="nextLesson()">Materi Berikutnya →</button>
+    </div>
+
+  </div><!-- /course-content -->
+</div><!-- /course-body -->
+
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+// ── State ──────────────────────────────────────────────────────
+var isPlaying      = false;
+var selectedAnswer = null;
+var progressTimer  = null;
+var currentProgress = 0;
+
+// ── Init user ──────────────────────────────────────────────────
+(function() {
+  var name = localStorage.getItem('userName') || 'Pengguna';
+  var initials = name.split(' ').map(function(w){ return w[0]; }).join('').toUpperCase().slice(0,2) || 'U';
+  document.getElementById('userAvatar').textContent = initials;
+})();
+
+// ── Logout ─────────────────────────────────────────────────────
+function doLogout() {
+  localStorage.removeItem('isLoggedIn');
+  localStorage.removeItem('userName');
+  window.location.href = '../index.html';
+}
+
+// ── Sidebar toggle ─────────────────────────────────────────────
+function toggleModule(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+// ── Phase bar updater ──────────────────────────────────────────
+var phaseMap = {
+  desc_dm_intro:   'awareness',
+  desc_dm_seo:     'awareness',
+  desc_dm_sosmed:  'engagement',
+  desc_dm_email:   'conversion',
+  desc_dm_content: 'retention',
+  desc_dm_ads:     'advocacy'
+};
+
+var phaseOrder = ['awareness','engagement','conversion','retention','advocacy'];
+
+function updatePhaseBar(activeKey) {
+  var activePhase = phaseMap[activeKey] || 'awareness';
+  var activeIdx = phaseOrder.indexOf(activePhase);
+  phaseOrder.forEach(function(ph, i) {
+    var el = document.getElementById('phase-' + ph);
+    el.classList.remove('active','done');
+    if (i < activeIdx) el.classList.add('done');
+    else if (i === activeIdx) el.classList.add('active');
+  });
+  var connectors = document.querySelectorAll('.dt-phase-connector');
+  connectors.forEach(function(c, i) {
+    c.classList.toggle('done', i < activeIdx);
+  });
+}
+
+// ── Content data ───────────────────────────────────────────────
+var descriptions = {
+  desc_dm_intro: {
+    title: 'Pengenalan Digital Marketing: Ekosistem & Strategi',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step active"><div class="phase-step-icon" style="background:var(--accent-dm-lt);">📣</div><div class="phase-step-label">Awareness</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">💬</div><div class="phase-step-label">Engagement</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🎯</div><div class="phase-step-label">Conversion</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🔁</div><div class="phase-step-label">Retention</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">⭐</div><div class="phase-step-label">Advocacy</div></div>
+      </div>
+      <p>Digital marketing adalah seluruh upaya pemasaran yang menggunakan media digital dan internet untuk menjangkau, melibatkan, dan mengkonversi audiens menjadi pelanggan. Di era sekarang, bisnis yang tidak hadir secara digital akan tertinggal — tidak peduli seberapa bagus produk atau layanannya.</p>
+      <p>Ekosistem digital marketing mencakup berbagai kanal: Search Engine (SEO & SEM), Social Media, Email, Content, Affiliate, dan Paid Advertising. Kunci sukses adalah memilih kanal yang tepat sesuai target audiens dan tujuan bisnis.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>🌐 Owned Media</h4><p>Aset digital yang Anda kontrol penuh: website, blog, email list, dan akun media sosial resmi bisnis Anda.</p></div>
+        <div class="concept-card"><h4>💰 Paid Media</h4><p>Iklan berbayar: Google Ads, Meta Ads, TikTok Ads. Memberikan jangkauan cepat namun membutuhkan anggaran.</p></div>
+        <div class="concept-card"><h4>📢 Earned Media</h4><p>Eksposur organik: ulasan pelanggan, share konten, word of mouth. Paling terpercaya namun butuh waktu membangunnya.</p></div>
+        <div class="concept-card"><h4>📊 Marketing Funnel</h4><p>Perjalanan pelanggan dari Awareness → Engagement → Conversion → Retention → Advocacy. Setiap tahap butuh strategi berbeda.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📚</span> Digital Marketing Institute — digitalmarketinginstitute.com</li>
+        <li><span class="resource-icon">🏛️</span> Google Digital Garage — learndigital.withgoogle.com</li>
+      </ul>
+    `
+  },
+  desc_dm_seo: {
+    title: 'SEO: Strategi Organik untuk Mendatangkan Trafik',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📣</div><div class="phase-step-label">Awareness</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-dm-lt);">💬</div><div class="phase-step-label">Engagement</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🎯</div><div class="phase-step-label">Conversion</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🔁</div><div class="phase-step-label">Retention</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">⭐</div><div class="phase-step-label">Advocacy</div></div>
+      </div>
+      <p><strong>SEO (Search Engine Optimization)</strong> adalah strategi untuk meningkatkan visibilitas website di hasil pencarian mesin pencari secara organik. Di era digital marketing, SEO adalah fondasi yang menentukan seberapa mudah calon pelanggan menemukan bisnis Anda.</p>
+      <p>SEO bukan sekadar memasukkan kata kunci sebanyak-banyaknya. Ini adalah kombinasi teknikal, konten berkualitas, dan otoritas domain yang bekerja bersama untuk memenangkan kepercayaan mesin pencari dan audiens.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>🔑 Keyword Research</h4><p>Identifikasi kata kunci yang dicari target audiens menggunakan tools seperti Google Keyword Planner, Ahrefs, atau Ubersuggest.</p></div>
+        <div class="concept-card"><h4>📄 On-Page SEO</h4><p>Optimasi elemen di dalam halaman: judul, meta description, heading, URL, internal link, dan kecepatan halaman.</p></div>
+        <div class="concept-card"><h4>🔗 Off-Page SEO</h4><p>Membangun otoritas domain melalui backlink berkualitas, brand mention, dan strategi digital PR.</p></div>
+        <div class="concept-card"><h4>⚙️ Technical SEO</h4><p>Pastikan website bisa di-crawl dan di-index: sitemap XML, robots.txt, schema markup, dan mobile-friendly.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">🛠️</span> Google Search Console — search.google.com/search-console</li>
+        <li><span class="resource-icon">📖</span> Panduan SEO Lengkap — DigitalBiz Library</li>
+        <li><span class="resource-icon">🎥</span> Studi Kasus SEO: Tokopedia & Traveloka</li>
+      </ul>
+    `
+  },
+  desc_dm_sosmed: {
+    title: 'Social Media Marketing: Bangun Komunitas & Brand',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📣</div><div class="phase-step-label">Awareness</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">💬</div><div class="phase-step-label">Engagement</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-dm-lt);">🎯</div><div class="phase-step-label">Conversion</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🔁</div><div class="phase-step-label">Retention</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">⭐</div><div class="phase-step-label">Advocacy</div></div>
+      </div>
+      <p><strong>Social Media Marketing (SMM)</strong> adalah penggunaan platform media sosial untuk membangun brand, meningkatkan engagement, dan mendorong konversi. Dengan lebih dari 190 juta pengguna internet aktif di Indonesia, media sosial adalah kanal pemasaran yang tidak bisa diabaikan.</p>
+      <p>Kunci SMM yang sukses bukan sekedar posting konten setiap hari. Dibutuhkan strategi konten yang terencana, pemahaman algoritma masing-masing platform, dan kemampuan membangun komunitas yang loyal.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>📱 Platform Strategy</h4><p>Pilih platform sesuai target audiens: Instagram & TikTok untuk visual & Gen Z, LinkedIn untuk B2B, YouTube untuk edukasi.</p></div>
+        <div class="concept-card"><h4>🗓️ Content Calendar</h4><p>Rencanakan konten secara konsisten: pillar content, posting frequency, mix format (video, carousel, story, reel).</p></div>
+        <div class="concept-card"><h4>🤝 Influencer Marketing</h4><p>Kolaborasi dengan kreator konten yang relevan untuk memperluas jangkauan brand secara autentik.</p></div>
+        <div class="concept-card"><h4>📈 Social Analytics</h4><p>Pantau metrik: reach, impressions, engagement rate, follower growth, dan click-through rate untuk mengoptimalkan strategi.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📊</span> Meta Business Suite — business.facebook.com</li>
+        <li><span class="resource-icon">🎨</span> Template Content Calendar — DigitalBiz Library</li>
+        <li><span class="resource-icon">🎥</span> Studi Kasus: Strategi TikTok Brand Lokal Indonesia</li>
+      </ul>
+    `
+  },
+  desc_dm_email: {
+    title: 'Email Marketing & Funnels: Konversi dengan Otomasi',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📣</div><div class="phase-step-label">Awareness</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">💬</div><div class="phase-step-label">Engagement</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🎯</div><div class="phase-step-label">Conversion</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-dm-lt);">🔁</div><div class="phase-step-label">Retention</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">⭐</div><div class="phase-step-label">Advocacy</div></div>
+      </div>
+      <p><strong>Email Marketing</strong> adalah salah satu kanal digital marketing dengan ROI tertinggi — rata-rata $36 untuk setiap $1 yang diinvestasikan. Dikombinasikan dengan sales funnel yang terstruktur, email marketing bisa mengotomasi perjalanan pelanggan dari prospek hingga pembeli setia.</p>
+      <p>Kunci email marketing yang efektif adalah segmentasi list, personalisasi konten, dan otomasi alur berdasarkan perilaku pengguna — bukan hanya blast email ke semua subscriber.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>🧲 Lead Magnet</h4><p>Tawarkan sesuatu yang bernilai (ebook, template, webinar gratis) untuk mendapatkan alamat email calon pelanggan.</p></div>
+        <div class="concept-card"><h4>🔄 Email Automation</h4><p>Buat urutan email otomatis: welcome series, nurture sequence, abandoned cart, dan post-purchase follow-up.</p></div>
+        <div class="concept-card"><h4>✂️ Segmentasi List</h4><p>Kelompokkan subscriber berdasarkan perilaku, demografi, atau tahap funnel untuk mengirim pesan yang relevan.</p></div>
+        <div class="concept-card"><h4>📊 A/B Testing</h4><p>Uji subject line, konten, CTA, dan waktu pengiriman untuk terus meningkatkan open rate dan click-through rate.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📧</span> Mailchimp / Klaviyo — Platform Email Marketing Populer</li>
+        <li><span class="resource-icon">📄</span> Template Email Sequence — DigitalBiz Library</li>
+        <li><span class="resource-icon">🎥</span> Demo: Membangun Funnel Otomatis di Mailchimp</li>
+      </ul>
+    `
+  },
+  desc_dm_content: {
+    title: 'Content Marketing & Analytics: Data-Driven Strategy',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📣</div><div class="phase-step-label">Awareness</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">💬</div><div class="phase-step-label">Engagement</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🎯</div><div class="phase-step-label">Conversion</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🔁</div><div class="phase-step-label">Retention</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-dm-lt);">⭐</div><div class="phase-step-label">Advocacy</div></div>
+      </div>
+      <p><strong>Content Marketing</strong> adalah pendekatan pemasaran jangka panjang yang berfokus pada pembuatan konten bernilai untuk menarik, melibatkan, dan mempertahankan audiens. Digabungkan dengan analytics yang kuat, strategi ini menjadi mesin pertumbuhan bisnis yang berkelanjutan.</p>
+      <p>Konten bukan hanya artikel blog — ia mencakup video, podcast, infografis, webinar, case study, dan lebih banyak lagi. Kuncinya: setiap konten harus menjawab pertanyaan atau memecahkan masalah spesifik target audiens Anda.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>🗺️ Content Strategy</h4><p>Rencanakan topik berdasarkan keyword gap analysis, pertanyaan audiens, dan tahap funnel yang ingin disasar.</p></div>
+        <div class="concept-card"><h4>📹 Video Marketing</h4><p>Video adalah format dengan engagement tertinggi. Optimalkan untuk YouTube, Reels, TikTok, dan LinkedIn Video.</p></div>
+        <div class="concept-card"><h4>📊 Google Analytics 4</h4><p>Lacak perilaku pengunjung, sumber trafik, konversi, dan customer journey menggunakan GA4 dan Search Console.</p></div>
+        <div class="concept-card"><h4>🎯 KPI & Reporting</h4><p>Tentukan KPI yang relevan: organic traffic, bounce rate, time on page, conversion rate, dan customer lifetime value.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📊</span> Google Analytics 4 — analytics.google.com</li>
+        <li><span class="resource-icon">📄</span> Template Content Audit — DigitalBiz Library</li>
+        <li><span class="resource-icon">🎥</span> Workshop: GA4 untuk Bisnis — DigitalBiz Studio</li>
+      </ul>
+    `
+  },
+  desc_dm_ads: {
+    title: 'Paid Ads & Growth Strategy: Skalakan Bisnis Anda',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📣</div><div class="phase-step-label">Awareness</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">💬</div><div class="phase-step-label">Engagement</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🎯</div><div class="phase-step-label">Conversion</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🔁</div><div class="phase-step-label">Retention</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">⭐</div><div class="phase-step-label">Advocacy</div></div>
+      </div>
+      <p><strong>Paid Advertising</strong> memungkinkan bisnis menjangkau audiens yang sangat spesifik dengan cepat dan terukur. Dikombinasikan dengan growth strategy yang solid, paid ads menjadi akselerator yang kuat untuk bisnis yang sudah memiliki product-market fit.</p>
+      <p>Ingat: paid ads adalah akselerator, bukan fondasi. Jika funnel organik dan produk Anda belum siap, membakar anggaran iklan hanya akan mempercepat kerugian. Mulailah dengan strategi organik yang terbukti, lalu scale dengan paid.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>🔍 Google Ads</h4><p>Search, Display, Shopping, dan YouTube Ads. Ideal untuk menjangkau pengguna yang sudah memiliki intent (niat beli).</p></div>
+        <div class="concept-card"><h4>📱 Meta Ads</h4><p>Facebook & Instagram Ads dengan targeting demografis dan behavioral yang sangat detail. Efektif untuk awareness dan retargeting.</p></div>
+        <div class="concept-card"><h4>🎵 TikTok Ads</h4><p>Platform dengan pertumbuhan tercepat di Indonesia. Efektif untuk brand awareness dan produk consumer dengan visual menarik.</p></div>
+        <div class="concept-card"><h4>📈 Growth Hacking</h4><p>Strategi pertumbuhan berbasis eksperimen cepat: A/B testing landing page, optimasi ROAS, dan scaling budget secara sistematis.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">💰</span> Google Ads — ads.google.com</li>
+        <li><span class="resource-icon">📱</span> Meta Ads Manager — business.facebook.com/adsmanager</li>
+        <li><span class="resource-icon">📊</span> Template Media Planning & Budget Allocation</li>
+      </ul>
+    `
+  }
+};
+
+var videoBGs = {
+  desc_dm_intro:   { bg:'linear-gradient(135deg,#020617,#0c1a3d)', label:'DIGITAL MARKETING<br><span style="color:#f59e0b;">Ekosistem & Strategi</span>', icon:'🌐' },
+  desc_dm_seo:     { bg:'linear-gradient(135deg,#0c1a2e,#0a3d62)', label:'SEO<br><span style="color:#f59e0b;">Optimasi Mesin Pencari</span>', icon:'🔍' },
+  desc_dm_sosmed:  { bg:'linear-gradient(135deg,#0d1b2a,#1a3a5c)', label:'SOCIAL MEDIA<br><span style="color:#38bdf8;">Marketing & Community</span>', icon:'📱' },
+  desc_dm_email:   { bg:'linear-gradient(135deg,#0a1628,#0f2d4a)', label:'EMAIL MARKETING<br><span style="color:#4ade80;">Funnels & Otomasi</span>', icon:'📧' },
+  desc_dm_content: { bg:'linear-gradient(135deg,#1a0a00,#3d1a00)', label:'CONTENT MARKETING<br><span style="color:#fbbf24;">Analytics & Strategy</span>', icon:'📊' },
+  desc_dm_ads:     { bg:'linear-gradient(135deg,#0a001a,#1a0038)', label:'PAID ADS<br><span style="color:#a78bfa;">Growth Strategy</span>', icon:'🚀' }
+};
+
+var videoDurations = {
+  desc_dm_intro:   '14:20',
+  desc_dm_seo:     '22:10',
+  desc_dm_sosmed:  '18:35',
+  desc_dm_email:   '25:00',
+  desc_dm_content: '30:10',
+  desc_dm_ads:     '21:45'
+};
+
+var quizData = {
+  desc_dm_seo: {
+    q: '❓ Apa yang dimaksud dengan SEO dalam konteks digital marketing?',
+    options: [
+      { v:'a', text:'Strategi berbayar untuk menampilkan iklan di halaman pertama Google' },
+      { v:'b', text:'Optimasi website agar muncul di hasil pencarian organik mesin pencari' },
+      { v:'c', text:'Teknik untuk mempercepat loading halaman website secara teknis' },
+      { v:'d', text:'Program afiliasi untuk mendapatkan komisi dari penjualan produk' }
+    ],
+    correct: 'b'
+  },
+  desc_dm_intro: {
+    q: '❓ Manakah yang termasuk kategori "Earned Media" dalam ekosistem digital marketing?',
+    options: [
+      { v:'a', text:'Iklan Google Ads yang ditayangkan di halaman pencarian' },
+      { v:'b', text:'Postingan di akun Instagram resmi brand' },
+      { v:'c', text:'Ulasan positif pelanggan dan share konten secara organik' },
+      { v:'d', text:'Email newsletter yang dikirimkan ke subscriber' }
+    ],
+    correct: 'c'
+  },
+  desc_dm_sosmed: {
+    q: '❓ Metrik manakah yang paling tepat untuk mengukur keberhasilan engagement di media sosial?',
+    options: [
+      { v:'a', text:'Jumlah follower total akun media sosial brand' },
+      { v:'b', text:'Anggaran iklan yang dihabiskan per bulan' },
+      { v:'c', text:'Engagement rate: persentase interaksi (like, komentar, share) terhadap jumlah reach' },
+      { v:'d', text:'Jumlah postingan yang dipublikasikan dalam sebulan' }
+    ],
+    correct: 'c'
+  },
+  desc_dm_email: {
+    q: '❓ Apa yang dimaksud dengan "Lead Magnet" dalam strategi email marketing?',
+    options: [
+      { v:'a', text:'Fitur otomatis untuk menghapus subscriber yang tidak aktif' },
+      { v:'b', text:'Penawaran nilai (ebook, template, webinar gratis) untuk mendorong orang mendaftar ke email list' },
+      { v:'c', text:'Tombol unsubscribe yang wajib ada di setiap email' },
+      { v:'d', text:'Teknik untuk meningkatkan deliverability email agar tidak masuk spam' }
+    ],
+    correct: 'b'
+  },
+  desc_dm_content: {
+    q: '❓ Dalam content marketing, apa yang dimaksud dengan "content pillar"?',
+    options: [
+      { v:'a', text:'Artikel terpanjang yang pernah dibuat di blog brand' },
+      { v:'b', text:'Format konten eksklusif yang hanya dipublikasikan di satu platform' },
+      { v:'c', text:'Tema utama atau topik inti yang menjadi fondasi strategi konten brand' },
+      { v:'d', text:'Konten yang dibuat khusus untuk kampanye iklan berbayar' }
+    ],
+    correct: 'c'
+  },
+  desc_dm_ads: {
+    q: '❓ Mengapa paid ads disebut sebagai "akselerator" dan bukan fondasi dalam digital marketing?',
+    options: [
+      { v:'a', text:'Karena paid ads hanya efektif untuk bisnis besar dengan anggaran besar' },
+      { v:'b', text:'Karena paid ads mempercepat pertumbuhan bisnis yang sudah memiliki product-market fit, bukan menggantikan strategi organik' },
+      { v:'c', text:'Karena paid ads tidak bisa menghasilkan konversi tanpa SEO yang kuat' },
+      { v:'d', text:'Karena platform iklan hanya mengizinkan bisnis berpengalaman untuk beriklan' }
+    ],
+    correct: 'b'
+  }
+};
+
+var currentDescKey = 'desc_dm_seo';
+
+// ── Lesson selection ───────────────────────────────────────────
+function selectLesson(el, title, num, modName, descKey) {
+  document.querySelectorAll('.sidebar-lesson').forEach(function(l){ l.classList.remove('active'); });
+  el.classList.add('active');
+
+  currentDescKey = descKey;
+
+  document.getElementById('lesson-title').textContent = title;
+  document.getElementById('lesson-badge').textContent = 'Modul ' + num;
+  document.getElementById('lesson-module').textContent = modName;
+  document.getElementById('breadcrumb-module').textContent = title;
+  document.getElementById('video-title-overlay').textContent = title;
+
+  // Update description
+  var desc = descriptions[descKey] || { title: title, body: '<p>Konten materi segera hadir.</p>' };
+  document.getElementById('desc-title').textContent = desc.title;
+  document.getElementById('desc-body').innerHTML = desc.body;
+
+  // Update video background
+  var vbg = videoBGs[descKey] || videoBGs['desc_dm_seo'];
+  var dur  = videoDurations[descKey] || '00:00';
+  document.getElementById('video-bg').style.background = vbg.bg;
+  document.getElementById('video-bg').innerHTML =
+    '<div style="text-align:center;color:#fff;padding:0 40px;z-index:1;position:relative;">' +
+    '<div style="font-size:13px;font-weight:700;letter-spacing:3px;color:#38bdf8;text-transform:uppercase;margin-bottom:12px;">Digital Marketing</div>' +
+    '<div style="font-size:34px;font-weight:800;letter-spacing:-1px;line-height:1.2;color:#e0f2fe;">' + vbg.label + '</div>' +
+    '</div>' +
+    '<div style="position:absolute;right:40px;bottom:0;font-size:100px;opacity:0.08;">' + vbg.icon + '</div>' +
+    '<div style="position:absolute;top:-40px;left:-40px;width:200px;height:200px;border-radius:50%;background:rgba(14,165,233,0.15);"></div>';
+
+  document.getElementById('video-time').textContent = '00:00 / ' + dur;
+
+  // Update quiz
+  var qd = quizData[descKey] || quizData['desc_dm_seo'];
+  document.getElementById('quiz-question').textContent = qd.q;
+  var optsHtml = '';
+  qd.options.forEach(function(o) {
+    optsHtml += '<div class="quiz-option" onclick="selectOption(this,\'' + o.v + '\')">' +
+      '<div class="quiz-letter">' + o.v.toUpperCase() + '</div>' + o.text + '</div>';
+  });
+  document.getElementById('quizOptions').innerHTML = optsHtml;
+  document.querySelector('.btn-quiz-submit').textContent = 'Kirim Jawaban →';
+  document.querySelector('.btn-quiz-submit').style.background = '';
+
+  // Update phase bar
+  updatePhaseBar(descKey);
+
+  // Update progress
+  updateProgress();
+
+  // Reset player
+  stopProgress();
+  isPlaying = false;
+  document.getElementById('videoPlayer').classList.remove('playing');
+  document.getElementById('playBtn').innerHTML = '▶';
+  currentProgress = 0;
+  document.getElementById('video-prog-fill').style.width = '0%';
+  selectedAnswer = null;
+
+  // Reset tabs to desc
+  switchTab('desc', document.querySelector('.content-tab'));
+  document.querySelectorAll('.content-tab')[0].classList.add('active');
+  document.querySelectorAll('.content-tab')[1].classList.remove('active');
+}
+
+function updateProgress() {
+  var done = document.querySelectorAll('.sidebar-lesson.done').length;
+  var total = document.querySelectorAll('.sidebar-lesson').length;
+  var pct = Math.round(done / total * 100);
+  document.getElementById('nav-progress-fill').style.width = pct + '%';
+  document.getElementById('nav-progress-text').textContent = done + '/' + total + ' video';
+}
+
+// ── Video ──────────────────────────────────────────────────────
+function togglePlay() {
+  var player = document.getElementById('videoPlayer');
+  if (isPlaying) {
+    isPlaying = false; player.classList.remove('playing');
+    document.getElementById('playBtn').innerHTML = '▶'; stopProgress();
+  } else {
+    isPlaying = true; player.classList.add('playing');
+    document.getElementById('playBtn').innerHTML = '⏸'; startProgress();
+  }
+}
+
+function startProgress() {
+  stopProgress();
+  var dur = videoDurations[currentDescKey] || '22:10';
+  var parts = dur.split(':');
+  var totalSec = parseInt(parts[0]) * 60 + parseInt(parts[1]);
+  progressTimer = setInterval(function() {
+    currentProgress += 0.5;
+    if (currentProgress >= 100) { currentProgress = 100; stopProgress(); }
+    document.getElementById('video-prog-fill').style.width = currentProgress + '%';
+    var elapsed = Math.round(totalSec * currentProgress / 100);
+    var m = Math.floor(elapsed/60), s = elapsed % 60;
+    var tm = Math.floor(totalSec/60), ts = totalSec % 60;
+    document.getElementById('video-time').textContent = pad(m)+':'+pad(s)+' / '+pad(tm)+':'+pad(ts);
+  }, 300);
+}
+
+function stopProgress() { if (progressTimer) { clearInterval(progressTimer); progressTimer = null; } }
+function pad(n) { return n < 10 ? '0'+n : n; }
+
+// ── Tabs ──────────────────────────────────────────────────────
+function switchTab(tab, el) {
+  document.querySelectorAll('.content-tab').forEach(function(t){ t.classList.remove('active'); });
+  if (el) el.classList.add('active');
+  var dp = document.getElementById('tab-desc');
+  var qp = document.getElementById('tab-quiz');
+  if (tab === 'desc') {
+    dp.classList.remove('hidden'); dp.style.display = '';
+    qp.classList.remove('show');
+  } else {
+    dp.classList.add('hidden');
+    qp.classList.add('show');
+    selectedAnswer = null;
+    document.querySelectorAll('.quiz-option').forEach(function(o){ o.className='quiz-option'; });
+    document.querySelector('.btn-quiz-submit').textContent = 'Kirim Jawaban →';
+    document.querySelector('.btn-quiz-submit').style.background = '';
+  }
+}
+
+// ── Quiz ──────────────────────────────────────────────────────
+function openQuiz(mod) {
+  switchTab('quiz', document.querySelectorAll('.content-tab')[1]);
+  document.querySelectorAll('.content-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.content-tab')[1].classList.add('active');
+}
+
+function selectOption(el, val) {
+  if (selectedAnswer) return;
+  selectedAnswer = val; el.classList.add('selected');
+}
+
+function submitQuiz() {
+  if (!selectedAnswer) { alert('Pilih salah satu jawaban terlebih dahulu.'); return; }
+  var qd = quizData[currentDescKey] || quizData['desc_dm_seo'];
+  var opts = document.querySelectorAll('.quiz-option');
+  opts.forEach(function(o) {
+    var letter = o.querySelector('.quiz-letter').textContent.toLowerCase();
+    if (letter === qd.correct) { o.classList.add('correct'); }
+    else if (letter === selectedAnswer && selectedAnswer !== qd.correct) { o.classList.add('wrong'); }
+    o.style.pointerEvents = 'none';
+  });
+  var btn = document.querySelector('.btn-quiz-submit');
+  if (selectedAnswer === qd.correct) {
+    btn.textContent = '✓ Jawaban Benar!'; btn.style.background = '#22c55e';
+  } else {
+    btn.textContent = '✗ Coba Lagi'; btn.style.background = '#ef4444';
+  }
+}
+
+// ── Navigation ────────────────────────────────────────────────
+function nextLesson() {
+  var lessons = Array.from(document.querySelectorAll('.sidebar-lesson'));
+  var activeIdx = lessons.findIndex(function(l){ return l.classList.contains('active'); });
+  if (activeIdx < lessons.length - 1) {
+    lessons[activeIdx].classList.remove('active');
+    lessons[activeIdx].classList.add('done');
+    lessons[activeIdx].querySelector('.lesson-icon').textContent = '✓';
+    lessons[activeIdx + 1].click();
+  } else {
+    alert('🎉 Selamat! Anda telah menyelesaikan semua materi Digital Marketing. Anda siap menjadi digital marketer profesional!');
+  }
+}
+
+function prevLesson() {
+  var lessons = Array.from(document.querySelectorAll('.sidebar-lesson'));
+  var activeIdx = lessons.findIndex(function(l){ return l.classList.contains('active'); });
+  if (activeIdx > 0) { lessons[activeIdx - 1].click(); }
+}
+
+// ── Init ──────────────────────────────────────────────────────
+updateProgress();
+updatePhaseBar('desc_dm_seo');
+</script>
+</body>
+</html>
