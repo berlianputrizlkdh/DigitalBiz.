@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Science — DigitalBiz Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/kelas/kelasds.css">
+</head>
+<body>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<nav class="topnav" id="topnav">
+  <button class="topnav__back-btn" onclick="window.history.back()" title="Kembali ke Dashboard">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 12L6 8l4-4"/>
+    </svg>
+    Dashboard
+  </button>
+
+  <a href="dashboard.html" class="topnav__logo">DigitalBiz<span>.</span></a>
+
+  <div class="topnav__breadcrumb">
+    <strong id="breadcrumb-course">Data Science</strong>
+    <span class="sep">›</span>
+    <span id="breadcrumb-module" style="color:#6b7280;">Python &amp; Pandas</span>
+  </div>
+
+  <div class="topnav__progress-wrap">
+    <div class="topnav__progress-bar">
+      <div class="topnav__progress-fill" id="nav-progress-fill" style="width:17%"></div>
+    </div>
+    <div class="topnav__progress-text" id="nav-progress-text">1/6 video</div>
+  </div>
+
+  <div style="flex:1;"></div>
+
+  <div class="topnav__actions">
+    <div class="topnav__avatar" id="userAvatar">U</div>
+    <button class="topnav__logout-btn" onclick="doLogout()">Keluar</button>
+  </div>
+</nav>
+
+<!-- ============================================================
+     COURSE BODY
+     ============================================================ -->
+<div class="course-body">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="courseSidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-course-tag">Analitik Data</div>
+      <div class="sidebar-course-title">Data Science</div>
+      <div class="sidebar-progress">
+        <div class="sidebar-progress-bar">
+          <div class="sidebar-progress-fill" style="width:17%"></div>
+        </div>
+        <div class="sidebar-progress-text">1 dari 6 video selesai</div>
+      </div>
+    </div>
+
+    <div class="sidebar-label">Modul Data Science</div>
+
+    <!-- MODULE 1: Python & Pandas -->
+    <div class="sidebar-module open" id="mod-ds1">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-ds1')">
+        MODUL 1 · PYTHON &amp; PANDAS
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson done" onclick="selectLesson(this,'Pengenalan Python untuk Data Science','1.1','Python Dasar','desc_ds_intro')">
+          <div class="lesson-icon">✓</div>
+          <div class="lesson-name">Pengenalan Python untuk Data Science</div>
+          <div class="lesson-duration">14:22</div>
+        </div>
+        <div class="sidebar-lesson active" onclick="selectLesson(this,'Pandas — Manipulasi DataFrame','1.2','Pandas','desc_ds_pandas')">
+          <div class="lesson-icon">▶</div>
+          <div class="lesson-name">Pandas — Manipulasi DataFrame</div>
+          <div class="lesson-duration">22:18</div>
+        </div>
+        <div class="sidebar-quiz" onclick="openQuiz('ds-pandas')">
+          <div class="quiz-icon">📝</div>
+          <div class="quiz-name">Quiz Modul 1</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 2: Data Visualization -->
+    <div class="sidebar-module" id="mod-ds2">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-ds2')">
+        MODUL 2 · DATA VISUALIZATION
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson" onclick="selectLesson(this,'Matplotlib &amp; Seaborn Dasar','2.1','Visualisasi','desc_ds_matplotlib')">
+          <div class="lesson-icon">2</div>
+          <div class="lesson-name">Matplotlib &amp; Seaborn Dasar</div>
+          <div class="lesson-duration">19:45</div>
+        </div>
+        <div class="sidebar-lesson" onclick="selectLesson(this,'Storytelling dengan Data','2.2','Storytelling','desc_ds_storytelling')">
+          <div class="lesson-icon">2</div>
+          <div class="lesson-name">Storytelling dengan Data</div>
+          <div class="lesson-duration">16:30</div>
+        </div>
+        <div class="sidebar-quiz" onclick="openQuiz('ds-viz')">
+          <div class="quiz-icon">📝</div>
+          <div class="quiz-name">Quiz Modul 2</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 3: Machine Learning Dasar -->
+    <div class="sidebar-module" id="mod-ds3">
+      <div class="sidebar-module-head" onclick="toggleModule('mod-ds3')">
+        MODUL 3 · MACHINE LEARNING DASAR
+        <span class="sidebar-module-arrow">›</span>
+      </div>
+      <div class="sidebar-lessons">
+        <div class="sidebar-lesson" onclick="selectLesson(this,'Pengenalan Machine Learning','3.1','ML Dasar','desc_ds_ml_intro')">
+          <div class="lesson-icon">3</div>
+          <div class="lesson-name">Pengenalan Machine Learning</div>
+          <div class="lesson-duration">25:10</div>
+        </div>
+        <div class="sidebar-lesson" onclick="selectLesson(this,'Supervised Learning — Regresi &amp; Klasifikasi','3.2','Supervised Learning','desc_ds_supervised')">
+          <div class="lesson-icon">3</div>
+          <div class="lesson-name">Supervised Learning — Regresi &amp; Klasifikasi</div>
+          <div class="lesson-duration">30:00</div>
+        </div>
+        <div class="sidebar-quiz" onclick="openQuiz('ds-ml')">
+          <div class="quiz-icon">📝</div>
+          <div class="quiz-name">Quiz Final</div>
+        </div>
+      </div>
+    </div>
+
+  </aside><!-- /sidebar -->
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <div class="course-content">
+
+    <!-- DS Pipeline Bar (pengganti DT Phase Bar) -->
+    <div class="dt-phase-bar" id="phaseBar">
+      <div class="dt-phase-item done" id="phase-collect">
+        <div class="dt-phase-circle">📥</div>
+        <div class="dt-phase-name">Collect</div>
+      </div>
+      <div class="dt-phase-connector done"></div>
+      <div class="dt-phase-item active" id="phase-preprocess">
+        <div class="dt-phase-circle">🧹</div>
+        <div class="dt-phase-name">Preprocess</div>
+      </div>
+      <div class="dt-phase-connector"></div>
+      <div class="dt-phase-item" id="phase-explore">
+        <div class="dt-phase-circle">🔍</div>
+        <div class="dt-phase-name">Explore</div>
+      </div>
+      <div class="dt-phase-connector"></div>
+      <div class="dt-phase-item" id="phase-visualize">
+        <div class="dt-phase-circle">📈</div>
+        <div class="dt-phase-name">Visualize</div>
+      </div>
+      <div class="dt-phase-connector"></div>
+      <div class="dt-phase-item" id="phase-model">
+        <div class="dt-phase-circle">🤖</div>
+        <div class="dt-phase-name">Model</div>
+      </div>
+    </div>
+
+    <!-- Course Top Info -->
+    <div class="course-top">
+      <div class="course-content-title" id="lesson-title">Pandas — Manipulasi DataFrame</div>
+      <div class="course-content-meta">
+        <span class="lesson-badge" id="lesson-badge">Modul 1.2</span>
+        <span class="meta-dot"></span>
+        <span id="lesson-module">Pandas</span>
+      </div>
+    </div>
+
+    <!-- Video Player -->
+    <div class="video-player" id="videoPlayer" onclick="togglePlay()">
+      <div class="video-bg" id="video-bg"
+        style="background:linear-gradient(135deg,#012b1e,#015c3a);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+        <div style="text-align:center;color:#fff;padding:0 40px;z-index:1;position:relative;">
+          <div style="font-size:13px;font-weight:700;letter-spacing:3px;color:#6ee7b7;text-transform:uppercase;margin-bottom:12px;">Data Science · Modul 1</div>
+          <div style="font-size:34px;font-weight:800;letter-spacing:-1px;line-height:1.2;color:#d1fae5;" id="video-title-label">PANDAS<br><span style="color:#fbbf24;">Manipulasi DataFrame</span></div>
+        </div>
+        <div style="position:absolute;right:40px;bottom:0;font-size:100px;opacity:0.08;">🐼</div>
+        <div style="position:absolute;top:-40px;left:-40px;width:200px;height:200px;border-radius:50%;background:rgba(16,185,129,0.12);"></div>
+        <div style="position:absolute;bottom:-60px;right:100px;width:160px;height:160px;border-radius:50%;background:rgba(251,191,36,0.06);"></div>
+      </div>
+      <div class="video-overlay">
+        <button class="video-play-btn" id="playBtn">▶</button>
+      </div>
+      <div class="video-bottom">
+        <div class="video-title-overlay" id="video-title-overlay">Pandas — Manipulasi DataFrame</div>
+        <div class="video-controls">
+          <div class="video-progress" onclick="event.stopPropagation()">
+            <div class="video-progress-fill" id="video-prog-fill" style="width:0%"></div>
+          </div>
+          <div class="video-time" id="video-time">00:00 / 22:18</div>
+          <button class="video-vol" onclick="event.stopPropagation()">🔊</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="content-tabs">
+      <div class="content-tab active" onclick="switchTab('desc',this)">Deskripsi</div>
+      <div class="content-tab" onclick="switchTab('quiz',this)">Quiz</div>
+    </div>
+
+    <!-- DESCRIPTION PANEL -->
+    <div class="desc-panel" id="tab-desc">
+      <div class="desc-title" id="desc-title">Pandas: Senjata Utama Data Scientist untuk Manipulasi Data</div>
+      <div class="desc-body" id="desc-body">
+
+        <!-- DS Pipeline visual -->
+        <div class="phase-steps">
+          <div class="phase-step done">
+            <div class="phase-step-icon" style="background:#f0fdf4;">📥</div>
+            <div class="phase-step-label">Collect</div>
+          </div>
+          <div class="phase-step current">
+            <div class="phase-step-icon" style="background:var(--accent-ds-lt);">🧹</div>
+            <div class="phase-step-label">Preprocess</div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-step-icon" style="background:#f8fafc;">🔍</div>
+            <div class="phase-step-label">Explore</div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-step-icon" style="background:#f8fafc;">📈</div>
+            <div class="phase-step-label">Visualize</div>
+          </div>
+          <div class="phase-step">
+            <div class="phase-step-icon" style="background:#f8fafc;">🤖</div>
+            <div class="phase-step-label">Model</div>
+          </div>
+        </div>
+
+        <p><strong>Pandas</strong> adalah library Python paling fundamental dalam ekosistem Data Science. Hampir tidak ada proyek analisis data yang tidak menggunakan Pandas. Library ini menyediakan struktur data seperti <code>DataFrame</code> dan <code>Series</code> yang memudahkan manipulasi, pembersihan, dan eksplorasi data secara efisien.</p>
+
+        <p>Di tahap ini kita berfokus pada <strong>Preprocess</strong> — langkah kritis sebelum data bisa dianalisis. Data mentah di dunia nyata hampir selalu kotor: ada nilai kosong (<em>missing values</em>), tipe data yang salah, duplikat, dan outlier. Pandas menyediakan tool untuk menangani semua itu.</p>
+
+        <div class="key-concepts">
+          <div class="concept-card">
+            <h4>🗂️ DataFrame &amp; Series</h4>
+            <p>DataFrame adalah tabel dua dimensi (baris × kolom). Series adalah satu kolom. Keduanya adalah tulang punggung struktur data Pandas.</p>
+          </div>
+          <div class="concept-card">
+            <h4>🧹 Handling Missing Values</h4>
+            <p>Gunakan <code>df.isnull()</code>, <code>df.dropna()</code>, atau <code>df.fillna()</code> untuk mendeteksi dan menangani nilai kosong secara strategis.</p>
+          </div>
+          <div class="concept-card">
+            <h4>🔀 Filtering &amp; Slicing</h4>
+            <p>Seleksi data dengan kondisi: <code>df[df['kolom'] &gt; 100]</code> atau <code>df.loc[]</code> / <code>df.iloc[]</code> untuk akses berbasis label dan indeks.</p>
+          </div>
+          <div class="concept-card">
+            <h4>📊 GroupBy &amp; Aggregasi</h4>
+            <p><code>df.groupby('kategori').mean()</code> — mengelompokkan data berdasarkan kategori lalu menghitung statistik agregat seperti mean, sum, count.</p>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <pre><span class="kw">import</span> pandas <span class="kw">as</span> pd
+
+<span class="cm"># Load dataset</span>
+df = pd.<span class="fn">read_csv</span>(<span class="st">'penjualan.csv'</span>)
+
+<span class="cm"># Lihat 5 baris pertama</span>
+df.<span class="fn">head</span>()
+
+<span class="cm"># Cek missing values</span>
+df.<span class="fn">isnull</span>().<span class="fn">sum</span>()
+
+<span class="cm"># Isi missing values dengan median</span>
+df[<span class="st">'harga'</span>] = df[<span class="st">'harga'</span>].<span class="fn">fillna</span>(df[<span class="st">'harga'</span>].<span class="fn">median</span>())
+
+<span class="cm"># Filter: hanya produk dengan penjualan &gt; 100</span>
+df_top = df[df[<span class="st">'penjualan'</span>] &gt; <span class="nm">100</span>]
+
+<span class="cm"># Rata-rata penjualan per kategori</span>
+df.<span class="fn">groupby</span>(<span class="st">'kategori'</span>)[<span class="st">'penjualan'</span>].<span class="fn">mean</span>()</pre>
+        </div>
+
+        <ul class="resource-list">
+          <li><span class="resource-icon">📄</span> Dokumentasi Resmi Pandas — pandas.pydata.org</li>
+          <li><span class="resource-icon">📖</span> Pandas Cheat Sheet — DigitalBiz Library</li>
+          <li><span class="resource-icon">🎥</span> Studi Kasus: Analisis Data E-Commerce Indonesia</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- QUIZ PANEL -->
+    <div class="quiz-panel" id="tab-quiz">
+      <div class="quiz-header">
+        <h3>Quiz — Data Science: Pandas &amp; DataFrame</h3>
+        <p>Uji pemahaman Anda tentang manipulasi data menggunakan Pandas.</p>
+      </div>
+      <div class="quiz-question" id="quiz-question">
+        ❓ Apa fungsi utama dari <code>df.groupby('kategori').mean()</code> dalam Pandas?
+      </div>
+      <div class="quiz-options" id="quizOptions">
+        <div class="quiz-option" onclick="selectOption(this,'a')">
+          <div class="quiz-letter">A</div>
+          Menghapus baris duplikat berdasarkan kolom kategori
+        </div>
+        <div class="quiz-option" onclick="selectOption(this,'b')">
+          <div class="quiz-letter">B</div>
+          Mengelompokkan data berdasarkan nilai di kolom kategori, lalu menghitung rata-rata setiap kelompok
+        </div>
+        <div class="quiz-option" onclick="selectOption(this,'c')">
+          <div class="quiz-letter">C</div>
+          Mengurutkan DataFrame secara ascending berdasarkan kolom kategori
+        </div>
+        <div class="quiz-option" onclick="selectOption(this,'d')">
+          <div class="quiz-letter">D</div>
+          Memfilter hanya baris yang memiliki nilai rata-rata di kolom kategori
+        </div>
+      </div>
+      <button class="btn-quiz-submit" onclick="submitQuiz()">Kirim Jawaban →</button>
+    </div>
+
+    <!-- NAVIGATION BUTTONS -->
+    <div class="video-nav">
+      <button class="btn-nav" onclick="prevLesson()">← Sebelumnya</button>
+      <button class="btn-nav primary" onclick="nextLesson()">Materi Berikutnya →</button>
+    </div>
+
+  </div><!-- /course-content -->
+</div><!-- /course-body -->
+
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+// ── State ──────────────────────────────────────────────────────
+var isPlaying      = false;
+var selectedAnswer = null;
+var progressTimer  = null;
+var currentProgress = 0;
+
+// ── Init user ──────────────────────────────────────────────────
+(function() {
+  var name = localStorage.getItem('userName') || 'Pengguna';
+  var initials = name.split(' ').map(function(w){ return w[0]; }).join('').toUpperCase().slice(0,2) || 'U';
+  document.getElementById('userAvatar').textContent = initials;
+})();
+
+// ── Logout ─────────────────────────────────────────────────────
+function doLogout() {
+  localStorage.removeItem('isLoggedIn');
+  localStorage.removeItem('userName');
+  window.location.href = '../index.html';
+}
+
+// ── Sidebar toggle ─────────────────────────────────────────────
+function toggleModule(id) {
+  document.getElementById(id).classList.toggle('open');
+}
+
+// ── DS Pipeline bar updater ────────────────────────────────────
+var phaseMap = {
+  desc_ds_intro:      'collect',
+  desc_ds_pandas:     'preprocess',
+  desc_ds_matplotlib: 'explore',
+  desc_ds_storytelling:'visualize',
+  desc_ds_ml_intro:   'model',
+  desc_ds_supervised: 'model'
+};
+
+var phaseOrder = ['collect','preprocess','explore','visualize','model'];
+
+function updatePhaseBar(activeKey) {
+  var activePhase = phaseMap[activeKey] || 'collect';
+  var activeIdx = phaseOrder.indexOf(activePhase);
+  phaseOrder.forEach(function(ph, i) {
+    var el = document.getElementById('phase-' + ph);
+    el.classList.remove('active','done');
+    if (i < activeIdx) el.classList.add('done');
+    else if (i === activeIdx) el.classList.add('active');
+  });
+  var connectors = document.querySelectorAll('.dt-phase-connector');
+  connectors.forEach(function(c, i) {
+    c.classList.toggle('done', i < activeIdx);
+  });
+}
+
+// ── Content descriptions ───────────────────────────────────────
+var descriptions = {
+  desc_ds_intro: {
+    title: 'Pengenalan Python untuk Data Science',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-ds-lt);">📥</div><div class="phase-step-label">Collect</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🧹</div><div class="phase-step-label">Preprocess</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🔍</div><div class="phase-step-label">Explore</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">📈</div><div class="phase-step-label">Visualize</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🤖</div><div class="phase-step-label">Model</div></div>
+      </div>
+      <p>Python adalah bahasa pemrograman paling dominan di ekosistem Data Science saat ini. Kemudahannya dibaca, ekosistem library yang luar biasa kaya (Pandas, NumPy, Scikit-learn, Matplotlib), dan komunitas yang besar menjadikan Python pilihan utama para data scientist di seluruh dunia.</p>
+      <p>Di modul pertama ini, kita membangun fondasi: variabel, tipe data, struktur kontrol, fungsi, dan pengenalan library utama. Ini adalah titik awal <strong>Collect</strong> — memahami tool yang akan kita gunakan untuk mengumpulkan dan memuat data.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>🐍 Python Basics</h4><p>Variabel, list, dictionary, loop, dan fungsi — fondasi yang wajib dikuasai sebelum masuk ke library Data Science.</p></div>
+        <div class="concept-card"><h4>🔢 NumPy</h4><p>Library komputasi numerik. Array N-dimensi NumPy adalah fondasi dari hampir semua library Data Science lainnya.</p></div>
+        <div class="concept-card"><h4>📂 Membaca Data</h4><p><code>pd.read_csv()</code>, <code>pd.read_excel()</code>, <code>pd.read_json()</code> — Pandas bisa membaca berbagai format data sumber.</p></div>
+        <div class="concept-card"><h4>🌐 Ekosistem DS</h4><p>Python · Pandas · NumPy · Matplotlib · Seaborn · Scikit-learn · Jupyter Notebook — toolchain lengkap seorang data scientist.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📚</span> Python for Data Analysis — Wes McKinney (O'Reilly)</li>
+        <li><span class="resource-icon">🖥️</span> Jupyter Notebook Setup Guide — DigitalBiz</li>
+        <li><span class="resource-icon">📄</span> Python Cheat Sheet untuk Data Science</li>
+      </ul>
+    `
+  },
+  desc_ds_pandas: {
+    title: 'Pandas: Senjata Utama Data Scientist untuk Manipulasi Data',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📥</div><div class="phase-step-label">Collect</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-ds-lt);">🧹</div><div class="phase-step-label">Preprocess</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🔍</div><div class="phase-step-label">Explore</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">📈</div><div class="phase-step-label">Visualize</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🤖</div><div class="phase-step-label">Model</div></div>
+      </div>
+      <p><strong>Pandas</strong> adalah library Python paling fundamental dalam ekosistem Data Science. Hampir tidak ada proyek analisis data yang tidak menggunakan Pandas — ia menyediakan struktur data <code>DataFrame</code> dan <code>Series</code> untuk manipulasi, pembersihan, dan eksplorasi data secara efisien.</p>
+      <p>Data mentah di dunia nyata hampir selalu kotor: ada <em>missing values</em>, tipe data yang salah, duplikat, dan outlier. Pandas menyediakan arsenal tool untuk menangani semuanya di tahap <strong>Preprocess</strong>.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>🗂️ DataFrame &amp; Series</h4><p>DataFrame adalah tabel dua dimensi (baris × kolom). Series adalah satu kolom. Keduanya adalah struktur data inti Pandas.</p></div>
+        <div class="concept-card"><h4>🧹 Handling Missing Values</h4><p><code>df.isnull()</code>, <code>df.dropna()</code>, <code>df.fillna()</code> — deteksi dan tangani nilai kosong secara strategis sesuai konteks data.</p></div>
+        <div class="concept-card"><h4>🔀 Filtering &amp; Slicing</h4><p>Seleksi data dengan kondisi: <code>df[df['nilai'] &gt; 100]</code> atau <code>df.loc[]</code> / <code>df.iloc[]</code> untuk akses berbasis label dan posisi.</p></div>
+        <div class="concept-card"><h4>📊 GroupBy &amp; Aggregasi</h4><p><code>df.groupby('kategori').mean()</code> — kelompokkan data lalu hitung statistik agregat seperti mean, sum, count, max, min.</p></div>
+      </div>
+      <div class="code-block">
+        <pre><span class="kw">import</span> pandas <span class="kw">as</span> pd
+
+df = pd.<span class="fn">read_csv</span>(<span class="st">'penjualan.csv'</span>)
+df.<span class="fn">isnull</span>().<span class="fn">sum</span>()
+df[<span class="st">'harga'</span>] = df[<span class="st">'harga'</span>].<span class="fn">fillna</span>(df[<span class="st">'harga'</span>].<span class="fn">median</span>())
+df_top = df[df[<span class="st">'penjualan'</span>] &gt; <span class="nm">100</span>]
+df.<span class="fn">groupby</span>(<span class="st">'kategori'</span>)[<span class="st">'penjualan'</span>].<span class="fn">mean</span>()</pre>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📄</span> Dokumentasi Resmi Pandas — pandas.pydata.org</li>
+        <li><span class="resource-icon">📖</span> Pandas Cheat Sheet — DigitalBiz Library</li>
+        <li><span class="resource-icon">🎥</span> Studi Kasus: Analisis Data E-Commerce Indonesia</li>
+      </ul>
+    `
+  },
+  desc_ds_matplotlib: {
+    title: 'Matplotlib & Seaborn: Visualisasi Data Profesional',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📥</div><div class="phase-step-label">Collect</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🧹</div><div class="phase-step-label">Preprocess</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-ds-lt);">🔍</div><div class="phase-step-label">Explore</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">📈</div><div class="phase-step-label">Visualize</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🤖</div><div class="phase-step-label">Model</div></div>
+      </div>
+      <p><strong>Matplotlib</strong> adalah fondasi visualisasi di Python — hampir semua library visualisasi lain dibangun di atasnya. <strong>Seaborn</strong> adalah lapisan abstraksi yang lebih tinggi, memungkinkan pembuatan grafik statistik yang indah dengan kode minimal.</p>
+      <p>Di tahap <strong>Explore</strong>, visualisasi bukan sekadar presentasi — ini adalah alat investigasi. Histogram, scatter plot, dan heatmap membantu kita menemukan pola, distribusi, dan korelasi yang tidak terlihat dari angka mentah.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>📊 Histogram &amp; Distribusi</h4><p>Visualisasikan sebaran data dengan <code>plt.hist()</code> atau <code>sns.histplot()</code>. Deteksi skewness dan outlier dari bentuk distribusi.</p></div>
+        <div class="concept-card"><h4>🔵 Scatter Plot</h4><p><code>sns.scatterplot()</code> — tampilkan hubungan antara dua variabel numerik. Tambahkan hue untuk variabel kategorik ketiga.</p></div>
+        <div class="concept-card"><h4>🌡️ Heatmap Korelasi</h4><p><code>sns.heatmap(df.corr())</code> — visualisasikan matriks korelasi antar semua fitur numerik sekaligus dalam satu gambar.</p></div>
+        <div class="concept-card"><h4>📦 Box Plot</h4><p>Tampilkan distribusi dan outlier per kategori dengan <code>sns.boxplot()</code>. Efisien untuk membandingkan grup secara visual.</p></div>
+      </div>
+      <div class="code-block">
+        <pre><span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
+<span class="kw">import</span> seaborn <span class="kw">as</span> sns
+
+<span class="cm"># Histogram distribusi harga</span>
+sns.<span class="fn">histplot</span>(df[<span class="st">'harga'</span>], bins=<span class="nm">30</span>, kde=<span class="kw">True</span>)
+
+<span class="cm"># Heatmap korelasi</span>
+sns.<span class="fn">heatmap</span>(df.<span class="fn">corr</span>(), annot=<span class="kw">True</span>, cmap=<span class="st">'coolwarm'</span>)
+plt.<span class="fn">show</span>()</pre>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📄</span> Seaborn Gallery — seaborn.pydata.org</li>
+        <li><span class="resource-icon">📖</span> Matplotlib Cheat Sheet — DigitalBiz Library</li>
+      </ul>
+    `
+  },
+  desc_ds_storytelling: {
+    title: 'Storytelling dengan Data: Dari Grafik ke Keputusan Bisnis',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📥</div><div class="phase-step-label">Collect</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🧹</div><div class="phase-step-label">Preprocess</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🔍</div><div class="phase-step-label">Explore</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-ds-lt);">📈</div><div class="phase-step-label">Visualize</div></div>
+        <div class="phase-step"><div class="phase-step-icon" style="background:#f8fafc;">🤖</div><div class="phase-step-label">Model</div></div>
+      </div>
+      <p>Data yang tidak dikomunikasikan dengan baik adalah data yang sia-sia. <strong>Storytelling dengan data</strong> adalah kemampuan mengubah angka dan grafik menjadi narasi yang mudah dipahami, meyakinkan, dan mendorong keputusan bisnis yang tepat.</p>
+      <p>Data scientist terbaik bukan hanya yang bisa membuat model akurat — mereka yang bisa menjelaskan hasil analisis kepada stakeholder non-teknis dengan cara yang jelas dan berdampak.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>🎯 Big Idea</h4><p>Setiap presentasi data harus punya satu pesan utama yang ingin disampaikan. Mulai dari "So what?" — apa implikasi bisnis dari data ini?</p></div>
+        <div class="concept-card"><h4>👥 Kenali Audiens</h4><p>C-level butuh ringkasan executive, tim teknis butuh detail metodologi. Adaptasi kedalaman dan bahasa sesuai audiens Anda.</p></div>
+        <div class="concept-card"><h4>🎨 Desain Visual</h4><p>Pilih grafik yang tepat untuk pesan yang tepat. Hindari pie chart untuk perbandingan banyak kategori. Less is more dalam desain dashboard.</p></div>
+        <div class="concept-card"><h4>📖 Narrative Arc</h4><p>Struktur: Konteks → Konflik (masalah/temuan) → Resolusi (rekomendasi). Buat audiens terhubung secara emosional dengan data Anda.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📚</span> Storytelling with Data — Cole Nussbaumer Knaflic</li>
+        <li><span class="resource-icon">🖥️</span> Tableau Public Gallery — Inspirasi Dashboard</li>
+        <li><span class="resource-icon">📄</span> Template Presentasi Data — DigitalBiz Library</li>
+      </ul>
+    `
+  },
+  desc_ds_ml_intro: {
+    title: 'Pengenalan Machine Learning: Mesin yang Belajar dari Data',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📥</div><div class="phase-step-label">Collect</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🧹</div><div class="phase-step-label">Preprocess</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🔍</div><div class="phase-step-label">Explore</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📈</div><div class="phase-step-label">Visualize</div></div>
+        <div class="phase-step current"><div class="phase-step-icon" style="background:var(--accent-ds-lt);">🤖</div><div class="phase-step-label">Model</div></div>
+      </div>
+      <p><strong>Machine Learning</strong> adalah cabang kecerdasan buatan yang memungkinkan sistem belajar dari data untuk membuat prediksi atau keputusan tanpa diprogram secara eksplisit. Ini adalah puncak dari pipeline Data Science.</p>
+      <p>ML bukan sihir — ini adalah statistik dan optimasi matematis yang dijalankan pada data berskala besar. Memahami konsepnya secara konseptual jauh lebih penting dari menghafal rumus.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>📚 Supervised Learning</h4><p>Belajar dari data berlabel. Input → Output yang diketahui. Digunakan untuk prediksi harga, klasifikasi spam, deteksi fraud.</p></div>
+        <div class="concept-card"><h4>🔎 Unsupervised Learning</h4><p>Belajar dari data tanpa label. Menemukan pola tersembunyi. Contoh: clustering pelanggan berdasarkan perilaku pembelian.</p></div>
+        <div class="concept-card"><h4>⚖️ Overfitting vs Underfitting</h4><p>Model terlalu "hafal" data latih (overfitting) atau terlalu sederhana (underfitting). Bias-variance tradeoff adalah konsep kunci.</p></div>
+        <div class="concept-card"><h4>🔄 Train/Test Split</h4><p>Pisahkan data menjadi training set (80%) dan test set (20%). Model hanya boleh belajar dari training data; evaluasi pada test data.</p></div>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📚</span> Hands-On Machine Learning — Aurélien Géron (O'Reilly)</li>
+        <li><span class="resource-icon">🖥️</span> Scikit-learn Documentation — scikit-learn.org</li>
+        <li><span class="resource-icon">🎓</span> Google ML Crash Course — gratis, berkualitas tinggi</li>
+      </ul>
+    `
+  },
+  desc_ds_supervised: {
+    title: 'Supervised Learning: Regresi, Klasifikasi, dan Evaluasi Model',
+    body: `
+      <div class="phase-steps">
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📥</div><div class="phase-step-label">Collect</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🧹</div><div class="phase-step-label">Preprocess</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🔍</div><div class="phase-step-label">Explore</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">📈</div><div class="phase-step-label">Visualize</div></div>
+        <div class="phase-step done"><div class="phase-step-icon" style="background:#f0fdf4;">🤖</div><div class="phase-step-label">Model</div></div>
+      </div>
+      <p>Dalam <strong>Supervised Learning</strong>, ada dua tipe utama task: <strong>Regresi</strong> (prediksi nilai numerik kontinu — misalnya harga rumah) dan <strong>Klasifikasi</strong> (prediksi kategori — misalnya apakah email ini spam atau bukan).</p>
+      <p>Scikit-learn membuat implementasi algoritma ML menjadi seragam: semua model punya method <code>.fit()</code> untuk training dan <code>.predict()</code> untuk prediksi. Ini adalah salah satu desain API paling elegan di ekosistem Python.</p>
+      <div class="key-concepts">
+        <div class="concept-card"><h4>📈 Linear Regression</h4><p>Model paling sederhana untuk regresi. Menemukan garis lurus terbaik yang meminimalkan error prediksi. Bagus sebagai baseline.</p></div>
+        <div class="concept-card"><h4>🌳 Decision Tree</h4><p>Model berbasis aturan if-then yang mudah diinterpretasi. Bisa digunakan untuk regresi maupun klasifikasi.</p></div>
+        <div class="concept-card"><h4>📊 Metrik Evaluasi</h4><p>Regresi: MAE, RMSE, R². Klasifikasi: Accuracy, Precision, Recall, F1-Score. Pilih metrik sesuai konteks bisnis.</p></div>
+        <div class="concept-card"><h4>✂️ Cross-Validation</h4><p>Teknik evaluasi yang lebih robust dari single train/test split. Gunakan <code>cross_val_score()</code> untuk estimasi performa yang lebih andal.</p></div>
+      </div>
+      <div class="code-block">
+        <pre><span class="kw">from</span> sklearn.linear_model <span class="kw">import</span> LinearRegression
+<span class="kw">from</span> sklearn.model_selection <span class="kw">import</span> train_test_split
+<span class="kw">from</span> sklearn.metrics <span class="kw">import</span> mean_squared_error
+
+X_train, X_test, y_train, y_test = <span class="fn">train_test_split</span>(
+    X, y, test_size=<span class="nm">0.2</span>, random_state=<span class="nm">42</span>
+)
+
+model = <span class="fn">LinearRegression</span>()
+model.<span class="fn">fit</span>(X_train, y_train)
+
+y_pred = model.<span class="fn">predict</span>(X_test)
+<span class="fn">print</span>(<span class="fn">mean_squared_error</span>(y_test, y_pred))</pre>
+      </div>
+      <ul class="resource-list">
+        <li><span class="resource-icon">📄</span> Scikit-learn User Guide — scikit-learn.org/stable/user_guide</li>
+        <li><span class="resource-icon">🎥</span> Studi Kasus: Prediksi Churn Pelanggan Telco</li>
+        <li><span class="resource-icon">📊</span> Kaggle — Latih model dengan dataset nyata</li>
+      </ul>
+    `
+  }
+};
+
+var videoBGs = {
+  desc_ds_intro:       { bg:'linear-gradient(135deg,#0c1a2e,#0a3d6b)',  label:'PYTHON DASAR<br><span style="color:#fbbf24;">Fondasi Data Science</span>', icon:'🐍', course:'Data Science · Modul 1', titleColor:'#bfdbfe' },
+  desc_ds_pandas:      { bg:'linear-gradient(135deg,#012b1e,#015c3a)',   label:'PANDAS<br><span style="color:#fbbf24;">Manipulasi DataFrame</span>',    icon:'🐼', course:'Data Science · Modul 1', titleColor:'#d1fae5' },
+  desc_ds_matplotlib:  { bg:'linear-gradient(135deg,#1a0e2e,#2d1b69)',   label:'MATPLOTLIB &amp; SEABORN<br><span style="color:#38bdf8;">Visualisasi Data</span>', icon:'📊', course:'Data Science · Modul 2', titleColor:'#ede9fe' },
+  desc_ds_storytelling:{ bg:'linear-gradient(135deg,#1a1200,#3d2a00)',   label:'STORYTELLING<br><span style="color:#4ade80;">dengan Data</span>',         icon:'📖', course:'Data Science · Modul 2', titleColor:'#fef3c7' },
+  desc_ds_ml_intro:    { bg:'linear-gradient(135deg,#0c1a2e,#1a3a5c)',   label:'MACHINE LEARNING<br><span style="color:#f472b6;">Pengenalan</span>',       icon:'🤖', course:'Data Science · Modul 3', titleColor:'#bae6fd' },
+  desc_ds_supervised:  { bg:'linear-gradient(135deg,#0a1a0a,#1a3a1a)',   label:'SUPERVISED LEARNING<br><span style="color:#4ade80;">Regresi &amp; Klasifikasi</span>', icon:'🌳', course:'Data Science · Modul 3', titleColor:'#dcfce7' }
+};
+
+var videoDurations = {
+  desc_ds_intro:       '14:22',
+  desc_ds_pandas:      '22:18',
+  desc_ds_matplotlib:  '19:45',
+  desc_ds_storytelling:'16:30',
+  desc_ds_ml_intro:    '25:10',
+  desc_ds_supervised:  '30:00'
+};
+
+var quizData = {
+  desc_ds_intro: {
+    q: '❓ Apa keunggulan utama Python dibandingkan bahasa lain untuk Data Science?',
+    options: [
+      { v:'a', text:'Python lebih cepat dari C++ dalam komputasi numerik berskala besar' },
+      { v:'b', text:'Python memiliki ekosistem library Data Science terlengkap, sintaks mudah dibaca, dan komunitas yang sangat besar' },
+      { v:'c', text:'Python adalah satu-satunya bahasa yang bisa membaca file CSV' },
+      { v:'d', text:'Python tidak membutuhkan instalasi library tambahan untuk analisis data' }
+    ],
+    correct: 'b'
+  },
+  desc_ds_pandas: {
+    q: '❓ Apa fungsi utama dari <code>df.groupby(\'kategori\').mean()</code> dalam Pandas?',
+    options: [
+      { v:'a', text:'Menghapus baris duplikat berdasarkan kolom kategori' },
+      { v:'b', text:'Mengelompokkan data berdasarkan nilai di kolom kategori, lalu menghitung rata-rata setiap kelompok' },
+      { v:'c', text:'Mengurutkan DataFrame secara ascending berdasarkan kolom kategori' },
+      { v:'d', text:'Memfilter hanya baris yang memiliki nilai rata-rata di kolom kategori' }
+    ],
+    correct: 'b'
+  },
+  desc_ds_matplotlib: {
+    q: '❓ Kapan sebaiknya menggunakan Seaborn dibandingkan Matplotlib secara langsung?',
+    options: [
+      { v:'a', text:'Seaborn digunakan hanya untuk membuat pie chart yang lebih indah' },
+      { v:'b', text:'Seaborn lebih baik untuk grafik tiga dimensi dan animasi data' },
+      { v:'c', text:'Seaborn cocok untuk grafik statistik yang kompleks dengan kode lebih ringkas, sementara Matplotlib untuk kustomisasi level rendah' },
+      { v:'d', text:'Seaborn menggantikan Matplotlib sepenuhnya dan tidak kompatibel dengannya' }
+    ],
+    correct: 'c'
+  },
+  desc_ds_storytelling: {
+    q: '❓ Apa prinsip utama dalam storytelling dengan data yang efektif?',
+    options: [
+      { v:'a', text:'Tampilkan sebanyak mungkin grafik agar audiens mendapat informasi lengkap' },
+      { v:'b', text:'Gunakan pie chart untuk semua perbandingan karena mudah dipahami semua orang' },
+      { v:'c', text:'Fokus pada satu pesan utama (Big Idea), kenali audiens, dan pilih visualisasi yang mendukung narasi — bukan sebaliknya' },
+      { v:'d', text:'Selalu gunakan warna-warna cerah dan mencolok agar presentasi lebih menarik' }
+    ],
+    correct: 'c'
+  },
+  desc_ds_ml_intro: {
+    q: '❓ Apa yang dimaksud dengan overfitting dalam Machine Learning?',
+    options: [
+      { v:'a', text:'Model terlalu sederhana sehingga tidak mampu menangkap pola dalam data training' },
+      { v:'b', text:'Model performa-nya bagus di data training tapi buruk di data baru yang belum pernah dilihat' },
+      { v:'c', text:'Model membutuhkan terlalu banyak memori komputer untuk dijalankan' },
+      { v:'d', text:'Model menghasilkan prediksi yang selalu terlalu tinggi dari nilai sebenarnya' }
+    ],
+    correct: 'b'
+  },
+  desc_ds_supervised: {
+    q: '❓ Mengapa kita memisahkan data menjadi training set dan test set dalam Machine Learning?',
+    options: [
+      { v:'a', text:'Agar komputasi lebih cepat karena data yang diproses lebih sedikit' },
+      { v:'b', text:'Karena algoritma ML tidak bisa memproses seluruh dataset sekaligus' },
+      { v:'c', text:'Untuk mengevaluasi seberapa baik model generalisasi ke data baru yang belum pernah dilihat saat training' },
+      { v:'d', text:'Agar model bisa belajar dari dua sumber data yang berbeda secara bersamaan' }
+    ],
+    correct: 'c'
+  }
+};
+
+var currentDescKey = 'desc_ds_pandas';
+
+// ── Lesson selection ───────────────────────────────────────────
+function selectLesson(el, title, num, modName, descKey) {
+  document.querySelectorAll('.sidebar-lesson').forEach(function(l){ l.classList.remove('active'); });
+  el.classList.add('active');
+
+  currentDescKey = descKey;
+
+  document.getElementById('lesson-title').textContent = title;
+  document.getElementById('lesson-badge').textContent = 'Modul ' + num;
+  document.getElementById('lesson-module').textContent = modName;
+  document.getElementById('breadcrumb-module').textContent = title;
+  document.getElementById('video-title-overlay').textContent = title;
+
+  // Update description
+  var desc = descriptions[descKey] || { title: title, body: '<p>Konten materi segera hadir.</p>' };
+  document.getElementById('desc-title').textContent = desc.title;
+  document.getElementById('desc-body').innerHTML = desc.body;
+
+  // Update video background
+  var vbg = videoBGs[descKey] || videoBGs['desc_ds_pandas'];
+  var dur  = videoDurations[descKey] || '00:00';
+  document.getElementById('video-bg').style.background = vbg.bg;
+  document.getElementById('video-bg').innerHTML =
+    '<div style="text-align:center;color:#fff;padding:0 40px;z-index:1;position:relative;">' +
+    '<div style="font-size:13px;font-weight:700;letter-spacing:3px;color:#6ee7b7;text-transform:uppercase;margin-bottom:12px;">' + vbg.course + '</div>' +
+    '<div style="font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1.2;color:' + vbg.titleColor + ';">' + vbg.label + '</div>' +
+    '</div>' +
+    '<div style="position:absolute;right:40px;bottom:0;font-size:100px;opacity:0.08;">' + vbg.icon + '</div>' +
+    '<div style="position:absolute;top:-40px;left:-40px;width:200px;height:200px;border-radius:50%;background:rgba(14,165,233,0.12);"></div>';
+
+  document.getElementById('video-time').textContent = '00:00 / ' + dur;
+
+  // Update quiz
+  var qd = quizData[descKey] || quizData['desc_ds_pandas'];
+  document.getElementById('quiz-question').innerHTML = qd.q;
+  var optsHtml = '';
+  qd.options.forEach(function(o) {
+    optsHtml += '<div class="quiz-option" onclick="selectOption(this,\'' + o.v + '\')">' +
+      '<div class="quiz-letter">' + o.v.toUpperCase() + '</div>' + o.text + '</div>';
+  });
+  document.getElementById('quizOptions').innerHTML = optsHtml;
+  document.querySelector('.btn-quiz-submit').textContent = 'Kirim Jawaban →';
+  document.querySelector('.btn-quiz-submit').style.background = '';
+
+  // Update quiz header
+  document.querySelector('.quiz-header h3').textContent = 'Quiz — Data Science: ' + modName;
+
+  // Update DS pipeline bar
+  updatePhaseBar(descKey);
+
+  // Update progress
+  updateProgress();
+
+  // Reset player
+  stopProgress();
+  isPlaying = false;
+  document.getElementById('videoPlayer').classList.remove('playing');
+  document.getElementById('playBtn').innerHTML = '▶';
+  currentProgress = 0;
+  document.getElementById('video-prog-fill').style.width = '0%';
+  selectedAnswer = null;
+
+  // Reset tabs to desc
+  switchTab('desc', document.querySelector('.content-tab'));
+  document.querySelectorAll('.content-tab')[0].classList.add('active');
+  document.querySelectorAll('.content-tab')[1].classList.remove('active');
+}
+
+function updateProgress() {
+  var done = document.querySelectorAll('.sidebar-lesson.done').length;
+  var total = document.querySelectorAll('.sidebar-lesson').length;
+  var pct = Math.round(done / total * 100);
+  document.getElementById('nav-progress-fill').style.width = pct + '%';
+  document.getElementById('nav-progress-text').textContent = done + '/' + total + ' video';
+}
+
+// ── Video ──────────────────────────────────────────────────────
+function togglePlay() {
+  var player = document.getElementById('videoPlayer');
+  if (isPlaying) {
+    isPlaying = false; player.classList.remove('playing');
+    document.getElementById('playBtn').innerHTML = '▶'; stopProgress();
+  } else {
+    isPlaying = true; player.classList.add('playing');
+    document.getElementById('playBtn').innerHTML = '⏸'; startProgress();
+  }
+}
+
+function startProgress() {
+  stopProgress();
+  var dur = videoDurations[currentDescKey] || '22:18';
+  var parts = dur.split(':');
+  var totalSec = parseInt(parts[0]) * 60 + parseInt(parts[1]);
+  progressTimer = setInterval(function() {
+    currentProgress += 0.5;
+    if (currentProgress >= 100) { currentProgress = 100; stopProgress(); }
+    document.getElementById('video-prog-fill').style.width = currentProgress + '%';
+    var elapsed = Math.round(totalSec * currentProgress / 100);
+    var m = Math.floor(elapsed/60), s = elapsed % 60;
+    var tm = Math.floor(totalSec/60), ts = totalSec % 60;
+    document.getElementById('video-time').textContent = pad(m)+':'+pad(s)+' / '+pad(tm)+':'+pad(ts);
+  }, 300);
+}
+
+function stopProgress() { if (progressTimer) { clearInterval(progressTimer); progressTimer = null; } }
+function pad(n) { return n < 10 ? '0'+n : n; }
+
+// ── Tabs ──────────────────────────────────────────────────────
+function switchTab(tab, el) {
+  document.querySelectorAll('.content-tab').forEach(function(t){ t.classList.remove('active'); });
+  if (el) el.classList.add('active');
+  var dp = document.getElementById('tab-desc');
+  var qp = document.getElementById('tab-quiz');
+  if (tab === 'desc') {
+    dp.classList.remove('hidden'); dp.style.display = '';
+    qp.classList.remove('show');
+  } else {
+    dp.classList.add('hidden');
+    qp.classList.add('show');
+    selectedAnswer = null;
+    document.querySelectorAll('.quiz-option').forEach(function(o){ o.className='quiz-option'; });
+    document.querySelector('.btn-quiz-submit').textContent = 'Kirim Jawaban →';
+    document.querySelector('.btn-quiz-submit').style.background = '';
+  }
+}
+
+// ── Quiz ──────────────────────────────────────────────────────
+function openQuiz(mod) {
+  switchTab('quiz', document.querySelectorAll('.content-tab')[1]);
+  document.querySelectorAll('.content-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.content-tab')[1].classList.add('active');
+}
+
+function selectOption(el, val) {
+  if (selectedAnswer) return;
+  selectedAnswer = val; el.classList.add('selected');
+}
+
+function submitQuiz() {
+  if (!selectedAnswer) { alert('Pilih salah satu jawaban terlebih dahulu.'); return; }
+  var qd = quizData[currentDescKey] || quizData['desc_ds_pandas'];
+  var opts = document.querySelectorAll('.quiz-option');
+  opts.forEach(function(o) {
+    var letter = o.querySelector('.quiz-letter').textContent.toLowerCase();
+    if (letter === qd.correct) { o.classList.add('correct'); }
+    else if (letter === selectedAnswer && selectedAnswer !== qd.correct) { o.classList.add('wrong'); }
+    o.style.pointerEvents = 'none';
+  });
+  var btn = document.querySelector('.btn-quiz-submit');
+  if (selectedAnswer === qd.correct) {
+    btn.textContent = '✓ Jawaban Benar!'; btn.style.background = '#22c55e';
+  } else {
+    btn.textContent = '✗ Coba Lagi'; btn.style.background = '#ef4444';
+  }
+}
+
+// ── Navigation ────────────────────────────────────────────────
+function nextLesson() {
+  var lessons = Array.from(document.querySelectorAll('.sidebar-lesson'));
+  var activeIdx = lessons.findIndex(function(l){ return l.classList.contains('active'); });
+  if (activeIdx < lessons.length - 1) {
+    lessons[activeIdx].classList.remove('active');
+    lessons[activeIdx].classList.add('done');
+    lessons[activeIdx].querySelector('.lesson-icon').textContent = '✓';
+    lessons[activeIdx + 1].click();
+  } else {
+    alert('🎉 Selamat! Anda telah menyelesaikan semua materi Data Science. Saatnya praktek di Kaggle dan bangun portofolio nyata!');
+  }
+}
+
+function prevLesson() {
+  var lessons = Array.from(document.querySelectorAll('.sidebar-lesson'));
+  var activeIdx = lessons.findIndex(function(l){ return l.classList.contains('active'); });
+  if (activeIdx > 0) { lessons[activeIdx - 1].click(); }
+}
+
+// ── Init ──────────────────────────────────────────────────────
+updateProgress();
+updatePhaseBar('desc_ds_pandas');
+</script>
+</body>
+</html>
